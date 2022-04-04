@@ -10,3 +10,4 @@
 - [ ] Snake
 - [ ] Tanks
 - [ ] Futbolin
+- [ ] Flappy bird
