@@ -1,13 +1,8 @@
 class BasicEnemy extends Enemy {
 	static SRC = null;
 
-	constructor(pos, size, angle) {
-		super(pos, size, angle);
+	constructor(pos, size) {
+		super(pos, size, Math.PI);
 		this.src = BasicEnemy.SRC;
-		this.rotate(Math.PI);
-	}
-
-	show() {
-		this.showImg(this.src);
 	}
 }
