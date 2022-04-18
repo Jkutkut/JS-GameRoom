@@ -2,6 +2,7 @@ var game;
 
 function preload() {
 	Ship.SRC = loadImage("../res/img/space_invaders/ships/ship_1.png");
+	BasicEnemy.SRC = loadImage("../res/img/space_invaders/ships/ship_2.png");
 }
 
 function setup() {
