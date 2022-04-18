@@ -11,12 +11,12 @@ function preload() {
 function setup() {
 	createCanvas(600, 600);
 	game = new SpaceInvaders(new p5.Vector(width, height));
-	background(30);
-	// frameRate(60);
-
 }
 
 function draw() {
-	game.show();
-	noLoop();
+	game.tick();
+}
+
+keyPressed = () => {
+	game.keypress(keyCode);
 }

@@ -1,12 +1,17 @@
 class SpaceInvaders extends Game {
+
+	static BG = 30;
+
 	constructor(size) {
 		super(size);
 
 		this.initShip();
 		this.initEnemies();
+		this.updateScreen = true;
 	}
 
 	show() {
+		background(SpaceInvaders.BG);
 		super.show();
 		this.ship.show();
 		for (let enemy of this.enemies) {
@@ -60,5 +65,40 @@ class SpaceInvaders extends Game {
 			basicSize.copy(),
 			"basic6"
 		));
+	}
+
+	tick() {
+		super.tick();
+		if (keyIsDown(LEFT_ARROW))
+			this.moveShip(-1, 0);
+		if (keyIsDown(RIGHT_ARROW))
+			this.moveShip(1, 0);
+		if (keyIsDown(UP_ARROW))
+			this.moveShip(0, -1);
+		if (keyIsDown(DOWN_ARROW))
+			this.moveShip(0, 1);
+		
+		if (this.updateScreen) {
+			this.show();
+			this.updateScreen = false;
+		}
+	}
+
+	keypress(keyCode) {
+		super.keypress(keyCode);
+		if (keyCode === LEFT_ARROW)
+			this.moveShip(-1, 0);
+		if (keyCode === RIGHT_ARROW)
+			this.moveShip(1, 0);
+		if (keyCode === UP_ARROW)
+			this.moveShip(0, -1);
+		if (keyCode === DOWN_ARROW)
+			this.moveShip(0, 1);
+		this.updateScreen = true;
+	}
+
+	moveShip(x, y) {
+		this.ship.move(x, y);
+		this.updateScreen = true;
 	}
 }
