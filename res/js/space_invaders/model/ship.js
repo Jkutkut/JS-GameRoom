@@ -1,5 +1,8 @@
 class Ship extends PhysicsObject {
-	static SRC = null;
+	static SRC = {
+		body: null,
+		propulsor: null
+	};
 	static V = 5;
 
 	constructor(pos, size, angle) {
@@ -7,7 +10,7 @@ class Ship extends PhysicsObject {
 	}
 
 	show() {
-		this.showImg(Ship.SRC);
+		this.showImg(Ship.SRC.body);
 	}
 
 	move(x, y) {
