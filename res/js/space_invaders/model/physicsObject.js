@@ -18,6 +18,14 @@ class PhysicsObject {
 	}
 
 	showImg(src) {
+		push();
+		rotate(this.angle);
 		image(src, this.pos.x, this.pos.y, this.size.x, this.size.y);
+		pop();
+	}
+
+	// SETTERS
+	rotate(angle) {
+		this._angle += angle;
 	}
 }
