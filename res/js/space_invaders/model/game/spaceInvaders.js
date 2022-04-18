@@ -69,13 +69,13 @@ class SpaceInvaders extends Game {
 
 	tick() {
 		super.tick();
-		if (keyIsDown(LEFT_ARROW))
+		if (keyIsDown(LEFT_ARROW) || keyIsDown(65))
 			this.moveShip(-1, 0);
-		if (keyIsDown(RIGHT_ARROW))
+		if (keyIsDown(RIGHT_ARROW) || keyIsDown(68))
 			this.moveShip(1, 0);
-		if (keyIsDown(UP_ARROW))
+		if (keyIsDown(UP_ARROW) || keyIsDown(87))
 			this.moveShip(0, -1);
-		if (keyIsDown(DOWN_ARROW))
+		if (keyIsDown(DOWN_ARROW) || keyIsDown(83))
 			this.moveShip(0, 1);
 		
 		if (this.updateScreen) {
@@ -86,18 +86,20 @@ class SpaceInvaders extends Game {
 
 	keypress(keyCode) {
 		super.keypress(keyCode);
-		if (keyCode === LEFT_ARROW)
+		if (keyCode === LEFT_ARROW || keyCode === 65)
 			this.moveShip(-1, 0);
-		if (keyCode === RIGHT_ARROW)
+		if (keyCode === RIGHT_ARROW || keyCode === 68)
 			this.moveShip(1, 0);
-		if (keyCode === UP_ARROW)
+		if (keyCode === UP_ARROW || keyCode === 87)
 			this.moveShip(0, -1);
-		if (keyCode === DOWN_ARROW)
+		if (keyCode === DOWN_ARROW || keyCode === 83)
 			this.moveShip(0, 1);
 		this.updateScreen = true;
 	}
 
 	moveShip(x, y) {
+		if (!this.ship.canMove(x, y, this.size))
+			return;
 		this.ship.move(x, y);
 		this.updateScreen = true;
 	}
