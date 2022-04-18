@@ -27,7 +27,38 @@ class SpaceInvaders extends Game {
 
 		this.enemies.push(new BasicEnemy(
 			new p5.Vector(this.size.x / 4, this.size.y / 4),
-			basicSize.copy()
+			basicSize.copy(),
+			"Beholder"
+		));
+		this.enemies.push(new BasicEnemy(
+			new p5.Vector(this.size.x / 4 * 1.4, this.size.y / 4),
+			basicSize.copy(),
+			"Emissary"
+		));
+		this.enemies.push(new BasicEnemy(
+			new p5.Vector(this.size.x / 4 * 1.8, this.size.y / 4),
+			basicSize.copy(),
+			"basic2"
+		));
+		this.enemies.push(new BasicEnemy(
+			new p5.Vector(this.size.x / 4 * 2.2, this.size.y / 4),
+			basicSize.copy(),
+			"basic3"
+		));
+		this.enemies.push(new BasicEnemy(
+			new p5.Vector(this.size.x / 4 * 2.6, this.size.y / 4),
+			basicSize.copy(),
+			"basic4"
+		));
+		this.enemies.push(new BasicEnemy(
+			new p5.Vector(this.size.x / 4 * 3.0, this.size.y / 4),
+			basicSize.copy(),
+			"basic5"
+		));
+		this.enemies.push(new BasicEnemy(
+			new p5.Vector(this.size.x / 4 * 3.4, this.size.y / 4),
+			basicSize.copy(),
+			"basic6"
 		));
 	}
 }
