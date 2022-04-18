@@ -19,8 +19,9 @@ class PhysicsObject {
 
 	showImg(src) {
 		push();
+		translate(this.pos.x, this.pos.y);
 		rotate(this.angle);
-		image(src, this.pos.x, this.pos.y, this.size.x, this.size.y);
+		image(src, 0, 0, this.size.x, this.size.y);
 		pop();
 	}
 
