@@ -5,6 +5,7 @@ class SpaceInvaders extends Game {
 	constructor(size) {
 		super(size);
 
+		this.initBullets();
 		this.initShip();
 		this.initEnemies();
 		this.updateScreen = true;
@@ -17,13 +18,25 @@ class SpaceInvaders extends Game {
 		for (let enemy of this.enemies) {
 			enemy.show();
 		}
+		for (let bullet of this.bullets) {
+			bullet.show();
+		}
+	}
+
+	initBullets() {
+		Bullet.SIZE = new p5.Vector(8, 20);
+
+		this.bullets = [];
+
+		this.bullets.push(new Bullet(new p5.Vector(200, 200)));
 	}
 
 	initShip() {
+		Ship.SIZE = new p5.Vector(50, 50);
+
 		let offsetV = this.size.y / 50;
-		let shipSize = new p5.Vector(50, 50);
-		let shipPos = new p5.Vector((this.size.x - shipSize.x) / 2, this.size.y - offsetV - shipSize.y);
-		this.ship = new Ship(shipPos, shipSize, 0);
+		let shipPos = new p5.Vector((this.size.x - Ship.SIZE.x) / 2, this.size.y - offsetV - Ship.SIZE.y);
+		this.ship = new Ship(shipPos, 0);
 	}
 
 	initEnemies() {
@@ -80,6 +93,7 @@ class SpaceInvaders extends Game {
 		
 		if (this.updateScreen) {
 			this.show();
+			this.bullets[0].move();
 			this.updateScreen = false;
 		}
 	}

@@ -3,10 +3,13 @@ class Ship extends PhysicsObject {
 		body: null,
 		propulsor: null
 	};
+
+	static SIZE = null;
+
 	static V = 5;
 
-	constructor(pos, size, angle) {
-		super(pos, size, angle);
+	constructor(pos, angle) {
+		super(pos, Ship.SIZE, angle);
 	}
 
 	show() {
