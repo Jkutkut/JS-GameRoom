@@ -17,11 +17,11 @@ class PhysicsObject {
 		return this._angle;
 	}
 
-	showImg(src) {
+	showImg(src, dx=0, dy=0) {
 		push();
 		translate(this.pos.x, this.pos.y);
 		rotate(this.angle);
-		image(src, 0, 0, this.size.x, this.size.y);
+		image(src, 0, 0, this.size.x + dx, this.size.y + dy);
 		pop();
 	}
 

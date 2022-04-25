@@ -11,6 +11,7 @@ class Ship extends PhysicsObject {
 
 	show() {
 		this.showImg(Ship.SRC.body);
+		this.showImg(Ship.SRC.propulsor, 0, 10);
 	}
 
 	move(x, y) {
