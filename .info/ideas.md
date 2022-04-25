@@ -11,3 +11,4 @@
 - [ ] Tanks
 - [ ] Futbolin
 - [ ] Flappy bird
+- [ ] Wordle
