@@ -91,6 +91,18 @@ class SpaceInvaders extends Game {
 		if (keyIsDown(DOWN_ARROW) || keyIsDown(83))
 			this.moveShip(0, 1);
 		
+		bulletCollision:
+		for (let bullet of this.bullets) {
+			// bullet.move();
+			for (let i = 0; i < this.enemies.length; i++) {
+				if (bullet.collides(this.enemies[i])) {
+					this.enemies.splice(i, 1);
+					this.bullets.splice(this.bullets.indexOf(bullet), 1);
+					break bulletCollision;
+				}
+			}
+		}
+
 		if (this.updateScreen) {
 			this.show();
 			this.bullets[0].move();
