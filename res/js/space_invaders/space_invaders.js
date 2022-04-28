@@ -15,7 +15,9 @@ function preload() {
 
 function setup() {
 	createCanvas(600, 600);
+	imageMode(CENTER);
 	game = new SpaceInvaders(new p5.Vector(width, height));
+	
 }
 
 function draw() {

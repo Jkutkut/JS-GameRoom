@@ -28,7 +28,7 @@ class SpaceInvaders extends Game {
 
 		this.bullets = [];
 
-		this.bullets.push(new Bullet(new p5.Vector(200, 200)));
+		this.bullets.push(new Bullet(new p5.Vector(150, 200)));
 	}
 
 	initShip() {
@@ -105,7 +105,8 @@ class SpaceInvaders extends Game {
 
 		if (this.updateScreen) {
 			this.show();
-			this.bullets[0].move();
+			for (let bullet of this.bullets)
+				bullet.move();
 			this.updateScreen = false;
 		}
 	}
