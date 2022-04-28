@@ -90,23 +90,22 @@ class SpaceInvaders extends Game {
 			this.moveShip(0, -1);
 		if (keyIsDown(DOWN_ARROW) || keyIsDown(83))
 			this.moveShip(0, 1);
-		
-		bulletCollision:
+		if (keyIsDown(32))
+			this.fire();
+
 		for (let bullet of this.bullets) {
-			// bullet.move();
+			bullet.move();
 			for (let i = 0; i < this.enemies.length; i++) {
 				if (bullet.collides(this.enemies[i])) {
 					this.enemies.splice(i, 1);
 					this.bullets.splice(this.bullets.indexOf(bullet), 1);
-					break bulletCollision;
+					break;
 				}
 			}
+			this.updateScreen = true;
 		}
-
 		if (this.updateScreen) {
 			this.show();
-			for (let bullet of this.bullets)
-				bullet.move();
 			this.updateScreen = false;
 		}
 	}
@@ -129,5 +128,13 @@ class SpaceInvaders extends Game {
 			return;
 		this.ship.move(x, y);
 		this.updateScreen = true;
+	}
+
+	fire() {
+		if (this.ship.canFire()) {
+			let bullet = this.ship.fire();
+			this.bullets.push(bullet);
+			this.updateScreen = true;
+		}
 	}
 }

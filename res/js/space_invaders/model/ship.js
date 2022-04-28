@@ -27,4 +27,15 @@ class Ship extends PhysicsObject {
 		return newPos.x >= 0 && newPos.x + this.size.x <= screenSize.x &&
 			newPos.y >= 0 && newPos.y + this.size.y <= screenSize.y;
 	}
+
+	canFire() {
+		return true;
+	}
+
+	fire() {
+		let bullet = new Bullet(this.pos.copy());
+		bullet.pos.add(0, -this.size.y / 2);
+		console.log("pium!")
+		return bullet;
+	}
 }
