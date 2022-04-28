@@ -5,6 +5,17 @@ class PhysicsObject {
 		this._angle = angle;
 	}
 
+	collision(obj) {
+		if (!obj instanceof PhysicsObject)
+			throw new Error("PhysicsObject.collision() : obj must be an instance of PhysicsObject");
+		return (this.pos.x < obj.pos.x + obj.size.x &&
+				this.pos.x + this.size.x > obj.pos.x &&
+				this.pos.y < obj.pos.y + obj.size.y &&
+				this.pos.y + this.size.y > obj.pos.y);
+	}
+
+	// SETTERS
+
 	get pos() {
 		return this._pos;
 	}
