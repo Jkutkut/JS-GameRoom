@@ -7,9 +7,16 @@ class Ship extends PhysicsObject {
 	static SIZE = null;
 
 	static V = 5;
+	static COOLDOWN = 10;
 
 	constructor(pos, angle) {
 		super(pos, Ship.SIZE, angle);
+		this.cooldown = 0;
+	}
+
+	tick () {
+		if (this.cooldown > 0)
+			this.cooldown--;
 	}
 
 	show() {
@@ -29,13 +36,13 @@ class Ship extends PhysicsObject {
 	}
 
 	canFire() {
-		return true;
+		return this.cooldown == 0;
 	}
 
 	fire() {
 		let bullet = new Bullet(this.pos.copy());
 		bullet.pos.add(0, -this.size.y / 2);
-		console.log("pium!")
+		this.cooldown = Ship.COOLDOWN;
 		return bullet;
 	}
 }

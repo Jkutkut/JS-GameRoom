@@ -93,6 +93,7 @@ class SpaceInvaders extends Game {
 		if (keyIsDown(32))
 			this.fire();
 
+		this.ship.tick();
 		for (let bullet of this.bullets) {
 			bullet.move();
 			for (let i = 0; i < this.enemies.length; i++) {
@@ -104,6 +105,7 @@ class SpaceInvaders extends Game {
 			}
 			this.updateScreen = true;
 		}
+
 		if (this.updateScreen) {
 			this.show();
 			this.updateScreen = false;
