@@ -11,6 +11,8 @@ function preload() {
 	
 	for (let i = 2; i <= 6; i++)
 		BasicEnemy.SRC[`basic${i}`] = loadImage(`../res/img/space_invaders/ships/ship_${i}.png`);
+
+	ShipExplosionAnimation.SPRITES = loadImage("../res/img/space_invaders/ships_elements/ship_explosion.png");
 }
 
 function setup() {
