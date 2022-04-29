@@ -31,8 +31,8 @@ class Ship extends PhysicsObject {
 	canMove(x, y, screenSize) {
 		let newPos = this.pos.copy();
 		newPos.add(x * Ship.V, y * Ship.V);
-		return newPos.x >= 0 && newPos.x + this.size.x <= screenSize.x &&
-			newPos.y >= 0 && newPos.y + this.size.y <= screenSize.y;
+		return newPos.x >= this.halfSize.x && newPos.x + this.halfSize.x <= screenSize.x &&
+			newPos.y >= this.halfSize.y && newPos.y + this.halfSize.y <= screenSize.y;
 	}
 
 	canFire() {
