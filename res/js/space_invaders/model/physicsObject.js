@@ -3,6 +3,7 @@ class PhysicsObject {
 		this._pos = pos;
 		this._size = size;
 		this._angle = angle;
+		this._halfSize = new p5.Vector(size.x >> 1, size.y >> 1);
 	}
 
 	collides(obj) {
@@ -24,6 +25,10 @@ class PhysicsObject {
 
 	get angle() {
 		return this._angle;
+	}
+
+	get halfSize() {
+		return this._halfSize;
 	}
 
 	showImg(src, dx=0, dy=0) {
