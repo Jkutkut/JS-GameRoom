@@ -58,6 +58,16 @@ class PhysicsObject {
 		this._angle += angle;
 	}
 
+	moveBy(x, y=0) {
+		this.pos.x += x;
+		this.pos.y += y;
+	}
+
+	tp(x, y=this.pos.y) {
+		this.pos.x = x;
+		this.pos.y = y;
+	}
+
 	set visible(visible) {
 		if (visible != true && visible != false)
 			throw new Error("Error: visible must be true or false");
