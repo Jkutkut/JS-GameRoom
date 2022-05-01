@@ -27,8 +27,6 @@ class SpaceInvaders extends Game {
 		Bullet.SIZE = new p5.Vector(8, 20);
 
 		this.bullets = [];
-
-		this.bullets.push(new Bullet(new p5.Vector(150, 200)));
 	}
 
 	initShip() {
@@ -43,41 +41,18 @@ class SpaceInvaders extends Game {
 		this.enemies = [];
 		let basicSize = new p5.Vector(50, 50);
 
-		this.enemies.push(new BasicEnemy(
-			new p5.Vector(this.size.x / 4, this.size.y / 4),
-			basicSize.copy(),
-			"Beholder"
-		));
-		this.enemies.push(new BasicEnemy(
-			new p5.Vector(this.size.x / 4 * 1.4, this.size.y / 4),
-			basicSize.copy(),
-			"Emissary"
-		));
-		this.enemies.push(new BasicEnemy(
-			new p5.Vector(this.size.x / 4 * 1.8, this.size.y / 4),
-			basicSize.copy(),
-			"basic2"
-		));
-		this.enemies.push(new BasicEnemy(
-			new p5.Vector(this.size.x / 4 * 2.2, this.size.y / 4),
-			basicSize.copy(),
-			"basic3"
-		));
-		this.enemies.push(new BasicEnemy(
-			new p5.Vector(this.size.x / 4 * 2.6, this.size.y / 4),
-			basicSize.copy(),
-			"basic4"
-		));
-		this.enemies.push(new BasicEnemy(
-			new p5.Vector(this.size.x / 4 * 3.0, this.size.y / 4),
-			basicSize.copy(),
-			"basic5"
-		));
-		this.enemies.push(new BasicEnemy(
-			new p5.Vector(this.size.x / 4 * 3.4, this.size.y / 4),
-			basicSize.copy(),
-			"basic6"
-		));
+		let enemies = ["Beholder", "Emissary", "basic2", "basic3", "basic4", "basic5", "basic6"]
+
+		for (let j = 0; j < 3; j++) {
+			for (let i = 0; i < enemies.length; i++) {
+				this.enemies.push(new BasicEnemy(
+					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.8 + 0.4 * j)),
+					basicSize.copy(),
+					enemies[i]
+				));
+				this.addAnimation(new BasicEnemyAnimation(this.enemies[j * enemies.length + i]));
+			}
+		}
 	}
 
 	tick() {
