@@ -5,6 +5,7 @@ class PhysicsObject {
 		this._angle = angle;
 		this._halfSize = new p5.Vector(size.x >> 1, size.y >> 1);
 		this._visible = true;
+		this._destroyed = false;
 	}
 
 	collides(obj) {
@@ -15,7 +16,7 @@ class PhysicsObject {
 	}
 
 	showImg(src, dx=0, dy=0) {
-		if (!this.visible)
+		if (!this.visible || this.destroyed)
 			return;
 		push();
 		translate(this.pos.x, this.pos.y);
@@ -46,6 +47,10 @@ class PhysicsObject {
 		return this._visible;
 	}
 
+	get destroyed() {
+		return this._destroyed;
+	}
+
 	outOfBounds(dimensions) {
 		return this.pos.x - this.halfSize.x < 0 ||
 				this.pos.x + this.halfSize.x > dimensions.x ||
@@ -66,6 +71,10 @@ class PhysicsObject {
 	tp(x, y=this.pos.y) {
 		this.pos.x = x;
 		this.pos.y = y;
+	}
+
+	destroy() {
+		this._destroyed = true;
 	}
 
 	set visible(visible) {

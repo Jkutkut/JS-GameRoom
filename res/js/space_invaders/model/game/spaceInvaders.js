@@ -80,8 +80,10 @@ class SpaceInvaders extends Game {
 			}
 			for (let i = 0; i < this.enemies.length; i++) {
 				if (bullet.collides(this.enemies[i])) {
+					this.enemies[i].destroy();
 					this.enemies.splice(i, 1);
-					this.bullets.splice(this.bullets.indexOf(bullet), 1);
+					this.bullets[i].destroy();
+					this.bullets.splice(i, 1);
 					break;
 				}
 			}

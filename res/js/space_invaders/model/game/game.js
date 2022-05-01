@@ -11,6 +11,10 @@ class Game {
 				this.animations[i].destroy();
 				this.animations.splice(i--, 1);
 			}
+			else if (this.animations[i].obj.destroyed) {
+				this.animations[i].destroy();
+				this.animations.splice(i--, 1);
+			}
 		}
 	}
 
