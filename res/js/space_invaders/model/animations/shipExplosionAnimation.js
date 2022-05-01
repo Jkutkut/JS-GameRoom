@@ -5,10 +5,10 @@ class ShipExplosionAnimation extends Animation {
 
 	static IMG_WIDTH = 48;
 
-	constructor(obj, frames) {
+	constructor(obj) {
 		if (!(obj instanceof Ship))
 			throw new Error("Error: ShipExplosionAnimation needs a Ship object");
-		super(obj, frames, ShipExplosionAnimation.FRAME_COOLDOWN);
+		super(obj, ShipExplosionAnimation.N_SPRITES, ShipExplosionAnimation.FRAME_COOLDOWN);
 	}
 
 	show() {

@@ -13,7 +13,6 @@ class SpaceInvaders extends Game {
 
 	show() {
 		background(SpaceInvaders.BG);
-		super.show();
 		this.ship.show();
 		for (let enemy of this.enemies) {
 			enemy.show();
@@ -21,7 +20,7 @@ class SpaceInvaders extends Game {
 		for (let bullet of this.bullets) {
 			bullet.show();
 		}
-		// for ()
+		super.show();
 	}
 
 	initBullets() {
@@ -107,7 +106,7 @@ class SpaceInvaders extends Game {
 			this.updateScreen = true;
 		}
 
-		if (this.updateScreen) {
+		if (this.updateScreen || this.animations.length > 0) {
 			this.show();
 			this.updateScreen = false;
 		}

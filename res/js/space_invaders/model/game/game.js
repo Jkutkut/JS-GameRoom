@@ -5,7 +5,18 @@ class Game {
 	}
 
 	show() {
+		for (let i = 0; i < this.animations.length; i++) {
+			this.animations[i].show();
+			if (this.animations[i].ended()) {
+				this.animations.splice(i--, 1);
+			}
+		}
+	}
 
+	addAnimation(animation) {
+		if (!animation instanceof Animation)
+			throw new Error("Animation must be an instance of Animation");
+		this.animations.push(animation);
 	}
 
 	get size() {
@@ -13,7 +24,9 @@ class Game {
 	}
 
 	tick() {
-
+		for (let animation of this.animations) {
+			animation.tick();
+		}
 	}
 
 	keypress(keyCode) {
