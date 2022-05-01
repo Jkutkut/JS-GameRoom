@@ -94,8 +94,15 @@ class SpaceInvaders extends Game {
 			this.fire();
 
 		this.ship.tick();
-		for (let bullet of this.bullets) {
+		let bullet;
+		for (let i = 0; i < this.bullets.length; i++) {
+			bullet = this.bullets[i];
 			bullet.move();
+			this.updateScreen = true;
+			if (bullet.outOfBounds(this.size)) {
+				this.bullets.splice(i--, 1);
+				continue;
+			}
 			for (let i = 0; i < this.enemies.length; i++) {
 				if (bullet.collides(this.enemies[i])) {
 					this.enemies.splice(i, 1);
@@ -103,7 +110,6 @@ class SpaceInvaders extends Game {
 					break;
 				}
 			}
-			this.updateScreen = true;
 		}
 
 		if (this.updateScreen || this.animations.length > 0) {
