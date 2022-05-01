@@ -8,10 +8,10 @@ class PhysicsObject {
 	}
 
 	collides(obj) {
-		return (this.pos.x < obj.pos.x + obj.size.x &&
-				this.pos.x + this.size.x > obj.pos.x &&
-				this.pos.y < obj.pos.y + obj.size.y &&
-				this.pos.y + this.size.y > obj.pos.y);
+		return (this.pos.x - this.halfSize.x < obj.pos.x + obj.halfSize.x &&
+				this.pos.x + this.halfSize.x > obj.pos.x - obj.halfSize.x &&
+				this.pos.y - this.halfSize.y < obj.pos.y + obj.halfSize.y &&
+				this.pos.y + this.halfSize.y > obj.pos.y - obj.halfSize.y);
 	}
 
 	showImg(src, dx=0, dy=0) {
