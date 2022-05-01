@@ -23,4 +23,9 @@ class ShipExplosionAnimation extends SpcInvAnimation {
 	tick() {
 		super.tick();
 	}
+
+	destroy() {
+		this.obj.visible = true;
+		// this.obj.show();
+	}
 }

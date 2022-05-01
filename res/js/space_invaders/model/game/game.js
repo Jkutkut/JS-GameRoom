@@ -8,6 +8,7 @@ class Game {
 		for (let i = 0; i < this.animations.length; i++) {
 			this.animations[i].show();
 			if (this.animations[i].ended()) {
+				this.animations[i].destroy();
 				this.animations.splice(i--, 1);
 			}
 		}

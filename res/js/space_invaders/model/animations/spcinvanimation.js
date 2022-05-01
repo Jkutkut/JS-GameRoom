@@ -9,7 +9,7 @@ class SpcInvAnimation {
 	}
 
 	ended() {
-		return this._currentFrame >= this._frames.length;
+		return this._currentFrame >= this._frames;
 	}
 
 	tick() {
@@ -38,6 +38,8 @@ class SpcInvAnimation {
 	}
 
 	show() {}
+
+	destroy() {}
 
 	// GETTERS
 
