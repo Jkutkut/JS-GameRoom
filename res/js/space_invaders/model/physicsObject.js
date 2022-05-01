@@ -4,6 +4,7 @@ class PhysicsObject {
 		this._size = size;
 		this._angle = angle;
 		this._halfSize = new p5.Vector(size.x >> 1, size.y >> 1);
+		this._visible = true;
 	}
 
 	collides(obj) {
@@ -14,6 +15,8 @@ class PhysicsObject {
 	}
 
 	showImg(src, dx=0, dy=0) {
+		if (!this.visible)
+			return;
 		push();
 		translate(this.pos.x, this.pos.y);
 		rotate(this.angle);
@@ -39,8 +42,18 @@ class PhysicsObject {
 		return this._halfSize;
 	}
 
+	get visible() {
+		return this._visible;
+	}
+
 	// SETTERS
 	rotate(angle) {
 		this._angle += angle;
+	}
+
+	set visible(visible) {
+		if (visible != true && visible != false)
+			throw new Error("Error: visible must be true or false");
+		this._visible = visible;
 	}
 }

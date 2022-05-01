@@ -14,7 +14,7 @@ class Game {
 	}
 
 	addAnimation(animation) {
-		if (!animation instanceof Animation)
+		if (!animation instanceof SpcInvAnimation)
 			throw new Error("Animation must be an instance of Animation");
 		this.animations.push(animation);
 	}

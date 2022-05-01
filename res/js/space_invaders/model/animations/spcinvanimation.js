@@ -1,4 +1,4 @@
-class Animation {
+class SpcInvAnimation {
 
 	constructor(obj, frames, frameCooldown) {
 		this._obj = obj;
