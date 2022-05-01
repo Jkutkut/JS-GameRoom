@@ -1,6 +1,7 @@
 class Game {
 	constructor(size) {
 		this._size = size;
+		this.animations = [];
 	}
 
 	show() {

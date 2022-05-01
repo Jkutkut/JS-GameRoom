@@ -21,6 +21,7 @@ class SpaceInvaders extends Game {
 		for (let bullet of this.bullets) {
 			bullet.show();
 		}
+		// for ()
 	}
 
 	initBullets() {

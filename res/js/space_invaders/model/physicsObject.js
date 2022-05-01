@@ -13,7 +13,15 @@ class PhysicsObject {
 				this.pos.y + this.size.y > obj.pos.y);
 	}
 
-	// SETTERS
+	showImg(src, dx=0, dy=0) {
+		push();
+		translate(this.pos.x, this.pos.y);
+		rotate(this.angle);
+		image(src, 0, 0, this.size.x + dx, this.size.y + dy);
+		pop();
+	}
+
+	// GETTERS
 
 	get pos() {
 		return this._pos;
@@ -29,14 +37,6 @@ class PhysicsObject {
 
 	get halfSize() {
 		return this._halfSize;
-	}
-
-	showImg(src, dx=0, dy=0) {
-		push();
-		translate(this.pos.x, this.pos.y);
-		rotate(this.angle);
-		image(src, 0, 0, this.size.x + dx, this.size.y + dy);
-		pop();
 	}
 
 	// SETTERS
