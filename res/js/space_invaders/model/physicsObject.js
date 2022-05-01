@@ -46,6 +46,13 @@ class PhysicsObject {
 		return this._visible;
 	}
 
+	outOfBounds(dimensions) {
+		return this.pos.x - this.halfSize.x < 0 ||
+				this.pos.x + this.halfSize.x > dimensions.x ||
+				this.pos.y - this.halfSize.y < 0 ||
+				this.pos.y + this.halfSize.y > dimensions.y;
+	}
+
 	// SETTERS
 	rotate(angle) {
 		this._angle += angle;
