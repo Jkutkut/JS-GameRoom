@@ -46,7 +46,7 @@ class SpaceInvaders extends Game {
 		for (let j = 0; j < 3; j++) {
 			for (let i = 0; i < enemies.length; i++) {
 				this.enemies.push(new BasicEnemy(
-					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.8 + 0.4 * j)),
+					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
 					basicSize.copy(),
 					enemies[i]
 				));
@@ -78,12 +78,12 @@ class SpaceInvaders extends Game {
 				this.bullets.splice(i--, 1);
 				continue;
 			}
-			for (let i = 0; i < this.enemies.length; i++) {
-				if (bullet.collides(this.enemies[i])) {
-					this.enemies[i].destroy();
-					this.enemies.splice(i, 1);
+			for (let j = 0; j < this.enemies.length; j++) {
+				if (bullet.collides(this.enemies[j])) {
+					this.enemies[j].destroy();
+					this.enemies.splice(j--, 1);
 					this.bullets[i].destroy();
-					this.bullets.splice(i, 1);
+					this.bullets.splice(i--, 1);
 					break;
 				}
 			}
