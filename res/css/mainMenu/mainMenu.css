@@ -1,0 +1,33 @@
+#gameSelector {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	color: var(--color-primary);
+}
+
+#gameSelector > * {
+	border-radius: 0.5rem;
+}
+
+.game {
+	--game-width: 300px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	width: var(--game-width);
+	background: var(--color-quinary-light);
+	padding: 0 0.5rem 0.5rem 0.5rem;
+}
+
+.game > h3 {
+	margin-top: 1rem;
+}
+
+.game > a > img {
+	width: var(--game-width);
+	border-radius: 0.5rem;
+}
