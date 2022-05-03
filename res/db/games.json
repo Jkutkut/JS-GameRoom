@@ -1,7 +1,7 @@
 {
 	"repository": "JS-GameRoom",
 	"gameLocation": "games/",
-	"thumbnailLocation": "res/img/thumbnails/",
+	"thumbnailLocation": "res/img/thumbnail/",
 	"games": [
 		{
 			"name": "pong",
