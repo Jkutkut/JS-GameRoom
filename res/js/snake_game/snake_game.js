@@ -4,5 +4,5 @@ function setup() {
 }
 
 function draw() {
-	
+	//square(width/2, height/2, 00);
 }
