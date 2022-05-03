@@ -4,20 +4,20 @@
 	"thumbnailLocation": "res/img/thumbnail/",
 	"games": [
 		{
-			"name": "pong",
+			"name": "Pong",
 			"description": "",
 			"url": "pong_game.html",
 			"thumbnail": "pong.png"
 		},
 		{
-			"name": "snake",
+			"name": "Snake",
 			"description": "",
 			"url": "snake_game.html",
 			"thumbnail": "snake.png"
 		},
 		{
-			"name": "space_invaders",
-			"description": "",
+			"name": "Space Invaders",
+			"description": "Intenta sobrevivir a los aliens. Estos intentarán atacarte.",
 			"url": "space_invaders.html",
 			"thumbnail": "space_invaders.png"
 		}
