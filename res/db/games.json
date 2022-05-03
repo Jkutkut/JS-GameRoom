@@ -1,0 +1,25 @@
+{
+	"repository": "JS-GameRoom",
+	"gameLocation": "games/",
+	"logoLocation": "res/img/logos/",
+	"games": [
+		{
+			"name": "pong",
+			"description": "",
+			"url": "pong_game.html",
+			"logo": "pong.png"
+		},
+		{
+			"name": "snake",
+			"description": "",
+			"url": "snake_game.html",
+			"logo": "snake.png"
+		},
+		{
+			"name": "space_invaders",
+			"description": "",
+			"url": "space_invaders.html",
+			"logo": "space_invaders.png"
+		}
+	]
+}
