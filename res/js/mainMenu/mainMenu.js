@@ -24,7 +24,7 @@ function loadGames(json) {
 	for (let game of games) {
 		gameSelector.innerHTML += newGame(
 			game.name,
-			game.location,
+			`../${json.gameLocation}${game.url}`,
 			// `../${json.thumbnailLocation}/${game.thumbnail}`,
 			`../${json.thumbnailLocation}${debugTh}`, // TODO DEBUG
 			game.description
