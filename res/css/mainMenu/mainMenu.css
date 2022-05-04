@@ -30,7 +30,13 @@
 	margin-top: 1rem;
 }
 
-.game > a > img {
+img {
 	width: var(--game-width);
 	border-radius: 0.5rem;
+
+	transition: 0.7s;
+}
+
+img:hover {
+	transform: scale(1.1);
 }
