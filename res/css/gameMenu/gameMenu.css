@@ -10,24 +10,26 @@ body {
 
 #monitor {
 	--size: 600px;
-	--border: 2vw;
+	--border: 2vh;
 
 	--border-horizontal: calc(var(--border) * 2);
 	--border-top: var(--border);
-	--border-bottom: var(--border);
+	--border-bottom: calc(var(--border) * 2);
 	--border-vertical: calc(var(--border-top) + var(--border-bottom));
 
 	--monitor-color: #000;
 
 	display: flex;
+	position: relative;
 	justify-content: center;
 
-	width: calc(var(--size) + var(--border-horizontal));
+	min-width: calc(var(--size) + var(--border-horizontal));
 	height: calc(var(--size) + var(--border-vertical));
 
 	background: var(--monitor-color);
 
 	padding-top: var(--border-top);
+	padding-bottom: var(--border-bottom);
 
 	border-top-left-radius: 10% 1%;
 	border-top-right-radius: 10% 1%;
@@ -36,12 +38,20 @@ body {
 }
 
 #monitor:after {
-
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: 3%;
+	height: .4%;
+	width: 24%;
+	background: #ddd; 
+	border-radius: 50%;
+	box-shadow: 0 0 3px 0 white;
 }
 
 #monitorscreen {
-	width: var(--size);
-	height: var(--size);
+	min-width: var(--size);
+	min-height: var(--size);
 
 	background: #aaa;
 }
