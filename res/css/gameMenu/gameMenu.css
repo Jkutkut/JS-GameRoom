@@ -2,11 +2,58 @@ body {
 	background-color: #222;
 }
 
+#monitorcontainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#monitor {
+	--size: 600px;
+	--border: 2vw;
+
+	--border-horizontal: calc(var(--border) * 2);
+	--border-top: var(--border);
+	--border-bottom: var(--border);
+	--border-vertical: calc(var(--border-top) + var(--border-bottom));
+
+	--monitor-color: #000;
+
+	display: flex;
+	justify-content: center;
+
+	width: calc(var(--size) + var(--border-horizontal));
+	height: calc(var(--size) + var(--border-vertical));
+
+	background: var(--monitor-color);
+
+	padding-top: var(--border-top);
+
+	border-top-left-radius: 10% 1%;
+	border-top-right-radius: 10% 1%;
+	border-bottom-left-radius: 50% 2%;
+	border-bottom-right-radius: 50% 2%;
+}
+
+#monitor:after {
+
+}
+
+#monitorscreen {
+	width: var(--size);
+	height: var(--size);
+
+	background: #aaa;
+}
+
 /* * https://codepen.io/leon-ho/pen/AEOvWP */
 
-#monitorcontainer {
+/* #monitorcontainer {
 	max-width: 1024px;
+	width: 600px;
+	height: 600px;
 	margin: auto;
+	background: red;
 }
 
 #monitor {
@@ -15,7 +62,7 @@ body {
 	border-top: 3px solid #888; 
 	margin: 5%;
 	padding: 2% 2% 4% 2%; 
-	border-radius: 10px; 
+	border-radius: 10px;
 	border-bottom-left-radius: 50% 2%; 
 	border-bottom-right-radius: 50% 2%; 
 	transition: margin-right 1s;
@@ -30,11 +77,14 @@ body {
 	height: .5%; 
 	width: 28%;
 	background: #ddd; 
-	border-radius: 50%; 
+	border-radius: 50%;
 	box-shadow: 0 0 3px 0 white; 
 }
 
 #monitorscreen {
+	width: 600px;
+	height: 600px;
+
 	position: relative;
 	background-color: #777;
 	background-size: cover; 
@@ -43,10 +93,10 @@ body {
 	padding-bottom: 56.25%; 
 	position: relative;
 	overflow: hidden;
-}
+} */
 
 
-@media all and (min-width: 960px) {
+/* @media all and (min-width: 960px) {
 	#monitor {
 		--flicker-speed: 1s;
 		-webkit-animation: tvflicker var(--flicker-speed) infinite alternate; 
@@ -71,4 +121,4 @@ body {
 		0%   { box-shadow: 0 0 100px 0 rgba(225,235,255,0.4); }
 		100% { box-shadow: 0 0 60px 0 rgba(200,220,255,0.6); }
 	}
-}
+} */
