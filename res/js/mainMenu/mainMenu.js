@@ -15,8 +15,6 @@ function newGame(name, location, thumbnail, description) {
 }
 
 function loadGames(json) {
-	// console.log(json);
-
 	let gameSelector = document.getElementById("gameSelector");
 	let games = json.games;
 
@@ -24,7 +22,7 @@ function loadGames(json) {
 	for (let game of games) {
 		gameSelector.innerHTML += newGame(
 			game.name,
-			`../${json.gameLocation}${game.url}`,
+			`gameMenu.html?game=${game.url}`,
 			// `../${json.thumbnailLocation}/${game.thumbnail}`,
 			`../${json.thumbnailLocation}${debugTh}`, // TODO DEBUG
 			game.description

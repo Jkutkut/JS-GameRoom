@@ -14,7 +14,7 @@ body {
 
 	--border-horizontal: calc(var(--border) * 2);
 	--border-top: var(--border);
-	--border-bottom: calc(var(--border) * 2);
+	--border-bottom: var(--border);
 	--border-vertical: calc(var(--border-top) + var(--border-bottom));
 
 	--monitor-color: #000;
@@ -50,8 +50,10 @@ body {
 }
 
 #monitorscreen {
-	min-width: var(--size);
-	min-height: var(--size);
+	/* min-width: var(--size); */
+	/* min-height: var(--size); */
+	width: var(--size);
+	height: var(--size);
 
 	background: #aaa;
 }
