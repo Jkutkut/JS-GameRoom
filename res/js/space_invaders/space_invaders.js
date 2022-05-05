@@ -16,52 +16,12 @@ function preload() {
 }
 
 function setup() {
-	// createCanvas(600, 600);
-	let c = createCanvas(1000, 1000);
-	p5bezier.initBezier(c);
+	createCanvas(600, 600);
 	imageMode(CENTER);
 	// game = new SpaceInvaders(new p5.Vector(width, height));
-
-
-	// bessier(
-	// 	150,
-	// 	true,
-	// 	new p5.Vector(0, 0),
-	// 	new p5.Vector(300, 0),
-	// 	new p5.Vector(300, 300),
-	// 	new p5.Vector(300, 300),
-	// 	new p5.Vector(0, 100),
-	// 	new p5.Vector(0, 120),
-	// 	new p5.Vector(0, 140),
-	// 	new p5.Vector(0, 160),
-	// 	new p5.Vector(100, 600),
-	// 	new p5.Vector(120, 600),
-	// 	new p5.Vector(140, 600),
-	// 	new p5.Vector(160, 600),
-	// 	new p5.Vector(600, 580),
-	// 	new p5.Vector(600, 560),
-	// 	new p5.Vector(600, 540),
-	// 	new p5.Vector(600, 520)
-	// );
-
-	// bessier(
-	// 	300,
-	// 	true,
-	// 	new p5.Vector(10, 10),
-	// 	new p5.Vector(300, 0),
-	// 	new p5.Vector(300, 300)
-	// );
-
-	p5bezier.newBezier([
-		[10, 10],
-		[100, 700],
-		[500, -800],
-		[800, 1000],
-		[10, 300]
-	], 'OPEN');
 	
 	bessier(
-		300,
+		100,
 		true,
 		new p5.Vector(10, 10),
 		new p5.Vector(100, 700),
@@ -80,16 +40,26 @@ keyPressed = () => {
 }
 
 function bessier(steps, debug, ...points) {
-	const tIncrement = 1 / steps;
-	const n = points.length - 1;
 	const factorial = (n) => {
 		if (n <= 1) return 1;
 		return n * factorial(n - 1);
 	}
-	const nFactorial = factorial(points.length);
-	let results = [];
-	let x, y, t, i;
+	const tIncrement = 1 / steps;
+	const n = points.length - 1;
+	const nFactorial = factorial(n);
+	let t, i;
 	let factor, point;
+	let results = [];
+	for (t = 0; t <= 1; t += tIncrement) {
+		point = new p5.Vector(0, 0);
+		for (i = 0; i <= n; i++) {
+			factor = nFactorial / (factorial(i) * factorial(n - i))
+				* Math.pow(t, i) * Math.pow(1 - t, n - i);
+			point.x += points[i].x * factor;
+			point.y += points[i].y * factor;
+		}
+		results.push(point);
+	}
 	if (debug) {
 		push();
 		stroke(255, 0, 0);
@@ -97,27 +67,9 @@ function bessier(steps, debug, ...points) {
 		for (i = 0; i < points.length; i++)
 			ellipse(points[i].x, points[i].y, 25);
 		pop();
-	}
-	let xy;
-	for (t = 0; t <= 1; t += tIncrement) {
-		xy = new p5.Vector(0, 0);
-		for (i = 0; i <= n; i++) {
-			xy.x +=
-				(factorial(n) /
-				(factorial(i) * factorial(n - i))) *
-				Math.pow(1 - t, n - i) *
-				Math.pow(t, i) *
-				points[i].x;
-			xy.y +=
-				(factorial(n) /
-				(factorial(i) * factorial(n - i))) *
-				Math.pow(1 - t, n - i) *
-				Math.pow(t, i) *
-				points[i].y;
-		}
-		if (debug) {
-			ellipse(xy.x, xy.y, 10);
-			console.log(xy);
+		for (let p of results) {
+			ellipse(p.x, p.y, 10);
 		}
 	}
+	return results;
 }
