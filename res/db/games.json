@@ -17,7 +17,7 @@
 		},
 		{
 			"name": "Space Invaders",
-			"description": "Intenta sobrevivir a los aliens. Estos intentarán atacarte.",
+			"description": "Survive the invasion of space by shooting down aliens.",
 			"url": "space_invaders.html",
 			"thumbnail": "space_invaders.png"
 		}

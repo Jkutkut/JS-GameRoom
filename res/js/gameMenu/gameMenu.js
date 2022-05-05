@@ -13,15 +13,18 @@ function loadGame(gamesData, gameData) {
 	let gameUrl = `../${gamesData.gameLocation}${gameData.game}`;
 
 	let name;
+	let description;
 	for (let i = 0; i < gamesData.games.length; i++) {
 		if (gamesData.games[i].url === gameData.game) {
 			name = gamesData.games[i].name;
+			description = gamesData.games[i].description;
 			break;
 		}
 	}
 
 	document.getElementById("monitorscreen").src = gameUrl;
 	document.getElementById("title").innerHTML = name;
+	document.getElementById("description").innerHTML = description;
 }
 
 function parseParams() {

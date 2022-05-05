@@ -1,3 +1,8 @@
+:root {
+	--size: 600px;
+	--border: 2vh;
+}
+
 body {
 	background-color: #222;
 }
@@ -14,9 +19,6 @@ body {
 }
 
 #monitor {
-	--size: 600px;
-	--border: 2vh;
-
 	--border-horizontal: calc(var(--border) * 2);
 	--border-top: var(--border);
 	--border-bottom: calc(var(--border) * 2);
@@ -59,4 +61,11 @@ body {
 	height: var(--size);
 
 	background: #aaa;
+}
+
+#description {
+	margin-top: calc(2 * var(--border));
+	width: var(--size);
+	color: var(--color-primary);
+	text-align: center;
 }
