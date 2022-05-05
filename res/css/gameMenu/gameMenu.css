@@ -19,7 +19,7 @@ body {
 
 	--border-horizontal: calc(var(--border) * 2);
 	--border-top: var(--border);
-	--border-bottom: var(--border);
+	--border-bottom: calc(var(--border) * 2);
 	--border-vertical: calc(var(--border-top) + var(--border-bottom));
 
 	--monitor-color: #000;
@@ -29,7 +29,7 @@ body {
 	justify-content: center;
 
 	min-width: calc(var(--size) + var(--border-horizontal));
-	height: calc(var(--size) + var(--border-vertical));
+	height: calc(var(--size));
 
 	background: var(--monitor-color);
 
@@ -46,7 +46,7 @@ body {
 	content: '';
 	display: block;
 	position: absolute;
-	bottom: 3%;
+	bottom: calc(var(--border-bottom) / 2);
 	height: .4%;
 	width: 24%;
 	background: #ddd; 
