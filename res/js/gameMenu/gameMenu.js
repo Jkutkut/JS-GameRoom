@@ -12,8 +12,16 @@ window.onload = () => {
 function loadGame(gamesData, gameData) {
 	let gameUrl = `../${gamesData.gameLocation}${gameData.game}`;
 
+	let name;
+	for (let i = 0; i < gamesData.games.length; i++) {
+		if (gamesData.games[i].url === gameData.game) {
+			name = gamesData.games[i].name;
+			break;
+		}
+	}
+
 	document.getElementById("monitorscreen").src = gameUrl;
-	console.log(gameUrl);
+	document.getElementById("title").innerHTML = name;
 }
 
 function parseParams() {
