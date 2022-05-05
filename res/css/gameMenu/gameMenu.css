@@ -1,0 +1,62 @@
+body {
+	background-color: #222;
+}
+
+#title {
+	color: var(--color-primary);
+}
+
+#monitorcontainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#monitor {
+	--size: 600px;
+	--border: 2vh;
+
+	--border-horizontal: calc(var(--border) * 2);
+	--border-top: var(--border);
+	--border-bottom: calc(var(--border) * 2);
+	--border-vertical: calc(var(--border-top) + var(--border-bottom));
+
+	--monitor-color: #000;
+
+	display: flex;
+	position: relative;
+	justify-content: center;
+
+	min-width: calc(var(--size) + var(--border-horizontal));
+	height: calc(var(--size));
+
+	background: var(--monitor-color);
+
+	padding-top: var(--border-top);
+	padding-bottom: var(--border-bottom);
+
+	border-top-left-radius: 10% 1%;
+	border-top-right-radius: 10% 1%;
+	border-bottom-left-radius: 50% 2%;
+	border-bottom-right-radius: 50% 2%;
+}
+
+#monitor:after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: calc(var(--border-bottom) / 2);
+	height: .4%;
+	width: 24%;
+	background: #ddd; 
+	border-radius: 50%;
+	box-shadow: 0 0 3px 0 white;
+}
+
+#monitorscreen {
+	width: var(--size);
+	height: var(--size);
+
+	background: #aaa;
+}
