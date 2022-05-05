@@ -55,10 +55,30 @@ function bessier(steps, debug, ...points) {
 		if (n <= 1) return 1;
 		return n * factorial(n - 1);
 	}
+	const pointRange = (t, nPoints, amount=nPoints) => {
+		let percent = 1 - t;
+		let index = Math.floor(nPoints * percent);
+		let start = Math.max(0, index - amount);
+		let end = Math.min(nPoints - 1, index + amount);
+		return {start: start, end: end};
+	}
 	const nFactorial = factorial(points.length);
 	let results = [];
 	let x, y, t, i;
 	let factor, point;
+	for (t = 0; t <= 1; t += tIncrement) {
+		x = 0;
+		y = 0;
+		let r = pointRange(t, points.length);
+		for (i = r.start; i < r.end; i++) {
+			factor = nFactorial / (factorial(i) * factorial(points.length - i))
+					* Math.pow(1 - t, points.length - i) * Math.pow(t, i);
+			x += points[i].x * factor;
+			y += points[i].y * factor;
+		}
+		if (debug)
+			ellipse(x, y, 10);
+	}
 	for (t = 0; t <= 1; t += tIncrement) {
 		x = 0;
 		y = 0;
@@ -71,18 +91,6 @@ function bessier(steps, debug, ...points) {
 		if (debug)
 			ellipse(x, y, 10);
 	}
-	// for (t = 0; t <= 1; t += tIncrement) {
-	// 	x = 0;
-	// 	y = 0;
-	// 	for (i = 0; i < points.length; i++) {
-	// 		factor = nFactorial / (factorial(i) * factorial(points.length - i))
-	// 				* Math.pow(1 - t, points.length - i) * Math.pow(t, i);
-	// 		x += points[i].x * factor;
-	// 		y += points[i].y * factor;
-	// 	}
-	// 	if (debug)
-	// 		ellipse(x, y, 10);
-	// }
 	if (debug) {
 		push();
 		stroke(255, 0, 0);
