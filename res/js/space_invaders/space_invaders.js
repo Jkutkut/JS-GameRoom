@@ -25,13 +25,19 @@ function setup() {
 		new p5.Vector(0, 0),
 		new p5.Vector(300, 0),
 		new p5.Vector(300, 300),
-		new p5.Vector(0, 300),
-		new p5.Vector(0, 300),
-		new p5.Vector(0, 300),
-		new p5.Vector(0, 200),
-		new p5.Vector(600, 600),
-		new p5.Vector(600, 600),
-		new p5.Vector(600, 600)
+		new p5.Vector(300, 300),
+		new p5.Vector(0, 100),
+		new p5.Vector(0, 120),
+		new p5.Vector(0, 140),
+		new p5.Vector(0, 160),
+		new p5.Vector(100, 600),
+		new p5.Vector(120, 600),
+		new p5.Vector(140, 600),
+		new p5.Vector(160, 600),
+		new p5.Vector(600, 580),
+		new p5.Vector(600, 560),
+		new p5.Vector(600, 540),
+		new p5.Vector(600, 520)
 	);
 }
 
@@ -50,8 +56,9 @@ function bessier(steps, debug, ...points) {
 		return n * factorial(n - 1);
 	}
 	const nFactorial = factorial(points.length);
+	let results = [];
 	let x, y, t, i;
-	let factor;
+	let factor, point;
 	for (t = 0; t <= 1; t += tIncrement) {
 		x = 0;
 		y = 0;
@@ -64,12 +71,24 @@ function bessier(steps, debug, ...points) {
 		if (debug)
 			ellipse(x, y, 10);
 	}
+	// for (t = 0; t <= 1; t += tIncrement) {
+	// 	x = 0;
+	// 	y = 0;
+	// 	for (i = 0; i < points.length; i++) {
+	// 		factor = nFactorial / (factorial(i) * factorial(points.length - i))
+	// 				* Math.pow(1 - t, points.length - i) * Math.pow(t, i);
+	// 		x += points[i].x * factor;
+	// 		y += points[i].y * factor;
+	// 	}
+	// 	if (debug)
+	// 		ellipse(x, y, 10);
+	// }
 	if (debug) {
 		push();
 		stroke(255, 0, 0);
 		fill(255, 0, 0);
 		for (i = 0; i < points.length; i++)
-			ellipse(points[i].x, points[i].y, 10);
+			ellipse(points[i].x, points[i].y, 20);
 		pop();
 	}
 }
