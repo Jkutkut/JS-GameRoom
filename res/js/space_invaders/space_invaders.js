@@ -64,21 +64,10 @@ function setup() {
 		300,
 		true,
 		new p5.Vector(10, 10),
-		new p5.Vector(10, 10),
 		new p5.Vector(100, 700),
 		new p5.Vector(500, -800),
 		new p5.Vector(800, 1000),
 		new p5.Vector(10, 300)
-	);
-
-	bessier(
-		300,
-		true,
-		[10, 10],
-		[100, 700],
-		[500, -800],
-		[800, 1000],
-		[10, 300]
 	);
 }
 
@@ -97,13 +86,6 @@ function bessier(steps, debug, ...points) {
 		if (n <= 1) return 1;
 		return n * factorial(n - 1);
 	}
-	// const pointRange = (t, nPoints, amount=nPoints) => {
-	// 	let percent = 1 - t;
-	// 	let index = Math.floor(nPoints * percent);
-	// 	let start = Math.max(0, index - amount);
-	// 	let end = Math.min(nPoints - 1, index + amount);
-	// 	return {start: start, end: end};
-	// }
 	const nFactorial = factorial(points.length);
 	let results = [];
 	let x, y, t, i;
@@ -116,35 +98,25 @@ function bessier(steps, debug, ...points) {
 			ellipse(points[i].x, points[i].y, 25);
 		pop();
 	}
-	// for (t = 0; t <= 1; t += tIncrement) {
-	// 	x = 0;
-	// 	y = 0;
-	// 	for (i = 0; i < points.length; i++) {
-	// 		factor = nFactorial / (factorial(i) * factorial(points.length - i))
-	// 				* Math.pow(1 - t, points.length - i) * Math.pow(t, i);
-	// 		x += points[i].x * factor;
-	// 		y += points[i].y * factor;
-	// 	}
-	// 	if (debug)
-	// 		ellipse(x, y, 10);
-	// }
-	let xy, d;
-
+	let xy;
 	for (t = 0; t <= 1; t += tIncrement) {
-		xy = [0, 0];
-		console.log(xy);
+		xy = new p5.Vector(0, 0);
 		for (i = 0; i <= n; i++) {
-			for (d = 0; d < 2; d++) {
-				xy[d] +=
-					(factorial(n) /
-					(factorial(i) * factorial(n - i))) *
-					Math.pow(1 - t, n - i) *
-					Math.pow(t, i) *
-					points[i][d];
-			}
+			xy.x +=
+				(factorial(n) /
+				(factorial(i) * factorial(n - i))) *
+				Math.pow(1 - t, n - i) *
+				Math.pow(t, i) *
+				points[i].x;
+			xy.y +=
+				(factorial(n) /
+				(factorial(i) * factorial(n - i))) *
+				Math.pow(1 - t, n - i) *
+				Math.pow(t, i) *
+				points[i].y;
 		}
 		if (debug) {
-			ellipse(...xy, 20);
+			ellipse(xy.x, xy.y, 10);
 			console.log(xy);
 		}
 	}
