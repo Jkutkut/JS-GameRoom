@@ -21,6 +21,7 @@ function setup() {
 	// game = new SpaceInvaders(new p5.Vector(width, height));
 	bessier(
 		150,
+		true,
 		new p5.Vector(0, 0),
 		new p5.Vector(300, 0),
 		new p5.Vector(300, 300),
@@ -42,7 +43,7 @@ keyPressed = () => {
 	game.keypress(keyCode);
 }
 
-function bessier(steps, ...points) {
+function bessier(steps, debug, ...points) {
 	const tIncrement = 1 / steps;
 	const factorial = (n) => {
 		if (n <= 1) return 1;
@@ -60,6 +61,15 @@ function bessier(steps, ...points) {
 			x += points[i].x * factor;
 			y += points[i].y * factor;
 		}
-		ellipse(x, y, 10);
+		if (debug)
+			ellipse(x, y, 10);
+	}
+	if (debug) {
+		push();
+		stroke(255, 0, 0);
+		fill(255, 0, 0);
+		for (i = 0; i < points.length; i++)
+			ellipse(points[i].x, points[i].y, 10);
+		pop();
 	}
 }
