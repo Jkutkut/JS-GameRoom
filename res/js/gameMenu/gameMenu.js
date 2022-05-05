@@ -2,8 +2,18 @@ var gameData;
 
 window.onload = () => {
 	gameData = parseParams();
+	fetch("../res/db/games.json")
+		.then(response => response.json())
+		.then(json => loadGame(json, gameData));
 
 	console.log(gameData);
+}
+
+function loadGame(gamesData, gameData) {
+	let gameUrl = `../${gamesData.gameLocation}${gameData.game}`;
+
+	document.getElementById("monitorscreen").src = gameUrl;
+	console.log(gameUrl);
 }
 
 function parseParams() {
@@ -15,7 +25,6 @@ function parseParams() {
 	const urlParams = new URLSearchParams(queryString);
 	const entries = urlParams.entries();
 	for(const entry of entries) {
-		console.log(`${entry[0]}: ${entry[1]}`);
 		switch(entry[0]) {
 			case "game":
 				result.game = entry[1];
