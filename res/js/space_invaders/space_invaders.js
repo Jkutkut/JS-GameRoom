@@ -18,21 +18,11 @@ function preload() {
 function setup() {
 	createCanvas(600, 600);
 	imageMode(CENTER);
-	// game = new SpaceInvaders(new p5.Vector(width, height));
-	
-	Bessier.setDebug(true);
-	Bessier.bessier(
-		100,
-		new p5.Vector(10, 10),
-		new p5.Vector(100, 700),
-		new p5.Vector(500, -800),
-		new p5.Vector(800, 1000),
-		new p5.Vector(10, 300)
-	);
+	game = new SpaceInvaders(new p5.Vector(width, height));
 }
 
 function draw() {
-	// game.tick();
+	game.tick();
 }
 
 keyPressed = () => {
