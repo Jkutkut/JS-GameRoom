@@ -43,31 +43,30 @@ body {
 
 .ship:hover {
 	--hover-time: 1s;
-	--rotation: 2deg;
+	--rotation: 5deg;
 	--amplitude: 20px;
 	--half-amplitude: calc(var(--amplitude) / 2);
 }
 
 .enemy {
 	--nominal-rotation: 180deg;
+	--amplitude: -5px;
 	transform: rotateX(var(--nominal-rotation));
 }
 
 #enemyhorde {
+	width: calc(var(--ship-full-size) * 6);
 	position: absolute;
-	top: calc(var(--size) * 0);
+	top: calc(var(--size) * 0.1);
 
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
-	width: calc(var(--ship-full-size) * 6);
-
-	/* background-color: red; */
 }
 
 #player {
 	position: absolute;
-	top: calc(var(--size) * 0.5);
+	top: calc(var(--size) * 0.6);
 
 }
 
