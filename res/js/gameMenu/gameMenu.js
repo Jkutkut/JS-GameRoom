@@ -24,6 +24,7 @@ function loadGame(gamesData, gameData) {
 
 	document.getElementById("monitorscreen").src = gameUrl;
 	document.getElementById("title").innerHTML = name;
+	document.getElementsByTagName("title")[0].innerHTML = name;
 	document.getElementById("description").innerHTML = description;
 }
 

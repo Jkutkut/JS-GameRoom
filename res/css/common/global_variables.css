@@ -7,30 +7,30 @@
 }
 
 :root {
-	
-	/* Estilo letra */
-	--font-family: Nintendoid1;
-	--font-size-title: 1.6rem;
-	--font-size-sub-title: 1.3rem;
-	--font-size-text: 1.15rem;
-	--color-texto: rgb(46, 46, 46);
-	
-	/* Paleta colores */
-	--color-primary: #FFFFFF;
-	--color-secondary: #FFCA00;
-	--color-tertiary: #FF6732;
-	--color-quaternary: #00F2FF;
-	--color-quinary: #2A2F3D;
-	--color-quinary-light: #3c4357;
-	
-	/* Estilo footer */
-	--sombra: rgba(47, 91, 234, 0.175);
-	
-	/* Estilo base textos */
-	--base-sombra: rgba(47, 91, 234, 0.175);
-	
-	/* Gama de grises de Alex */
-	--gris-base: #f5f5f5;
-	--gris-borde: #e3e3e3;
-	--content-border-radius: 0.5rem;
+
+    /* Estilo letra */
+    --font-family: Nintendoid1;
+    --font-size-title: 1.3rem;
+    --font-size-sub-title: 1.2rem;
+    --font-size-text: 1rem;
+    --color-texto: rgb(46, 46, 46);
+
+    /* Paleta colores */
+    --color-primary: #FFFFFF;
+    --color-secondary: #FFCA00;
+    --color-tertiary: #FF6732;
+    --color-quaternary: #00F2FF;
+    --color-quinary: #2A2F3D;
+    --color-quinary-light: #3c4357;
+
+    /* Estilo footer */
+    --sombra: rgba(47, 91, 234, 0.175);
+
+    /* Estilo base textos */
+    --base-sombra: rgba(47, 91, 234, 0.175);
+    
+    /* Gama de grises de Alex */
+    --gris-base: #f5f5f5;
+    --gris-borde: #e3e3e3;
+    --content-border-radius: 0.5rem;
 }
