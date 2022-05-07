@@ -1,4 +1,8 @@
-var game;
+var _game;
+var _emptyGame = {
+	tick: () => {},
+	keypress: () => {}
+};
 
 function preload() {
 	Ship.SRC.body = loadImage("../res/img/space_invaders/ships/ship_1.png");
@@ -18,13 +22,19 @@ function preload() {
 function setup() {
 	createCanvas(600, 600);
 	imageMode(CENTER);
-	game = new SpaceInvaders(new p5.Vector(width, height));
+	_game = _emptyGame;
 }
 
 function draw() {
-	game.tick();
+	_game.tick();
+}
+
+function initGame() {
+	document.getElementsByClassName("p5Canvas")[0].style.display = "block";
+	document.getElementById("mainmenu").style.display = "none";
+	_game = new SpaceInvaders(new p5.Vector(width, height));
 }
 
 keyPressed = () => {
-	game.keypress(keyCode);
+	_game.keypress(keyCode);
 }

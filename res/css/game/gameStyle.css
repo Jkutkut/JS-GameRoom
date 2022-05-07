@@ -1,3 +1,7 @@
+:root {
+	--size: 600px;
+}
+
 body {
 	overflow: hidden;
 }

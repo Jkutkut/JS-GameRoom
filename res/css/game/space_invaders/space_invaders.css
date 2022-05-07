@@ -1,0 +1,20 @@
+.p5Canvas {
+	display: none;
+}
+
+body {
+	font-family: var(--font-family);
+}
+
+#mainmenu {
+	width: var(--size);
+	height: var(--size);
+	background-color: #222;
+
+	display: flex;
+}
+
+#btnstart {
+	position: relative;
+	bottom: calc(var(--size) * 0.1);
+}
