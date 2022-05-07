@@ -6,7 +6,6 @@ class EnemySpawnAnimation extends SpcInvAnimation {
 		this.finalPos = finalPos;
 
 		this.curve = this.curveGenerator(initPos, midPos, finalPos);
-		this.done = false;
 	}
 
 	tick() {

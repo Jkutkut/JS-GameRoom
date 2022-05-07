@@ -2,10 +2,11 @@ class SpcInvAnimation {
 
 	constructor(obj) {
 		this._obj = obj;
+		this.done = false;
 	}
 
 	ended() {
-		return false;
+		return this.done;
 	}
 
 	show() {}
@@ -15,7 +16,6 @@ class SpcInvAnimation {
 	tick() {}
 
 	// GETTERS
-
 	get obj() {
 		return this._obj;
 	}
