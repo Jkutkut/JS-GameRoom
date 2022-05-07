@@ -14,7 +14,7 @@ class SnakeBody {
 	get posicion() {
 	  return this._posicion;
 	}
-  
+	  
 }
 
 var x = 200;
@@ -23,14 +23,14 @@ var canvas_lh = 600;
 var rect_lh = 30;
 var orienta = 'u' // r(igth), l(eft), u(p), d(own)
 
-
 function setup() { 
   createCanvas(canvas_lh, canvas_lh);
   noStroke();
 } 
 
-function draw() { 
+function draw() {
   background(220);
+  frameRate(7);
   fill('rgb(34,145,34)');
   rect(x, y , rect_lh, rect_lh);
   
