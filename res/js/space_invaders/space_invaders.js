@@ -19,6 +19,12 @@ function preload() {
 	ShipExplosionAnimation.SPRITES = loadImage("../res/img/space_invaders/ships_elements/ship_explosion.png");
 }
 
+window.onload = () => {
+	document.getElementById("btnstart").addEventListener("click", () => {
+		setTimeout(initGame, 200)
+	});
+}
+
 function setup() {
 	createCanvas(600, 600);
 	imageMode(CENTER);
