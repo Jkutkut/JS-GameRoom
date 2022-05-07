@@ -1,3 +1,9 @@
+:root {
+	--ship-size: 50px;
+	--ship-margin: 10px;
+	--ship-full-size: calc(var(--ship-size) + var(--ship-margin) * 2);
+}
+
 .p5Canvas {
 	display: none;
 }
@@ -18,6 +24,105 @@ body {
 	justify-content: center;
 }
 
+/* Ships */
+.ship {
+	--hover-time: 2s;
+	--rotation: 1deg;
+	--nominal-rotation: 0deg;
+	--amplitude: 5px;
+	--half-amplitude: calc(var(--amplitude) / 2);
+
+
+	width: var(--ship-size);
+	height: var(--ship-size);
+	margin: var(--ship-margin);
+	animation: shiphover var(--hover-time) linear infinite;
+
+	transition: 6s;
+}
+
+.ship:hover {
+	--hover-time: 1s;
+	--rotation: 2deg;
+	--amplitude: 20px;
+	--half-amplitude: calc(var(--amplitude) / 2);
+}
+
+.enemy {
+	--nominal-rotation: 180deg;
+	transform: rotateX(var(--nominal-rotation));
+}
+
+#enemyhorde {
+	position: absolute;
+	top: calc(var(--size) * 0);
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: calc(var(--ship-full-size) * 6);
+
+	/* background-color: red; */
+}
+
+#player {
+	position: absolute;
+	top: calc(var(--size) * 0.5);
+
+}
+
+@keyframes shiphover {
+	0% {
+		transform:
+			translateX(0px)
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+	12.5% {
+		transform:
+			translateX(var(--half-amplitude))
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+	25% {
+		transform:
+			translateX(var(--amplitude))
+			rotate(var(--nominal-rotation));
+	}
+
+	37.5% {
+		transform:
+			translateX(var(--half-amplitude))
+			rotate(calc(var(--nominal-rotation) - var(--rotation)));
+	}
+	50% {
+		transform:
+			translateX(0px)
+			rotate(calc(var(--nominal-rotation) - var(--rotation)));
+	}
+	62.5% {
+		transform:
+			translateX(calc(var(--half-amplitude) * -1))
+			rotate(calc(var(--nominal-rotation) - var(--rotation)));
+	}
+
+	75% {
+		transform:
+			translateX(calc(var(--amplitude) * -1))
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+	87.5% {
+		transform:
+			translateX(calc(var(--half-amplitude) * -1))
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+	100% {
+		transform:
+			translateX(0px)
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+}
+
+
+/* BTN start */
 #btnstart {
 	--btn-3d-height: 10px;
 	--btn-3d-hover-height: 7px;
@@ -26,8 +131,8 @@ body {
 	font-family: var(--font-family);
 	font-size: var(--font-size-sub-title);
 
-	position: relative;
-	top: calc(var(--size) * 0.8);
+	position: absolute;
+	bottom: calc(var(--size) * 0.1);
 
 	width: var(--btn-width);
 	height: var(--btn-height);
