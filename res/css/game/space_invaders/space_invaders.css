@@ -27,7 +27,7 @@ body {
 /* Ships */
 .ship {
 	--hover-time: 2s;
-	--rotation: 1deg;
+	--rotation: 2deg;
 	--nominal-rotation: 0deg;
 	--amplitude: 5px;
 	--half-amplitude: calc(var(--amplitude) / 2);
@@ -40,7 +40,7 @@ body {
 }
 
 .ship:hover {
-	--hover-time: 1s;
+	--hover-time: 1.2s;
 	--rotation: 5deg;
 	--amplitude: 20px;
 	--half-amplitude: calc(var(--amplitude) / 2);
@@ -78,7 +78,7 @@ body {
 	12.5% {
 		transform:
 			translateX(var(--half-amplitude))
-			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+			rotate(calc(var(--nominal-rotation) + var(--rotation) / 2));
 	}
 	25% {
 		transform:
@@ -89,7 +89,7 @@ body {
 	37.5% {
 		transform:
 			translateX(var(--half-amplitude))
-			rotate(calc(var(--nominal-rotation) - var(--rotation)));
+			rotate(calc(var(--nominal-rotation) - var(--rotation) / 2));
 	}
 	50% {
 		transform:
@@ -99,7 +99,7 @@ body {
 	62.5% {
 		transform:
 			translateX(calc(var(--half-amplitude) * -1))
-			rotate(calc(var(--nominal-rotation) - var(--rotation)));
+			rotate(calc(var(--nominal-rotation) - var(--rotation) / 2));
 	}
 
 	75% {
@@ -110,7 +110,7 @@ body {
 	87.5% {
 		transform:
 			translateX(calc(var(--half-amplitude) * -1))
-			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+			rotate(calc(var(--nominal-rotation) + var(--rotation) / 2));
 	}
 	100% {
 		transform:
@@ -118,7 +118,6 @@ body {
 			rotate(calc(var(--nominal-rotation) + var(--rotation)));
 	}
 }
-
 
 /* BTN start */
 #btnstart {

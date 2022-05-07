@@ -23,6 +23,15 @@ window.onload = () => {
 	document.getElementById("btnstart").addEventListener("click", () => {
 		setTimeout(initGame, 200)
 	});
+
+	let enemiesImg = document.getElementsByClassName("enemy");
+
+	for (let i = 0; i < enemiesImg.length; i++) {
+		enemiesImg[i].addEventListener("click", () => {
+			console.log(enemiesImg[i]);
+		});
+		enemiesImg[i].style["animation-delay"] = `${Math.random()}s`;
+	}
 }
 
 function setup() {
