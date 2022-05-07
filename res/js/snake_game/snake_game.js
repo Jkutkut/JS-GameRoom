@@ -10,7 +10,8 @@ function setup() {
 }
 	
 function draw() {
-	/*while ( y < 600 ) {
+	/* si pero no 
+	while ( y < 600 ) {
 		if (cont_rect != 20) {
 			rect(x, y, 30, 30);
 			x += 30;
