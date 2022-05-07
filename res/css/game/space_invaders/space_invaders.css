@@ -37,8 +37,6 @@ body {
 	height: var(--ship-size);
 	margin: var(--ship-margin);
 	animation: shiphover var(--hover-time) linear infinite;
-
-	transition: 6s;
 }
 
 .ship:hover {
@@ -46,6 +44,7 @@ body {
 	--rotation: 5deg;
 	--amplitude: 20px;
 	--half-amplitude: calc(var(--amplitude) / 2);
+	transition: 6s;
 }
 
 .enemy {
@@ -57,7 +56,7 @@ body {
 #enemyhorde {
 	width: calc(var(--ship-full-size) * 6);
 	position: absolute;
-	top: calc(var(--size) * 0.1);
+	top: calc(var(--size) * 0.05);
 
 	display: flex;
 	justify-content: center;
