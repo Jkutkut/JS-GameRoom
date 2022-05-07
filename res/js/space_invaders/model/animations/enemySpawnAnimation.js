@@ -1,6 +1,6 @@
 class EnemySpawnAnimation extends SpcInvAnimation {
 	constructor(obj, initPos, midPos, finalPos) {
-		super(obj, Infinity, Infinity);
+		super(obj);
 		this.initPos = initPos;
 		this.midPos = midPos;
 		this.finalPos = finalPos;

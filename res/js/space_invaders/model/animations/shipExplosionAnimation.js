@@ -1,4 +1,4 @@
-class ShipExplosionAnimation extends SpcInvAnimation {
+class ShipExplosionAnimation extends ImgAnimation {
 	static SPRITES = null;
 	static N_SPRITES = 7;
 	static FRAME_COOLDOWN = 7;

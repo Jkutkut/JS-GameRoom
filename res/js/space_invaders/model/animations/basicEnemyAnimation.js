@@ -5,7 +5,7 @@ class BasicEnemyAnimation extends SpcInvAnimation {
 	constructor(obj) {
 		if (!(obj instanceof BasicEnemy))
 			throw new Error("Error: BasicEnemyAnimation needs a BasicEnemy object");
-		super(obj, Infinity, Infinity);
+		super(obj);
 		this.objPos = obj.pos.copy();
 		this.offset = 0;
 	}
