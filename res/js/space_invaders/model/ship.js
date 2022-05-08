@@ -8,10 +8,12 @@ class Ship extends PhysicsObject {
 
 	static V = 4;
 	static COOLDOWN = 10;
+	static MAX_BULLETS = 3;
 
 	constructor(pos, angle) {
 		super(pos, Ship.SIZE, angle);
 		this.cooldown = 0;
+		this.bullets = 0;
 	}
 
 	tick () {
@@ -36,13 +38,18 @@ class Ship extends PhysicsObject {
 	}
 
 	canFire() {
-		return this.cooldown == 0;
+		return this.cooldown == 0 && this.bullets < Ship.MAX_BULLETS;
 	}
 
 	fire() {
 		let bullet = new PlayerBullet(this.pos.copy());
 		bullet.pos.add(0, -this.size.y / 2);
 		this.cooldown = Ship.COOLDOWN;
+		this.bullets++;
 		return bullet;
+	}
+
+	bulletDestroyed() {
+		this.bullets--;
 	}
 }

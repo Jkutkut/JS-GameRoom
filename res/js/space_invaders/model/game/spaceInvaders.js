@@ -78,19 +78,6 @@ class SpaceInvaders extends Game {
 			bullet = this.bullets[i];
 			bullet.move();
 			this.updateScreen = true;
-			if (bullet.outOfBounds(this.size)) {
-				this.bullets.splice(i--, 1);
-				continue;
-			}
-			for (let j = 0; j < this.enemies.length; j++) {
-				if (bullet.collides(this.enemies[j])) {
-					this.enemies[j].destroy();
-					this.enemies.splice(j--, 1);
-					this.bullets[i].destroy();
-					this.bullets.splice(i--, 1);
-					break;
-				}
-			}
 		}
 		this.checkCollisions();
 
@@ -118,15 +105,14 @@ class SpaceInvaders extends Game {
 		for (let i = 0, j; i < this.bullets.length; i++) {
 			bullet = this.bullets[i];
 			if (bullet.outOfBounds(this.size)) {
-				this.bullets.splice(i--, 1);
+				this.destroyBullet(...this.bullets.splice(i--, 1));
 				continue;
 			}
 			for (j = 0; j < this.enemies.length; j++) {
 				if (bullet.collides(this.enemies[j])) {
 					this.enemies[j].destroy();
 					this.enemies.splice(j--, 1);
-					this.bullets[i].destroy();
-					this.bullets.splice(i--, 1);
+					this.destroyBullet(...this.bullets.splice(i--, 1));
 					break;
 				}
 			}
@@ -145,6 +131,11 @@ class SpaceInvaders extends Game {
 		// }
 	}
 
+	destroyBullet(bullet) {
+		bullet.destroy();
+		if (bullet instanceof PlayerBullet)
+			this.ship.bulletDestroyed();
+	}
 
 	moveShip(x, y) {
 		if (!this.ship.canMove(x, y, this.size))
