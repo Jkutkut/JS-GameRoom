@@ -63,9 +63,7 @@ function loadBessierAnimations(json) {
 	console.log(json);
 	let animations = json.animations;
 	BessierAnimation.CURVES = {};
-
-	for (const [key, value] of Object.entries(animations)) {
-		console.log(key, value);
-	}
+	for (const [key, value] of Object.entries(animations))
+		BessierAnimation.CURVES[key] = Bessier.bessier(value.steps, ...value.animation);
 
 }

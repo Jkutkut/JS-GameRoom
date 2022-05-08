@@ -2,7 +2,7 @@ class BessierAnimation extends SpcInvAnimation {
 	static CURVES = null;
 
 	constructor(obj, curveArray) {
-		if (!(obj instanceof Ship))
+		if (!(obj instanceof Ship) && !(obj instanceof Enemy))
 			throw new Error("BessierAnimation: obj must be an instance of Ship");
 		super(obj);
 
