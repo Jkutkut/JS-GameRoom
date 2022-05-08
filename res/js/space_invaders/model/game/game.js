@@ -7,14 +7,7 @@ class Game {
 	show() {
 		for (let i = 0; i < this.animations.length; i++) {
 			this.animations[i].show();
-			if (this.animations[i].ended()) {
-				this.animations[i].destroy();
-				this.animations.splice(i--, 1);
-			}
-			else if (this.animations[i].obj.destroyed) {
-				this.animations[i].destroy();
-				this.animations.splice(i--, 1);
-			}
+			
 		}
 	}
 
@@ -29,8 +22,16 @@ class Game {
 	}
 
 	tick() {
-		for (let animation of this.animations) {
-			animation.tick();
+		let toAdd = [];
+		for (let i = 0, j; i < this.animations.length; i++) {
+			this.animations[i].tick();
+			if (this.animations[i].ended() || this.animations[i].obj.destroyed) {
+				let toAdd = this.animations[i].destroy();
+				this.animations.splice(i--, 1);
+				for (j = 0; j < toAdd.length; j++) {
+					this.addAnimation(toAdd[j]);
+				}
+			}
 		}
 	}
 

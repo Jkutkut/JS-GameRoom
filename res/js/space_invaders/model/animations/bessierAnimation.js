@@ -40,4 +40,10 @@ class EnemySpawnAnimation extends BessierAnimation {
 		}
 		super.tick();
 	}
+
+	destroy() {
+		return [
+			new BasicEnemyAnimation(this.obj)
+		];
+	}
 }

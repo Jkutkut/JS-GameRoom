@@ -11,7 +11,9 @@ class SpcInvAnimation {
 
 	show() {}
 
-	destroy() {}
+	destroy() {
+		return [];
+	}
 
 	tick() {}
 
