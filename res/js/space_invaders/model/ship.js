@@ -40,7 +40,7 @@ class Ship extends PhysicsObject {
 	}
 
 	fire() {
-		let bullet = new Bullet(this.pos.copy());
+		let bullet = new PlayerBullet(this.pos.copy());
 		bullet.pos.add(0, -this.size.y / 2);
 		this.cooldown = Ship.COOLDOWN;
 		return bullet;
