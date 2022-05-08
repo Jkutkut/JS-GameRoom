@@ -5,6 +5,11 @@ var _emptyGame = {
 };
 
 function preload() {
+	// JSON
+	fetch("../res/db/space_invaders/bessierAnimations.json")
+		.then(response => response.json())
+		.then(json => loadBessierAnimations(json));
+
 	Ship.SRC.body = loadImage("../res/img/space_invaders/ships/ship_1.png");
 	Ship.SRC.propulsor = loadImage("../res/img/space_invaders/ships_elements/propulsor_player.png");
 
@@ -52,4 +57,15 @@ function initGame() {
 
 keyPressed = () => {
 	_game.keypress(keyCode);
+}
+
+function loadBessierAnimations(json) {
+	console.log(json);
+	let animations = json.animations;
+	BessierAnimation.CURVES = {};
+
+	for (const [key, value] of Object.entries(animations)) {
+		console.log(key, value);
+	}
+
 }
