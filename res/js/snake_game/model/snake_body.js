@@ -58,20 +58,21 @@ function draw() {
  
 }
 
+
 function keyPressed() {
-  if (keyCode === UP_ARROW) {
-    orienta = 'u';
-    //y = y - rect_lh;
-  } else if (keyCode === DOWN_ARROW) {
-    orienta = 'd';
-    //y = y + rect_lh;
+	if (keyCode === UP_ARROW && orienta != 'd' ) {
+	  orienta = 'u';
+	  //y = y - rect_lh;
+	} else if (keyCode === DOWN_ARROW && orienta != 'u' ) {
+	  orienta = 'd';
+	  //y = y + rect_lh;
+	}
+	if (keyCode === LEFT_ARROW && orienta != 'r' ) {
+	  orienta = 'l';
+	  //x = x - rect_lh;
+	} else if (keyCode === RIGHT_ARROW && orienta != 'l' ) {
+	  orienta = 'r';
+	  //x = x + rect_lh;
+	}
+	
   }
-  if (keyCode === LEFT_ARROW) {
-    orienta = 'l';
-    //x = x - rect_lh;
-  } else if (keyCode === RIGHT_ARROW) {
-    orienta = 'r';
-    //x = x + rect_lh;
-  }
-  
-}
