@@ -1,21 +1,26 @@
-class BasicEnemyAnimation extends SpcInvAnimation {
+class BasicEnemyAnimation extends SyncAnimation {
 	static HORIZONTAL_MOVEMENT = 40;
 	static HORIZONTAL_SPEED = 0.05;
+
+	static OFFSET = 0;
 
 	constructor(obj) {
 		if (!(obj instanceof BasicEnemy))
 			throw new Error("Error: BasicEnemyAnimation needs a BasicEnemy object");
-		super(obj, Infinity, Infinity);
+		super(obj);
 		this.objPos = obj.pos.copy();
-		this.offset = 0;
 	}
 
 	tick() {
 		super.tick();
-		let pos = BasicEnemyAnimation.HORIZONTAL_MOVEMENT * Math.sin(this.offset);
-		this.offset += BasicEnemyAnimation.HORIZONTAL_SPEED;
+		let pos = BasicEnemyAnimation.HORIZONTAL_MOVEMENT * Math.sin(BasicEnemyAnimation.OFFSET);
 
 		this.obj.tp(this.objPos.x + pos);
 	}
 
+	static masterTick() {
+		BasicEnemyAnimation.OFFSET += BasicEnemyAnimation.HORIZONTAL_SPEED;
+	}
 }
+
+SyncAnimation.TYPES.push(BasicEnemyAnimation);

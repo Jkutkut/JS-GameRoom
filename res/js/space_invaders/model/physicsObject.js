@@ -63,6 +63,10 @@ class PhysicsObject {
 		this._angle += angle;
 	}
 
+	rotateTo(angle) {
+		this._angle = angle;
+	}
+
 	moveBy(x, y=0) {
 		this.pos.x += x;
 		this.pos.y += y;
