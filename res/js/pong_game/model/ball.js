@@ -7,9 +7,10 @@ class Ball {
     this.r = r;
     this.m = r * 0.1;
   }
-  update(player) {
+  update(player, enemy) {
     this.posicion.add(this.velocity);
     this.playerCollision(player);
+    this.playerCollision(enemy);
   }
   show() {
     fill(255);
