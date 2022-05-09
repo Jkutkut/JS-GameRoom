@@ -1,11 +1,11 @@
 class Ball {
-  constructor(x, y, r) {
+  static R = 20;
+  constructor(x, y) {
     this.posicion = new p5.Vector(x, y);
     this.velocity = p5.Vector.random2D();
     this.velocity.mult(3);
 
-    this.r = r;
-    this.m = r * 0.1;
+    this.r = Ball.R;
   }
   update(player, enemy) {
     this.posicion.add(this.velocity);

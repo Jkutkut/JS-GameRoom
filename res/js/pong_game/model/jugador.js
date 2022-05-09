@@ -29,11 +29,5 @@ class Jugador {
 
   }
 
-  up() {
-    this.posicion.y -= 10;
-  }
-
-  down() {
-    this.posicion.y += 10;
-  }
+ 
 }
