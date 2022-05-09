@@ -22,7 +22,7 @@ class Jugador {
     if (newY < 0) {
       newY = 0;
     }
-    if (mouseY + Jugador.ANCHURA / 2 > limite) {
+    if (mouseY + Jugador.ALTURA / 2 > limite) {
       newY = limite - Jugador.ALTURA;
     }
     this.posicion.y = newY;

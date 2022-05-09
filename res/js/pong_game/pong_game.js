@@ -7,7 +7,7 @@ function setup() {
     fill(255);
     imageMode(CENTER);
 
-    player = new Jugador(mouseX, mouseY - 35);
+    player = new Jugador(0, mouseY - 35);
     bola = new Ball(width / 2, height / 2, 20);
 
 }
@@ -18,7 +18,7 @@ function draw() {
     player.show();
     player.update(600);
     bola.show();
-    bola.update();
+    bola.update(player);
     bola.checkBoundaryCollision();
 }
 
@@ -26,17 +26,8 @@ function keyPressed() {
     if (keyCode == LEFT_ARROW) {
         value == 255;
     }
-    if (keyCode == RIGTH_ARROW) {
+    if (keyCode == RIGHT_ARROW) {
         value == 0;
     }
 
 }
-
-
-/*fill(255);
-rect(600, mouseY - 35, 40, 70, 20);*/
-
-
-    // new Ball(100, 400, 20);
-
-
