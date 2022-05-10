@@ -7,19 +7,31 @@
 			"name": "Pong",
 			"description": "",
 			"url": "pong_game.html",
-			"thumbnail": "pong.png"
+			"thumbnail": "pong.png",
+			"settings": {
+				"width": 800,
+				"height": 600
+			}
 		},
 		{
 			"name": "Snake",
 			"description": "",
 			"url": "snake_game.html",
-			"thumbnail": "snake.png"
+			"thumbnail": "snake.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			}
 		},
 		{
 			"name": "Space Invaders",
 			"description": "Survive the invasion of space by shooting down aliens.",
 			"url": "space_invaders.html",
-			"thumbnail": "space_invaders.png"
+			"thumbnail": "space_invaders.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			}
 		}
 	]
 }
