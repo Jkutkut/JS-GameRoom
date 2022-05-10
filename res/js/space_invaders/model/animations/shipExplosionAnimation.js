@@ -25,7 +25,7 @@ class ShipExplosionAnimation extends ImgAnimation {
 	}
 
 	destroy() {
-		this.obj.visible = true;
-		// this.obj.show();
+		this.obj.destroy();
+		return super.destroy();
 	}
 }

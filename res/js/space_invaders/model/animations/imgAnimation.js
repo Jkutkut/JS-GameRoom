@@ -9,7 +9,7 @@ class ImgAnimation extends SpcInvAnimation {
 	}
 
 	ended() {
-		return this._currentFrame >= this._frames;
+		return this._currentFrame > this._frames;
 	}
 
 	tick() {
