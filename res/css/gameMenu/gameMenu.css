@@ -1,5 +1,7 @@
 :root {
-	--size: 600px;
+	--width: 600px;
+	--height: 600px;
+
 	--border: 2vh;
 }
 
@@ -30,8 +32,8 @@ body {
 	position: relative;
 	justify-content: center;
 
-	min-width: calc(var(--size) + var(--border-horizontal));
-	height: calc(var(--size));
+	min-width: calc(var(--width) + var(--border-horizontal));
+	height: calc(var(--height));
 
 	background: var(--monitor-color);
 
@@ -57,15 +59,15 @@ body {
 }
 
 #monitorscreen {
-	width: var(--size);
-	height: var(--size);
+	width: var(--width);
+	height: var(--height);
 
 	background: #aaa;
 }
 
 #description {
 	margin-top: calc(2 * var(--border));
-	width: var(--size);
+	width: var(--width);
 	color: var(--color-primary);
 	text-align: center;
 }
