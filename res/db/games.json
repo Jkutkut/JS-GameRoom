@@ -24,8 +24,18 @@
 			}
 		},
 		{
+			"name": "Wordle",
+			"description": "Are you able to guess the word?",
+			"url": "wordle.html",
+			"thumbnail": "wordle.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			}
+		},
+		{
 			"name": "Space Invaders",
-			"description": "Survive the invasion of space by shooting down aliens.",
+			"description": "Survive the invasion from space by shooting down aliens.",
 			"url": "space_invaders.html",
 			"thumbnail": "space_invaders.png",
 			"settings": {
