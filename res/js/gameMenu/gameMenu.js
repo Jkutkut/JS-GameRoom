@@ -12,20 +12,20 @@ window.onload = () => {
 function loadGame(gamesData, gameData) {
 	let gameUrl = `../${gamesData.gameLocation}${gameData.game}`;
 
-	let name;
-	let description;
+	let game
 	for (let i = 0; i < gamesData.games.length; i++) {
 		if (gamesData.games[i].url === gameData.game) {
-			name = gamesData.games[i].name;
-			description = gamesData.games[i].description;
+			game = gamesData.games[i];
 			break;
 		}
 	}
 
+	document.documentElement.style.setProperty("--width", `${game.settings.width}px`);
+	document.documentElement.style.setProperty("--height", `${game.settings.height}px`);
 	document.getElementById("monitorscreen").src = gameUrl;
-	document.getElementById("title").innerHTML = name;
-	document.getElementsByTagName("title")[0].innerHTML = name;
-	document.getElementById("description").innerHTML = description;
+	document.getElementById("title").innerHTML = game.name;
+	document.getElementsByTagName("title")[0].innerHTML = game.name;
+	document.getElementById("description").innerHTML = game.description;
 }
 
 function parseParams() {
