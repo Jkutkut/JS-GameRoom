@@ -21,17 +21,19 @@ class ImgAnimation extends SpcInvAnimation {
 			this.cooldown--;
 	}
 
-	showFrame(src, imgWidth, scale=1) {
+	showFrame(src, imgWidth, scale=1, offSetV=null, startX=this.frame, startY=0) {
 		if (this.ended())
 			return;
 		push();
 		translate(this.obj.pos.x, this.obj.pos.y);
+		if (offSetV)
+			translate(offSetV.x, offSetV.y);
 		rotate(this.obj.angle);
 		image(
 			src,
 			0, 0,
 			imgWidth * scale, imgWidth * scale,
-			this.frame * imgWidth, 0,
+			startX * imgWidth, startY * imgWidth,
 			imgWidth, imgWidth
 		);
 		pop();
