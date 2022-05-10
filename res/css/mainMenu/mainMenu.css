@@ -12,8 +12,8 @@
 }
 
 .game {
-	--game-width: 300px;
-	--game-height: 450px;
+	--game-width: 400px;
+	--game-height: 500px;
 
 	display: flex;
 	align-items: center;
@@ -39,4 +39,8 @@ img {
 
 img:hover {
 	transform: scale(1.1);
+}
+
+p {
+	text-align: center;
 }

@@ -6,7 +6,7 @@ class Ship extends PhysicsObject {
 
 	static SIZE = null;
 
-	static V = 5;
+	static V = 4;
 	static COOLDOWN = 10;
 
 	constructor(pos, angle) {

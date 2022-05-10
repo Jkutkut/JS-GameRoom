@@ -5,7 +5,7 @@
 	"games": [
 		{
 			"name": "Pong",
-			"description": "",
+			"description": "Play Pong with your friends or against the AI!",
 			"url": "pong_game.html",
 			"thumbnail": "pong.png",
 			"settings": {
@@ -15,7 +15,7 @@
 		},
 		{
 			"name": "Snake",
-			"description": "",
+			"description": "How much can you eat without eating yourself?",
 			"url": "snake_game.html",
 			"thumbnail": "snake.png",
 			"settings": {

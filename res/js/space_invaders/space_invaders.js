@@ -1,6 +1,15 @@
-var game;
+var _game;
+var _emptyGame = {
+	tick: () => {},
+	keypress: () => {}
+};
 
 function preload() {
+	// JSON
+	fetch("../res/db/space_invaders/bessierAnimations.json")
+		.then(response => response.json())
+		.then(json => loadBessierAnimations(json));
+
 	Ship.SRC.body = loadImage("../res/img/space_invaders/ships/ship_1.png");
 	Ship.SRC.propulsor = loadImage("../res/img/space_invaders/ships_elements/propulsor_player.png");
 
@@ -15,17 +24,46 @@ function preload() {
 	ShipExplosionAnimation.SPRITES = loadImage("../res/img/space_invaders/ships_elements/ship_explosion.png");
 }
 
+window.onload = () => {
+	document.getElementById("btnstart").addEventListener("click", () => {
+		setTimeout(initGame, 200)
+	});
+
+	let enemiesImg = document.getElementsByClassName("enemy");
+
+	for (let i = 0; i < enemiesImg.length; i++) {
+		enemiesImg[i].addEventListener("click", () => {
+			console.log(enemiesImg[i]);
+		});
+		enemiesImg[i].style["animation-delay"] = `${Math.random()}s`;
+	}
+}
+
 function setup() {
 	createCanvas(600, 600);
 	imageMode(CENTER);
-	game = new SpaceInvaders(new p5.Vector(width, height));
-	
+	_game = _emptyGame;
 }
 
 function draw() {
-	game.tick();
+	_game.tick();
+}
+
+function initGame() {
+	document.getElementsByClassName("p5Canvas")[0].style.display = "block";
+	document.getElementById("mainmenu").style.display = "none";
+	_game = new SpaceInvaders(new p5.Vector(width, height));
 }
 
 keyPressed = () => {
-	game.keypress(keyCode);
+	_game.keypress(keyCode);
+}
+
+function loadBessierAnimations(json) {
+	let animations = json.animations;
+	BessierAnimation.ANIMATIONS = json.animations;
+	BessierAnimation.CURVES = {};
+	for (const [key, value] of Object.entries(animations))
+		BessierAnimation.CURVES[key] = Bessier.bessier(value.steps, ...value.animation);
+
 }
