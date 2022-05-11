@@ -1,4 +1,7 @@
 class Ball {
+
+  static BALL_SOUND = null;
+
   static R = 20;
   constructor(x, y) {
     this.posicion = new p5.Vector(x, y);
@@ -60,7 +63,6 @@ class Ball {
   }
 
   playSound() {
-    let sound = loadSound('res/js/pong_game/sounds/blip1.mp3');
-    sound.play();
+    Ball.BALL_SOUND.play();
   }
 }

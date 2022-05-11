@@ -5,6 +5,10 @@ let bola;
 const HEIGHT = 600;
 const WIDTH = 600;
 
+function preload() {
+    Ball.BALL_SOUND = loadSound("../res/js/pong_game/sounds/blip2.mp3");
+}
+
 function setup() {
     createCanvas(WIDTH, HEIGHT);
     background(0);
