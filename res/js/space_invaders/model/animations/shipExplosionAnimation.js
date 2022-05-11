@@ -33,7 +33,7 @@ class ShipExplosionAnimation extends ImgAnimation {
 class ShipHitAnimation extends ImgAnimation {
 	static SPRITES = null;
 	static N_SPRITES = 7;
-	static FRAME_COOLDOWN = 5;
+	static FRAME_COOLDOWN = 1;
 
 	static IMG_WIDTH = 48;
 
@@ -46,8 +46,8 @@ class ShipHitAnimation extends ImgAnimation {
 		this.hitsLocation = [];
 		for (let i = 0; i < hits; i++) {
 			this.hitsLocation.push(new p5.Vector(
-				random(-this.obj.halfSize.x, this.obj.halfSize.x),
-				random(-this.obj.halfSize.y, this.obj.halfSize.y)
+				RandomGenerator.getCentered(this.obj.halfSize.x * 0.8),
+				RandomGenerator.getCentered(this.obj.halfSize.y * 0.8)
 			));
 		}
 	}
