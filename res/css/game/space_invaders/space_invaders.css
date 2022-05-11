@@ -22,6 +22,8 @@ body {
 
 	display: flex;
 	justify-content: center;
+
+	background-image: url("../../../../res/img/space_invaders/background/background.png");
 }
 
 /* Ships */
