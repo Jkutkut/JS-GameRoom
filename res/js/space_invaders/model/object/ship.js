@@ -1,8 +1,5 @@
 class Ship extends CharacterObject {
-	static SRC = {
-		body: null,
-		propulsor: null
-	};
+	static SRC = null;
 
 	static SIZE = null;
 
@@ -17,8 +14,7 @@ class Ship extends CharacterObject {
 	}
 
 	show() {
-		this.showImg(Ship.SRC.body);
-		this.showImg(Ship.SRC.propulsor, 0, 15);
+		this.showImg(Ship.SRC);
 	}
 
 	move(x, y) {
