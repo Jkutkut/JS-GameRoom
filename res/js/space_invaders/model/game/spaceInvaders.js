@@ -1,6 +1,7 @@
 class SpaceInvaders extends Game {
 
-	static BG = 30;
+	static BG_COLOR = 30;
+	static BG = null;
 
 	constructor(size) {
 		super(size);
@@ -12,7 +13,8 @@ class SpaceInvaders extends Game {
 	}
 
 	show() {
-		background(SpaceInvaders.BG);
+		background(SpaceInvaders.BG_COLOR);
+		image(SpaceInvaders.BG, this.halfSize.x, this.halfSize.y, this.size.x, this.size.y);
 		this.ship.show();
 		for (let enemy of this.enemies) {
 			enemy.show();
