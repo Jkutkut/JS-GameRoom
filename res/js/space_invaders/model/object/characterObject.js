@@ -1,17 +1,36 @@
 class CharacterObject extends PhysicsObject {
 
-	static LIVES = null;
+	static HEALTH = null;
 
-	constructor(pos, size, angle, lives) {
+	constructor(pos, size, angle, health) {
 		super(pos, size, angle);
-		this.lives = lives;
-		this.maxLives = lives;
+		this.health = health;
+		this.maxHealth = health;
+
+		this.cooldown = 0;
+		this.bullets = 0;
 	}
 
 	hit() {
-		this.lives--;
-		if (this.lives <= 0)
+		if (this.health == 0)
 			return new ShipExplosionAnimation(this);
-		return new ShipHitAnimation(this, this.maxLives - this.lives);
+		this.health--;
+		return new ShipHitAnimation(this, this.maxHealth - this.health);
+	}
+
+
+	// Firing logic
+
+	tick () {
+		if (this.cooldown > 0)
+			this.cooldown--;
+	}
+
+	canFire() {
+		return this.cooldown == 0 && this.bullets < Ship.MAX_BULLETS;
+	}
+
+	bulletDestroyed() {
+		this.bullets--;
 	}
 }

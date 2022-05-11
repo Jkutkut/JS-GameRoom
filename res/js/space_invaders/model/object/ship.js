@@ -1,4 +1,4 @@
-class Ship extends PhysicsObject {
+class Ship extends CharacterObject {
 	static SRC = {
 		body: null,
 		propulsor: null
@@ -10,20 +10,15 @@ class Ship extends PhysicsObject {
 	static COOLDOWN = 10;
 	static MAX_BULLETS = 3;
 
-	constructor(pos, angle) {
-		super(pos, Ship.SIZE, angle);
-		this.cooldown = 0;
-		this.bullets = 0;
-	}
+	static HEALTH = 3;
 
-	tick () {
-		if (this.cooldown > 0)
-			this.cooldown--;
+	constructor(pos, angle) {
+		super(pos, Ship.SIZE, angle, Ship.HEALTH);
 	}
 
 	show() {
 		this.showImg(Ship.SRC.body);
-		this.showImg(Ship.SRC.propulsor, 0, 10);
+		this.showImg(Ship.SRC.propulsor, 0, 15);
 	}
 
 	move(x, y) {
@@ -37,19 +32,11 @@ class Ship extends PhysicsObject {
 			newPos.y >= this.halfSize.y && newPos.y + this.halfSize.y <= screenSize.y;
 	}
 
-	canFire() {
-		return this.cooldown == 0 && this.bullets < Ship.MAX_BULLETS;
-	}
-
 	fire() {
 		let bullet = new PlayerBullet(this.pos.copy());
 		bullet.pos.add(0, -this.size.y / 2);
 		this.cooldown = Ship.COOLDOWN;
 		this.bullets++;
 		return bullet;
-	}
-
-	bulletDestroyed() {
-		this.bullets--;
 	}
 }
