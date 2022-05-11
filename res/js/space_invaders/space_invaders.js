@@ -10,15 +10,14 @@ function preload() {
 		.then(response => response.json())
 		.then(json => loadBessierAnimations(json));
 
-	Ship.SRC.body = loadImage("../res/img/space_invaders/ships/ship_1.png");
-	Ship.SRC.propulsor = loadImage("../res/img/space_invaders/ships_elements/propulsor_player.png");
+	Ship.SRC = loadImage("../res/img/space_invaders/ships/ship_6.png");
 
 	BasicEnemy.SRC.Beholder = loadImage("../res/img/space_invaders/enemies/Beholder.png");
 	BasicEnemy.SRC.Emissary = loadImage("../res/img/space_invaders/enemies/Emissary.png");
 	
 	Bullet.SRC.body = loadImage("../res/img/space_invaders/ships_elements/player_bullet.png");
 	
-	for (let i = 2; i <= 6; i++)
+	for (let i = 1; i <= 5; i++)
 		BasicEnemy.SRC[`basic${i}`] = loadImage(`../res/img/space_invaders/ships/ship_${i}.png`);
 
 	ShipExplosionAnimation.SPRITES = loadImage("../res/img/space_invaders/ships_elements/ship_explosion.png");

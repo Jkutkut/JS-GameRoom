@@ -41,14 +41,15 @@ class SpaceInvaders extends Game {
 		this.enemies = [];
 		let basicSize = new p5.Vector(50, 50);
 
-		let enemies = ["Beholder", "Emissary", "basic2", "basic3", "basic4", "basic5", "basic6"]
+		let enemies = ["Beholder", "Emissary", "basic1", "basic2", "basic3", "basic4", "basic5"]
 
 		for (let j = 0; j < 3; j++) {
 			for (let i = 0; i < enemies.length; i++) {
 				this.enemies.push(new BasicEnemy(
 					new p5.Vector(-100, 0),
 					basicSize.copy(),
-					enemies[2]
+					enemies[i % enemies.length]
+					// enemies[2]
 				));
 				this.addAnimation(new EnemySpawnAnimation(
 					this.enemies[j * enemies.length + i],
