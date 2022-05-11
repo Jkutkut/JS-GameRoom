@@ -3,8 +3,10 @@ class Ball {
   constructor(x, y) {
     this.posicion = new p5.Vector(x, y);
     this.velocity = p5.Vector.random2D();
-    this.velocity.mult(3);
+    this.velocity.mult(5);
 
+    this.velocity = new p5.Vector(1, 1);
+    this.velocity.mult(5);
     this.r = Ball.R;
   }
   update(player, enemy) {
@@ -19,11 +21,13 @@ class Ball {
 
   checkBoundaryCollision() {
     if (this.posicion.x > width - this.r) {
-      this.posicion.x = width - this.r;
-      this.velocity.x *= -1;
+      //this.posicion.x = width - this.r;
+      //this.velocity.x *= -1;
+      return;
     } else if (this.posicion.x < this.r) {
-      this.posicion.x = this.r;
-      this.velocity.x *= -1;
+      //this.posicion.x = this.r;
+      //this.velocity.x *= -1;
+      return;
     } else if (this.posicion.y > height - this.r) {
       this.posicion.y = height - this.r;
       this.velocity.y *= -1;
@@ -43,6 +47,7 @@ class Ball {
     if (this.posicion.x - this.r <= player.posicion.x + Jugador.ANCHURA &&
       this.posicion.x + this.r >= player.posicion.x) {
       this.velocity.x *= -1;
+      this.playSound();
       if (player.posicion.x == 0) {
         this.posicion.x = Jugador.ANCHURA + this.r;
         console.log("jugador izquierda")
@@ -52,5 +57,10 @@ class Ball {
       }
       //this.posicion.add(this.velocity);
     }
+  }
+
+  playSound() {
+    let sound = loadSound('res/js/pong_game/sounds/blip1.mp3');
+    sound.play();
   }
 }
