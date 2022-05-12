@@ -12,15 +12,15 @@ class Snake {
 		this._posicion =  new p5.Vector(x, y);
 		this.orienta = Snake.UP;
 		this.body = null;
-		this.crecer = 5;
+		this.crecer = 21;
 	}
   
 	show() {
 		fill('rgb(34,145,34)');
-		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE, 
-			20, 20, 0, 0);
+		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE);
 		if (this.body != null)
-			this.body.show();
+			this.body.show(this._posicion.x, this.posicion.y);
+		
 	}
   
 	get posicion() {
@@ -108,9 +108,16 @@ class Snake {
 	collisionApple(){
 		if (apple.posicion.x == this.posicion.x + (REC_SIZE/2) && apple.posicion.y == this.posicion.y + (REC_SIZE/2)){
 			//borrar apple
-			this.crecer++;
+			this.crecer++;;
+			console.log(this.crecer);
 			apple = new Apple();
 			
+		}
+	}
+
+	collisionSnake() {
+		if (this.body != null) {
+
 		}
 	}
 	
@@ -122,11 +129,17 @@ class SnakeBody {
 		this.next = null;
 	}
   
-	show() {
+	show(head_x, head_y) {
 		fill('rgb(34,145,34)');
+		console.log(head_x, head_y);
+		if(head_x == this.posicion.x && head_y == this.posicion.y){
+			noLoop();
+			return;
+		} else {
 		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE);
 		if (this.next != null)
-			this.next.show();
+			this.next.show(head_x, head_y);
+		}
 	}
 
 	moveTo(x, y) {
@@ -146,4 +159,5 @@ class SnakeBody {
 		else
 			this.next.grow();
 	}
+
 }
