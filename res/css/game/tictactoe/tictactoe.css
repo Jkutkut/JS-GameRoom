@@ -1,0 +1,29 @@
+#mainmenu {
+	--btn-width: calc(var(--size) * 0.4);
+	--btn-height: calc(var(--size) * 0.1);
+
+	width: var(--size);
+	height: var(--size);
+	background-color: #222;
+
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+	position: relative;
+}
+
+#mainmenu > div {
+
+	position: absolute;
+	bottom: calc(var(--size) * 0.1);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.arcade-btn {
+	margin: 10px;
+}
