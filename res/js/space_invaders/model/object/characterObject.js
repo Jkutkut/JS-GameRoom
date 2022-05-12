@@ -1,6 +1,6 @@
 class CharacterObject extends PhysicsObject {
 
-	static HEALTH = null;
+	static HEALTH = 1;
 
 	constructor(pos, size, angle, health) {
 		super(pos, size, angle);

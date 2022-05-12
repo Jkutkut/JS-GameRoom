@@ -113,25 +113,21 @@ class SpaceInvaders extends Game {
 			}
 			for (j = 0; j < this.enemies.length; j++) {
 				if (bullet.collides(this.enemies[j])) {
-					this.enemies[j].destroy();
-					this.enemies.splice(j--, 1);
+					this.hitShip(this.enemies[j]);
 					this.destroyBullet(...this.bullets.splice(i--, 1));
 					break;
 				}
 			}
 		}
 
-		// TODO check collisions with ship
-
-		// for (let j = 0, enemy; j < this.enemies.length; j++) {
-		// 	enemy = this.enemies[j];
-		// 	if (enemy.collides(this.ship)) {
-		// 		this.enemies[j].destroy();
-		// 		this.enemies.splice(j--, 1);
-		// 		// TODO
-		// 		continue;
-		// 	}
-		// }
+		for (let j = 0, enemy; j < this.enemies.length; j++) {
+			enemy = this.enemies[j];
+			if (enemy.collides(this.ship)) {
+				this.hitShip(this.enemies[j]);
+				this.hitShip(this.ship);
+				continue;
+			}
+		}
 	}
 
 	destroyBullet(bullet) {
@@ -145,6 +141,10 @@ class SpaceInvaders extends Game {
 			return;
 		this.ship.move(x, y);
 		this.updateScreen = true;
+	}
+
+	hitShip(obj) {
+		this.addAnimation(obj.hit());
 	}
 
 	fire() {
