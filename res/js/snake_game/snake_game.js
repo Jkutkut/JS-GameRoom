@@ -19,7 +19,7 @@ function draw() {
 	drawBackgroundPattern();
 	snake.show();
 	snake.move();
-	//apple.show();
+	apple.show();
 	text("¨(" + snake.posicion.x + ", " + snake.posicion.y + ")", 20, 20)
 }
 

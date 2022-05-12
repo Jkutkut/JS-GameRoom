@@ -1,17 +1,19 @@
 class Apple {
-	static ANCHURA = 30;
-	static ALTURA = 30;
   
-	constructor(posicion) {
-	  this._posicion = posicion;
+	constructor() {
+		let x, y;
+		do{
+			x = (int(random(0, 20)) * REC_SIZE ) + (REC_SIZE/2);
+			y = (int(random(0, 20)) * REC_SIZE ) + (REC_SIZE/2);
+		} while (snake.posicion.x == x && snake.posicion.y == y);
+		
+	  	this._posicion = new p5.Vector(x, y);
 	}
   
 	show() {
-		let x_circle = (int(random(0, 20)) * 30 ) +15;
-		let y_circle = (int(random(0, 20)) * 30 ) +15;
 		
 		fill('#F44336');
-		ellipse(x_circle, y_circle, circle_hl);
+		ellipse(this.posicion.x, this.posicion.y, REC_SIZE);
 	}
   
 	get posicion() {
@@ -20,11 +22,6 @@ class Apple {
 	  
 }
 
-var circle_hl = 30;
-var canvas_hl = 600;
-var y = 0;
-var x = 0;
-var cont_rect = 0;
 
 /*
 function setup() { 
@@ -34,7 +31,7 @@ function setup() {
   drawBackgroundPattern();
   drawRdCircle();
 }*/
-
+/*
 function drawRdCircle() {
 
 //TODO : draw apple randomly making sure it is not drawn on the snake
@@ -57,4 +54,4 @@ function drawBackgroundPattern(){
 		}
 		
 	}
-}
+}*/
