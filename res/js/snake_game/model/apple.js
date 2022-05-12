@@ -1,14 +1,17 @@
 class Apple {
-	static ANCHURA = 20;
-	static ALTURA = 20;
+	static ANCHURA = 30;
+	static ALTURA = 30;
   
 	constructor(posicion) {
 	  this._posicion = posicion;
 	}
   
 	show() {
-	  fill(0);
-	  rect(this.posicion.x, this.posicion.y, SnakeBody.ANCHURA, SnakeBody.ALTURA);
+		let x_circle = (int(random(0, 20)) * 30 ) +15;
+		let y_circle = (int(random(0, 20)) * 30 ) +15;
+		
+		fill('#F44336');
+		ellipse(x_circle, y_circle, circle_hl);
 	}
   
 	get posicion() {
@@ -23,16 +26,19 @@ var y = 0;
 var x = 0;
 var cont_rect = 0;
 
+/*
 function setup() { 
   createCanvas(canvas_hl, canvas_hl);
   noStroke();
   background(220);
   drawBackgroundPattern();
   drawRdCircle();
-} 
+}*/
 
 function drawRdCircle() {
-    
+
+//TODO : draw apple randomly making sure it is not drawn on the snake
+
   let x_circle = (int(random(0, 20)) * 30 ) +15;
   let y_circle = (int(random(0, 20)) * 30 ) +15;
   

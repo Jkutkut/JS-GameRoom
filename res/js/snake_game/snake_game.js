@@ -1,35 +1,36 @@
-var y = 0;
-var x = 0;
-var cont_rect = 0;
-var r
+var snake, apple;
+const CANVAS_SIZE = 600;
+const VELOCITY = 7;
+const REC_SIZE = 30;
+const COLOR1 = 255;
+const COLOR2 = 120;
+
 
 function setup() {
-	createCanvas(600, 600);
-	background(0);
-	strokeWeight(0);
+	createCanvas(CANVAS_SIZE, CANVAS_SIZE);
+	frameRate(VELOCITY);
+	noStroke();
+	snake = new SnakeBody(CANVAS_SIZE/2, CANVAS_SIZE/2);
+	apple = new Apple();
+
 }
 	
-function draw() {
-	/* si pero no 
-	while ( y < 600 ) {
-		if (cont_rect != 20) {
-			rect(x, y, 30, 30);
-			x += 30;
-			cont_rect++;
-		} else {
-			cont_rect = 0;
-			x = 0;
-			y += 30;
-		}
-	}*/	
-	for (let x = 0; x < 20; x++) {
-		for (let y = 0; y < 20; y++) {
-			if ((y + x * 19) % 2 == 0)
-				fill(255);
-			else
-				fill(120);
-			rect(x * 30, y * 30, 30, 30);
-		}
-		
-	}
+function draw() {	
+	drawBackgroundPattern();
+	snake.show();
+	snake.move();
+	//apple.show();
+	text("¨(" + snake.posicion.x + ", " + snake.posicion.y + ")", 20, 20)
+}
+
+function drawBackgroundPattern(){
+	for (let x = 0; x < (CANVAS_SIZE / REC_SIZE) ; x++) {
+	  for (let y = 0; y < (CANVAS_SIZE / REC_SIZE); y++) {
+		  if ((y + x * ((CANVAS_SIZE / REC_SIZE)-1)) % 2 == 0)
+			  fill(COLOR1);
+		  else
+			  fill(COLOR2);
+		  rect(x * REC_SIZE, y * REC_SIZE, REC_SIZE, REC_SIZE);
+	  } 
+  }
 }
