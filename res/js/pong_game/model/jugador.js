@@ -1,6 +1,6 @@
 class Jugador {
   static ANCHURA = 40;
-  static ALTURA = 70;
+  static ALTURA = 90;
 
   constructor(x, y) {
     let posicion = new p5.Vector(x, y);
