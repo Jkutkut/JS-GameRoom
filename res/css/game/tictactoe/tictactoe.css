@@ -1,10 +1,15 @@
+body > div {
+	background-color: rgb(80, 80, 80);
+	width: var(--size);
+	height: var(--size);
+}
+
 #mainmenu {
 	--btn-width: calc(var(--size) * 0.4);
 	--btn-height: calc(var(--size) * 0.1);
 
 	width: var(--size);
 	height: var(--size);
-	background-color: #222;
 
 	display: flex;
 	align-items: center;
@@ -26,4 +31,22 @@
 
 .arcade-btn {
 	margin: 10px;
+}
+
+.row {
+	--bars: 2;
+	--margin: 10px;
+	margin: var(--margin);
+
+	display: flex;
+	flex-direction: column;
+}
+
+.cell {
+	
+
+	background: #222;
+
+	width: calc(var(--size) / 3 - var(--bars) * var(--margin));
+	height: calc(var(--size) / 3 - var(--bars) * var(--margin));
 }
