@@ -10,7 +10,7 @@ function setup() {
 	createCanvas(CANVAS_SIZE, CANVAS_SIZE);
 	frameRate(VELOCITY);
 	noStroke();
-	snake = new SnakeBody(CANVAS_SIZE/2, CANVAS_SIZE/2);
+	snake = new Snake(CANVAS_SIZE/2, CANVAS_SIZE/2);
 	apple = new Apple();
 
 }
@@ -33,4 +33,8 @@ function drawBackgroundPattern(){
 		  rect(x * REC_SIZE, y * REC_SIZE, REC_SIZE, REC_SIZE);
 	  } 
   }
+}
+
+function keyPressed() {
+	snake.changeDirection(keyCode);
 }
