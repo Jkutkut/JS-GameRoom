@@ -3,10 +3,13 @@ let enemy;
 let bola;
 
 const HEIGHT = 600;
-const WIDTH = 600;
+const WIDTH = 800;
+
+
 
 function preload() {
     Ball.BALL_SOUND = loadSound("../res/js/pong_game/sounds/blip2.mp3");
+    //Sound over
 }
 
 function setup() {
@@ -15,6 +18,8 @@ function setup() {
     strokeWeight(2)
     fill(255);
     imageMode(CENTER);
+    textSize(50);
+
 
     player = new Jugador(0, mouseY);
     enemy = new EnemyIA(WIDTH - Jugador.ANCHURA, (HEIGHT - Jugador.ALTURA) / 2);
@@ -25,11 +30,27 @@ function setup() {
 function draw() {
     background(0);
     fill(255);
+
+    //dibujar rectangulos dividiendo el canvas en 2
+    push();
+    fill(200, 200, 200);
+    for (let i = 0; i < HEIGHT; i += 20) {
+        if (i % 40 == 0) {
+            rect(WIDTH / 2, i, 20, 30);
+        }
+
+    }
+    pop();
+
+
     player.show();
     player.update(HEIGHT);
 
+
     enemy.show();
     enemy.update(HEIGHT, bola);
+    text(1, WIDTH * 0.3, 40);
+    text(1, WIDTH * 0.7, 40);
     bola.show();
     bola.update(player, enemy);
     bola.checkBoundaryCollision();
