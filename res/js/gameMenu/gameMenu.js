@@ -5,8 +5,6 @@ window.onload = () => {
 	fetch("../res/db/games.json")
 		.then(response => response.json())
 		.then(json => loadGame(json, gameData));
-
-	console.log(gameData);
 }
 
 function loadGame(gamesData, gameData) {

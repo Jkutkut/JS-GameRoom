@@ -1,6 +1,7 @@
 class SpaceInvaders extends Game {
 
-	static BG = 30;
+	static BG_COLOR = 30;
+	static BG = null;
 
 	constructor(size) {
 		super(size);
@@ -12,7 +13,8 @@ class SpaceInvaders extends Game {
 	}
 
 	show() {
-		background(SpaceInvaders.BG);
+		background(SpaceInvaders.BG_COLOR);
+		image(SpaceInvaders.BG, this.halfSize.x, this.halfSize.y, this.size.x, this.size.y);
 		this.ship.show();
 		for (let enemy of this.enemies) {
 			enemy.show();
@@ -41,14 +43,15 @@ class SpaceInvaders extends Game {
 		this.enemies = [];
 		let basicSize = new p5.Vector(50, 50);
 
-		let enemies = ["Beholder", "Emissary", "basic2", "basic3", "basic4", "basic5", "basic6"]
+		let enemies = ["Beholder", "Emissary", "basic1", "basic2", "basic3", "basic4", "basic5"]
 
 		for (let j = 0; j < 3; j++) {
 			for (let i = 0; i < enemies.length; i++) {
 				this.enemies.push(new BasicEnemy(
 					new p5.Vector(-100, 0),
 					basicSize.copy(),
-					enemies[2]
+					enemies[i % enemies.length]
+					// enemies[2]
 				));
 				this.addAnimation(new EnemySpawnAnimation(
 					this.enemies[j * enemies.length + i],
@@ -78,20 +81,8 @@ class SpaceInvaders extends Game {
 			bullet = this.bullets[i];
 			bullet.move();
 			this.updateScreen = true;
-			if (bullet.outOfBounds(this.size)) {
-				this.bullets.splice(i--, 1);
-				continue;
-			}
-			for (let j = 0; j < this.enemies.length; j++) {
-				if (bullet.collides(this.enemies[j])) {
-					this.enemies[j].destroy();
-					this.enemies.splice(j--, 1);
-					this.bullets[i].destroy();
-					this.bullets.splice(i--, 1);
-					break;
-				}
-			}
 		}
+		this.checkCollisions();
 
 		if (this.updateScreen || this.animations.length > 0) {
 			this.show();
@@ -112,11 +103,48 @@ class SpaceInvaders extends Game {
 		this.updateScreen = true;
 	}
 
+	checkCollisions() {
+		let bullet;
+		for (let i = 0, j; i < this.bullets.length; i++) {
+			bullet = this.bullets[i];
+			if (bullet.outOfBounds(this.size)) {
+				this.destroyBullet(...this.bullets.splice(i--, 1));
+				continue;
+			}
+			for (j = 0; j < this.enemies.length; j++) {
+				if (bullet.collides(this.enemies[j])) {
+					this.hitShip(this.enemies[j]);
+					this.destroyBullet(...this.bullets.splice(i--, 1));
+					break;
+				}
+			}
+		}
+
+		for (let j = 0, enemy; j < this.enemies.length; j++) {
+			enemy = this.enemies[j];
+			if (enemy.collides(this.ship)) {
+				this.hitShip(this.enemies[j]);
+				this.hitShip(this.ship);
+				continue;
+			}
+		}
+	}
+
+	destroyBullet(bullet) {
+		bullet.destroy();
+		if (bullet instanceof PlayerBullet)
+			this.ship.bulletDestroyed();
+	}
+
 	moveShip(x, y) {
 		if (!this.ship.canMove(x, y, this.size))
 			return;
 		this.ship.move(x, y);
 		this.updateScreen = true;
+	}
+
+	hitShip(obj) {
+		this.addAnimation(obj.hit());
 	}
 
 	fire() {

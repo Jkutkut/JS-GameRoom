@@ -9,7 +9,8 @@ class ShipExplosionAnimation extends ImgAnimation {
 		if (!(obj instanceof Ship))
 			throw new Error("Error: ShipExplosionAnimation needs a Ship object");
 		super(obj, ShipExplosionAnimation.N_SPRITES, ShipExplosionAnimation.FRAME_COOLDOWN);
-		this.obj.visible = false;
+		// this.obj.visible = false;
+		this.obj.destroy();
 	}
 
 	show() {
@@ -25,7 +26,7 @@ class ShipExplosionAnimation extends ImgAnimation {
 	}
 
 	destroy() {
-		this.obj.visible = true;
-		// this.obj.show();
+		// this.obj.destroy();
+		return super.destroy();
 	}
 }

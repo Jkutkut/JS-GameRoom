@@ -1,13 +1,13 @@
 class Game {
 	constructor(size) {
 		this._size = size;
+		this._halfSize = new p5.Vector(size.x >> 1, size.y >> 1);
 		this.animations = [];
 	}
 
 	show() {
 		for (let i = 0; i < this.animations.length; i++) {
 			this.animations[i].show();
-			
 		}
 	}
 
@@ -19,6 +19,10 @@ class Game {
 
 	get size() {
 		return this._size;
+	}
+
+	get halfSize() {
+		return this._halfSize;
 	}
 
 	tick() {

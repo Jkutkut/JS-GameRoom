@@ -11,13 +11,14 @@
 	<script src="../res/js/space_invaders/model/game/game.js"></script>
 	<script src="../res/js/space_invaders/model/game/spaceInvaders.js"></script>
 
-	<script src="../res/js/space_invaders/model/physicsObject.js"></script>
-	<script src="../res/js/space_invaders/model/ship.js"></script>
+	<script src="../res/js/space_invaders/model/object/physicsObject.js"></script>
+	<script src="../res/js/space_invaders/model/object/characterObject.js"></script>
+	<script src="../res/js/space_invaders/model/object/ship.js"></script>
 	
-	<script src="../res/js/space_invaders/model/enemy/enemy.js"></script>
-	<script src="../res/js/space_invaders/model/enemy/basicEnemy.js"></script>
+	<script src="../res/js/space_invaders/model/object/enemy/enemy.js"></script>
+	<script src="../res/js/space_invaders/model/object/enemy/basicEnemy.js"></script>
 
-	<script src="../res/js/space_invaders/model/bullet/bullet.js"></script>
+	<script src="../res/js/space_invaders/model/object/bullet/bullet.js"></script>
 
 	<script src="../res/js/space_invaders/model/animations/spcinvanimation.js"></script>
 	<script src="../res/js/space_invaders/model/animations/imgAnimation.js"></script>
@@ -26,9 +27,11 @@
 	<script src="../res/js/space_invaders/model/animations/basicEnemyAnimation.js"></script>
 	<!-- <script src="../res/js/space_invaders/model/animations/parabolaAnimation.js"></script> -->
 	<script src="../res/js/space_invaders/model/animations/bessierAnimation.js"></script>
+	<script src="../res/js/space_invaders/model/animations/shipHitAnimation.js"></script>
 
 	<!-- Tools -->
 	<script src="../res/js/space_invaders/tools/bessier.js"></script>
+	<script src="../res/js/space_invaders/tools/randomGenerator.js"></script>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="../res/css/common/global_variables.css">
@@ -56,8 +59,8 @@
 			<img src="../res/img/space_invaders/ships/ship_3.png" id="ship" class="ship enemy">
 			<img src="../res/img/space_invaders/ships/ship_3.png" id="ship" class="ship enemy">
 		</div>
-		<img src="../res/img/space_invaders/ships/ship_1.png" id="player" class="ship">
-		<button id="btnstart">Start</button>
+		<img src="../res/img/space_invaders/ships/ship_6.png" id="player" class="ship">
+		<button id="btnstart" class="arcade-btn">Start</button>
 	</div>
 </body>
 </html>
