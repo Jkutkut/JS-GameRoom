@@ -19,7 +19,8 @@ class Snake {
 	show() {
 		//drawBackgroundPattern();
 		fill('rgb(34,145,34)');
-		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE);
+		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE, 
+			20, 20, 0, 0);
 		if (this.body != null)
 			this.body.show();
 	}
@@ -29,8 +30,13 @@ class Snake {
 	}
 
 	move() {
-		if (!this.canMove())
+		this.collisionApple();
+
+		if (!this.canMove()) {
+			console.log("Game Over");
+			noLoop();
 			return;
+		}
 		let x = this.posicion.x
 		let y = this.posicion.y;
 		if (this.orienta == Snake.UP){
@@ -101,8 +107,16 @@ class Snake {
 			this.body.grow();
 	}
 
+	collisionApple(){
+		if (apple.posicion.x == this.posicion.x + (REC_SIZE/2) && apple.posicion.y == this.posicion.y + (REC_SIZE/2)){
+			//borrar apple
+			this.crecer++;
+			apple = new Apple();
+			
+		}
+	}
+	
 }
-
 
 class SnakeBody {
 	constructor() {
