@@ -22,6 +22,8 @@ function draw() {
 	apple.show();
 	text("(" + snake.posicion.x + ", " + snake.posicion.y + ")", 20, 20)
 	text("(" + apple.posicion.x + ", " + apple.posicion.y + ")", 20, 40)
+
+	
 }
 
 function drawBackgroundPattern(){

@@ -1,4 +1,3 @@
-var canvas_lh = 600;
 
 class Snake {
 
@@ -17,7 +16,6 @@ class Snake {
 	}
   
 	show() {
-		//drawBackgroundPattern();
 		fill('rgb(34,145,34)');
 		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE, 
 			20, 20, 0, 0);
@@ -125,7 +123,6 @@ class SnakeBody {
 	}
   
 	show() {
-		//drawBackgroundPattern();
 		fill('rgb(34,145,34)');
 		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE);
 		if (this.next != null)
