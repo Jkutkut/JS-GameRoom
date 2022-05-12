@@ -2,6 +2,8 @@ class Ball {
 
   static BALL_SOUND = null;
 
+  static A = 0.0001;
+
   static R = 20;
   constructor(x, y) {
     this.posicion = new p5.Vector(x, y);
@@ -14,6 +16,7 @@ class Ball {
   }
   update(player, enemy) {
     this.posicion.add(this.velocity);
+    this.velocity.mult(1 + Ball.A);
     this.playerCollision(player);
     this.playerCollision(enemy);
   }
@@ -23,13 +26,27 @@ class Ball {
   }
 
   checkBoundaryCollision() {
+
     if (this.posicion.x > width - this.r) {
       //this.posicion.x = width - this.r;
       //this.velocity.x *= -1;
+      score.j++;
+      this.posicion.x = width / 2;
+      this.posicion.y = height / 2;
+      this.velocity = p5.Vector.random2D();
+      this.velocity.mult(5);
+
       return;
     } else if (this.posicion.x < this.r) {
       //this.posicion.x = this.r;
       //this.velocity.x *= -1;
+      score.e++;
+      this.posicion.x = width / 2;
+      this.posicion.y = height / 2;
+      this.velocity = p5.Vector.random2D();
+      this.velocity.mult(5);
+
+
       return;
     } else if (this.posicion.y > height - this.r) {
       this.posicion.y = height - this.r;

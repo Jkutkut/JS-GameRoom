@@ -1,6 +1,7 @@
 let player;
 let enemy;
 let bola;
+let score;
 
 const HEIGHT = 600;
 const WIDTH = 800;
@@ -24,7 +25,7 @@ function setup() {
     player = new Jugador(0, mouseY);
     enemy = new EnemyIA(WIDTH - Jugador.ANCHURA, (HEIGHT - Jugador.ALTURA) / 2);
     bola = new Ball(WIDTH / 2, HEIGHT / 2);
-
+    score = { j: 0, e: 0 };
 }
 
 function draw() {
@@ -49,8 +50,8 @@ function draw() {
 
     enemy.show();
     enemy.update(HEIGHT, bola);
-    text(1, WIDTH * 0.3, 40);
-    text(1, WIDTH * 0.7, 40);
+    text(score.j, WIDTH * 0.3, 40);
+    text(score.e, WIDTH * 0.7, 40);
     bola.show();
     bola.update(player, enemy);
     bola.checkBoundaryCollision();
