@@ -32,7 +32,6 @@ class ShipHitAnimation extends ImgAnimation {
 	}
 
 	destroy() {
-		this.obj.destroy();
 		return super.destroy();
 	}
 }

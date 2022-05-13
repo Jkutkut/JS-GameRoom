@@ -1,6 +1,6 @@
 class Enemy extends CharacterObject {
 	constructor(pos, size, angle) {
-		super(pos, size, angle);
+		super(pos, size, angle, 1);
 		this.src = null;
 	}
 
