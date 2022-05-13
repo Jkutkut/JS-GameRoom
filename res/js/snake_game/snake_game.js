@@ -31,15 +31,17 @@ function draw() {
 }
 
 function drawBackgroundPattern(){
+	push();
 	for (let x = 0; x < (CANVAS_SIZE / REC_SIZE) ; x++) {
-	  for (let y = 0; y < (CANVAS_SIZE / REC_SIZE); y++) {
-		  if ((y + x * ((CANVAS_SIZE / REC_SIZE)-1)) % 2 == 0)
-			  fill(COLOR1);
-		  else
-			  fill(COLOR2);
-		  rect(x * REC_SIZE, y * REC_SIZE, REC_SIZE, REC_SIZE);
-	  } 
-  }
+		for (let y = 0; y < (CANVAS_SIZE / REC_SIZE); y++) {
+			if ((y + x * ((CANVAS_SIZE / REC_SIZE)-1)) % 2 == 0)
+				fill(COLOR1);
+			else
+				fill(COLOR2);
+			rect(x * REC_SIZE, y * REC_SIZE, REC_SIZE, REC_SIZE);
+		} 
+	}
+	pop();
 }
 
 function keyPressed() {
