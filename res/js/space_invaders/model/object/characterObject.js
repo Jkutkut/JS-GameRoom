@@ -12,9 +12,9 @@ class CharacterObject extends PhysicsObject {
 	}
 
 	hit() {
+		this.health--;
 		if (this.health == 0)
 			return new ShipExplosionAnimation(this);
-		this.health--;
 		return new ShipHitAnimation(this, this.maxHealth - this.health);
 	}
 

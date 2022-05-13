@@ -6,8 +6,6 @@ class ShipExplosionAnimation extends ImgAnimation {
 	static IMG_WIDTH = 48;
 
 	constructor(obj) {
-		if (!(obj instanceof Ship))
-			throw new Error("Error: ShipExplosionAnimation needs a Ship object");
 		super(obj, ShipExplosionAnimation.N_SPRITES, ShipExplosionAnimation.FRAME_COOLDOWN);
 		// this.obj.visible = false;
 		this.obj.destroy();

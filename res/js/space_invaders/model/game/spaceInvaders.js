@@ -122,6 +122,10 @@ class SpaceInvaders extends Game {
 
 		for (let j = 0, enemy; j < this.enemies.length; j++) {
 			enemy = this.enemies[j];
+			if (enemy.destroyed) {
+				this.enemies.splice(j--, 1);
+				continue;
+			}
 			if (enemy.collides(this.ship)) {
 				this.hitShip(this.enemies[j]);
 				this.hitShip(this.ship);
