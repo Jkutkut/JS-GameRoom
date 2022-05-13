@@ -15,7 +15,7 @@ class Snake {
 		this._posicion =  new p5.Vector(x, y);
 		this.orienta = Snake.UP;
 		this.body = null;
-		this.crecer = 21;
+		this.crecer = 5;
 	}
   
 	show() {
@@ -120,7 +120,7 @@ class Snake {
 	collisionApple(){
 		if (apple.posicion.x == this.posicion.x + (REC_SIZE/2) && apple.posicion.y == this.posicion.y + (REC_SIZE/2)){
 			//borrar apple
-			this.crecer++;;
+			this.crecer++; 
 			console.log(this.crecer);
 			apple = new Apple();
 			
@@ -176,7 +176,7 @@ class SnakeBody {
 	grow() {
 		if (this.next == null) {
 			this.next = new SnakeBody();
-			this.next.color = this.color.map(x => x += 10);
+			this.next.color = this.color.map(x => x += 2);
 		}
 		else
 			this.next.grow();
