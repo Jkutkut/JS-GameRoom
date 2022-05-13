@@ -120,6 +120,14 @@ class Snake {
 
 		}
 	}
+
+	isIn(x, y) {
+		if (this.posicion.x == x && this.posicion.y == y)
+			return true;
+		if (this.body != null)
+			return this.body.isIn(x, y);
+		return false;
+	}
 	
 }
 
@@ -134,12 +142,11 @@ class SnakeBody {
 		console.log(head_x, head_y);
 		if(head_x == this.posicion.x && head_y == this.posicion.y){
 			noLoop();
-			return;
-		} else {
+		}
+
 		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE);
 		if (this.next != null)
 			this.next.show(head_x, head_y);
-		}
 	}
 
 	moveTo(x, y) {
@@ -158,6 +165,14 @@ class SnakeBody {
 			this.next = new SnakeBody();
 		else
 			this.next.grow();
+	}
+
+	isIn(x, y) {
+		if (this.posicion.x == x && this.posicion.y == y)
+			return true;
+		if (this.next != null)
+			return this.next.isIn(x, y);
+		return false;
 	}
 
 }

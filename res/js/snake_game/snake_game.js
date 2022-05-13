@@ -1,9 +1,10 @@
 var snake, apple;
 const CANVAS_SIZE = 600;
-const VELOCITY = 7;
+const VELOCITY = 30;
+const GAME_VELOCITY = 4;
 const REC_SIZE = 30;
 const COLOR1 = 255;
-const COLOR2 = 120;
+const COLOR2 = 190;
 
 
 function setup() {
@@ -17,13 +18,16 @@ function setup() {
 	
 function draw() {	
 	drawBackgroundPattern();
-	snake.show();
-	snake.move();
 	apple.show();
+	snake.show();
+
 	text("(" + snake.posicion.x + ", " + snake.posicion.y + ")", 20, 20)
 	text("(" + apple.posicion.x + ", " + apple.posicion.y + ")", 20, 40)
 
-	
+	// Game velocity
+	if (frameCount % GAME_VELOCITY == 0) {
+		snake.move();
+	}
 }
 
 function drawBackgroundPattern(){
