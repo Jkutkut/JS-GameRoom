@@ -23,6 +23,8 @@ body {
 	display: flex;
 	justify-content: center;
 
+	position: relative;
+
 	background-image: url("../../../../res/img/space_invaders/background/background.png");
 }
 
