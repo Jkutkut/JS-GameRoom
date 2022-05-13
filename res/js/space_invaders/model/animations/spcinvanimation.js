@@ -15,7 +15,10 @@ class SpcInvAnimation {
 		return [];
 	}
 
-	tick() {}
+	tick() {
+		if (this.obj.ended)
+			this.done = true;
+	}
 
 	// GETTERS
 	get obj() {

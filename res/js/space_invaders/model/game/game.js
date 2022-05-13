@@ -31,7 +31,7 @@ class Game {
 		for (let i = 0, j; i < this.animations.length; i++) {
 			this.animations[i].tick();
 			if (this.animations[i].ended() || 
-				(this.animations[i].obj.destroyed && !(this.animations[i] instanceof ShipHitAnimation))) {
+				(this.animations[i].obj.destroyed && !(this.animations[i] instanceof ShipExplosionAnimation))) {
 				let toAdd = this.animations[i].destroy();
 				this.animations.splice(i--, 1);
 				for (j = 0; j < toAdd.length; j++)

@@ -13,6 +13,9 @@ class ImgAnimation extends SpcInvAnimation {
 	}
 
 	tick() {
+		super.tick();
+		if (this.done)
+			return;
 		if (this.cooldown == 0) {
 			this._currentFrame++;
 			this.cooldown = this._frameCooldown;

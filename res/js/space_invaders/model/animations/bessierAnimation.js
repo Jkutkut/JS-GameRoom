@@ -12,6 +12,7 @@ class BessierAnimation extends SpcInvAnimation {
 	}
 
 	tick() {
+		super.tick();
 		if (this.done)
 			return;
 		this.obj.tp(this._curveArray[this.index].x, this._curveArray[this.index].y);

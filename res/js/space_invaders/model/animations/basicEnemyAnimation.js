@@ -12,7 +12,8 @@ class BasicEnemyAnimation extends SyncAnimation {
 	}
 
 	tick() {
-		super.tick();
+		if (this.done)
+			return;
 		let pos = BasicEnemyAnimation.HORIZONTAL_MOVEMENT * Math.sin(BasicEnemyAnimation.OFFSET);
 
 		this.obj.tp(this.objPos.x + pos);

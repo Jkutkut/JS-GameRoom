@@ -9,6 +9,7 @@ class EnemySpawnAnimation extends SpcInvAnimation {
 	}
 
 	tick() {
+		super.tick();
 		if (this.done)
 			return;
 		let n = this.curve.next();
