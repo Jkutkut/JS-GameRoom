@@ -6,23 +6,23 @@ var _emptyGame = {
 
 function preload() {
 	// JSON
-	fetch("../res/db/space_invaders/bessierAnimations.json")
+	fetch("../res/db/spaceInvaders/bessierAnimations.json")
 		.then(response => response.json())
 		.then(json => loadBessierAnimations(json));
 
-	SpaceInvaders.BG = loadImage("../res/img/space_invaders/background/background.png");
+	SpaceInvaders.BG = loadImage("../res/img/spaceInvaders/background/background.png");
 
-	Ship.SRC = loadImage("../res/img/space_invaders/ships/ship_6.png");
+	Ship.SRC = loadImage("../res/img/spaceInvaders/ships/ship_6.png");
 
-	BasicEnemy.SRC.Beholder = loadImage("../res/img/space_invaders/enemies/Beholder.png");
-	BasicEnemy.SRC.Emissary = loadImage("../res/img/space_invaders/enemies/Emissary.png");
+	BasicEnemy.SRC.Beholder = loadImage("../res/img/spaceInvaders/enemies/Beholder.png");
+	BasicEnemy.SRC.Emissary = loadImage("../res/img/spaceInvaders/enemies/Emissary.png");
 	
-	Bullet.SRC.body = loadImage("../res/img/space_invaders/ships_elements/player_bullet.png");
+	Bullet.SRC.body = loadImage("../res/img/spaceInvaders/shipsElements/player_bullet.png");
 	
 	for (let i = 1; i <= 5; i++)
-		BasicEnemy.SRC[`basic${i}`] = loadImage(`../res/img/space_invaders/ships/ship_${i}.png`);
+		BasicEnemy.SRC[`basic${i}`] = loadImage(`../res/img/spaceInvaders/ships/ship_${i}.png`);
 
-	ShipExplosionAnimation.SPRITES = loadImage("../res/img/space_invaders/ships_elements/ship_explosion.png");
+	ShipExplosionAnimation.SPRITES = loadImage("../res/img/spaceInvaders/shipsElements/ship_explosion.png");
 }
 
 window.onload = () => {
