@@ -148,10 +148,7 @@ class SpaceInvaders extends Game {
 	}
 
 	hitShip(obj) {
-		console.log("hit", this.animations.length);
 		this.addAnimation(obj.hit());
-		console.log(this.animations.length);
-		console.log(this.animations[this.animations.length - 1]);
 	}
 
 	fire() {

@@ -32,12 +32,8 @@ window.onload = () => {
 
 	let enemiesImg = document.getElementsByClassName("enemy");
 
-	for (let i = 0; i < enemiesImg.length; i++) {
-		enemiesImg[i].addEventListener("click", () => {
-			console.log(enemiesImg[i]);
-		});
+	for (let i = 0; i < enemiesImg.length; i++)
 		enemiesImg[i].style["animation-delay"] = `${Math.random()}s`;
-	}
 }
 
 function setup() {
