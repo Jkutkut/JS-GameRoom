@@ -10,6 +10,8 @@ function preload() {
 		.then(response => response.json())
 		.then(json => loadBessierAnimations(json));
 
+	SpaceInvaders.BASE_SIZE = new p5.Vector(50, 50);
+
 	SpaceInvaders.BG = loadImage("../res/img/spaceInvaders/background/background.png");
 
 	Ship.SRC = loadImage("../res/img/spaceInvaders/ships/ship_6.png");

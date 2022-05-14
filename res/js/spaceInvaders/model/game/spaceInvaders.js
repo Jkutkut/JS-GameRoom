@@ -3,6 +3,8 @@ class SpaceInvaders extends Game {
 	static BG_COLOR = 30;
 	static BG = null;
 
+	static BASE_SIZE = null;
+
 	constructor(size) {
 		super(size);
 
@@ -32,7 +34,7 @@ class SpaceInvaders extends Game {
 	}
 
 	initShip() {
-		Ship.SIZE = new p5.Vector(50, 50);
+		Ship.SIZE = SpaceInvaders.BASE_SIZE;
 
 		let offsetV = this.size.y / 50;
 		let shipPos = new p5.Vector((this.size.x - Ship.SIZE.x) / 2, this.size.y - offsetV - Ship.SIZE.y);
@@ -41,22 +43,19 @@ class SpaceInvaders extends Game {
 
 	initEnemies() {
 		this.enemies = [];
-		let basicSize = new p5.Vector(50, 50);
 
-		let enemies = ["Beholder", "Emissary", "basic1", "basic2", "basic3", "basic4", "basic5"]
-
+		const ROW = 7;
 		for (let j = 0; j < 3; j++) {
-			for (let i = 0; i < enemies.length; i++) {
+			for (let i = 0; i < ROW; i++) {
 				this.enemies.push(new BasicEnemy(
 					new p5.Vector(-100, 0),
-					basicSize.copy(),
-					enemies[i % enemies.length]
-					// enemies[2]
+					SpaceInvaders.BASE_SIZE.copy(),
+					i
 				));
 				this.addAnimation(new EnemySpawnAnimation(
-					this.enemies[j * enemies.length + i],
+					this.enemies[j * ROW + i],
 					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
-					j * enemies.length + i
+					j * ROW + i
 				));
 			}
 		}
