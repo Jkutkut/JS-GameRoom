@@ -33,8 +33,6 @@ window.onload = () => {
 	});
 
 	let enemiesImg = document.getElementsByClassName("enemy");
-
-	gameOver();
 }
 
 function setup() {
@@ -54,9 +52,8 @@ function initGame() {
 }
 
 function gameOver() {
-	document.getElementById("mainmenu").style.display = "none"; // TODO DEBUG
 	document.getElementsByClassName("p5Canvas")[0].style.display = "none";
-	document.getElementById("gameover").style.display = "block";
+	document.getElementById("gameover").style.display = "flex";
 }
 
 keyPressed = () => {

@@ -5,7 +5,7 @@
 	--ship-full-size: calc(var(--ship-size) + var(--ship-margin) * 2);
 }
 
-.p5Canvas {
+.p5Canvas, #gameover {
 	display: none;
 }
 
