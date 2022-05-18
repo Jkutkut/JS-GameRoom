@@ -1,5 +1,6 @@
 :root {
 	--ship-size: 50px;
+	--boss-ship-size: 70px;
 	--ship-margin: 10px;
 	--ship-full-size: calc(var(--ship-size) + var(--ship-margin) * 2);
 }
@@ -12,10 +13,7 @@ body {
 	font-family: var(--font-family);
 }
 
-#mainmenu {
-	--btn-width: calc(var(--size) * 0.4);
-	--btn-height: calc(var(--size) * 0.1);
-
+body > div {
 	width: var(--size);
 	height: var(--size);
 	background-color: #222;
@@ -26,6 +24,11 @@ body {
 	position: relative;
 
 	background-image: url("../../../../res/img/spaceInvaders/background/background.png");
+}
+
+#mainmenu {
+	--btn-width: calc(var(--size) * 0.4);
+	--btn-height: calc(var(--size) * 0.1);
 }
 
 /* Ships */
@@ -128,4 +131,45 @@ body {
 #btnstart {
 	position: absolute;
 	bottom: calc(var(--size) * 0.1);
+}
+
+
+/* Game over */
+
+#gameover {
+	flex-direction: column;
+	align-items: center;
+}
+
+div {
+	color: var(--color-primary);
+}
+
+.results {
+	display: flex;
+	flex-direction: column;
+
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.results > div {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+
+.enemyresult {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: row;
+}
+
+.enemyresult > * {
+	margin: 1rem;
+}
+
+.boss {
+	--ship-size: var(--boss-ship-size);
 }
