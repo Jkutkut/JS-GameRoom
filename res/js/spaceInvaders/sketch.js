@@ -34,8 +34,7 @@ window.onload = () => {
 
 	let enemiesImg = document.getElementsByClassName("enemy");
 
-	for (let i = 0; i < enemiesImg.length; i++)
-		enemiesImg[i].style["animation-delay"] = `${Math.random()}s`;
+	gameOver();
 }
 
 function setup() {
@@ -52,6 +51,12 @@ function initGame() {
 	document.getElementsByClassName("p5Canvas")[0].style.display = "block";
 	document.getElementById("mainmenu").style.display = "none";
 	_game = new SpaceInvaders(new p5.Vector(width, height));
+}
+
+function gameOver() {
+	document.getElementById("mainmenu").style.display = "none"; // TODO DEBUG
+	document.getElementsByClassName("p5Canvas")[0].style.display = "none";
+	document.getElementById("gameover").style.display = "block";
 }
 
 keyPressed = () => {
