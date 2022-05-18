@@ -28,10 +28,19 @@ class EnemySpawnAnimation extends BessierAnimation {
 		super(obj, Bessier.bessier(
 			BessierAnimation.ANIMATIONS["spawn"].steps,
 			...BessierAnimation.ANIMATIONS["spawn"].animation,
-			finalPos
+			new p5.Vector(finalPos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, finalPos.y)
 		));
 
 		this.indexOffset = indexOffset * EnemySpawnAnimation.OFFSET;
+		this.inSync = false;
+		// ! DEBUG
+		console.log(finalPos.x, finalPos.y);
+		if (finalPos.x == 120 && finalPos.y == 60)
+			this.inSync = true;
+	}
+
+	ended() {
+		return this.done && this.inSync;
 	}
 
 	tick() {
@@ -40,9 +49,15 @@ class EnemySpawnAnimation extends BessierAnimation {
 			return;
 		}
 		super.tick();
+		if (this.done) {
+			// if (Math.abs(1 - Math.cos(BasicEnemyAnimation.OFFSET)) < 0.01)
+			if (Math.cos(BasicEnemyAnimation.OFFSET) - Math.cos(BasicEnemyAnimation.OFFSET + 0.01)  >= 0)
+				this.inSync = true;
+		}
 	}
 
 	destroy() {
+		this.obj.moveBy(-BasicEnemyAnimation.HORIZONTAL_MOVEMENT);
 		return [
 			new BasicEnemyAnimation(this.obj)
 		];
