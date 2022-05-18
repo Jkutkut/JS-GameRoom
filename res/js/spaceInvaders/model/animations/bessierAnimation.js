@@ -45,12 +45,10 @@ class EnemySpawnAnimation extends BessierAnimation {
 			return;
 		}
 		super.tick();
-		if (this.done) {
-			// if (Math.abs(1 - Math.cos(BasicEnemyAnimation.OFFSET)) < 0.01)
-			if (Math.cos(BasicEnemyAnimation.OFFSET) - Math.cos(BasicEnemyAnimation.OFFSET + 0.01)  >= 0)
-				if (Math.cos(BasicEnemyAnimation.OFFSET) > 0.5) 
-					this.inSync = true;
-		}
+		if (this.done &&
+			Math.cos(BasicEnemyAnimation.OFFSET) - Math.cos(BasicEnemyAnimation.OFFSET + 0.01)  >= 0 &&
+			Math.cos(BasicEnemyAnimation.OFFSET) > 0.5)
+				this.inSync = true;
 	}
 
 	destroy() {
