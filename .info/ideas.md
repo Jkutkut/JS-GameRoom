@@ -3,12 +3,12 @@
 ## Games:
 - [ ] Breakout
 - [ ] Tetris
-- [ ] Space invaders
+- [x] Space invaders
 - [ ] Spacewar
-- [ ] PONG
+- [x] PONG
 - [ ] ping pong
-- [ ] Snake
+- [x] Snake
 - [ ] Tanks
 - [ ] Futbolin
 - [ ] Flappy bird
-- [ ] Wordle
+- [x] Wordle

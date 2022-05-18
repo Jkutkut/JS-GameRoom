@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<!-- JS -->
+	<script src="../res/js/p5/p5.min.js"></script>
+	<script src="../res/js/spaceInvaders/sketch.js"></script>
+
+	<!-- Model -->
+	<script src="../res/js/spaceInvaders/model/game/game.js"></script>
+	<script src="../res/js/spaceInvaders/model/game/spaceInvaders.js"></script>
+
+	<script src="../res/js/spaceInvaders/model/object/physicsObject.js"></script>
+	<script src="../res/js/spaceInvaders/model/object/characterObject.js"></script>
+	<script src="../res/js/spaceInvaders/model/object/ship.js"></script>
+	
+	<script src="../res/js/spaceInvaders/model/object/enemy/enemy.js"></script>
+	<script src="../res/js/spaceInvaders/model/object/enemy/basicEnemy.js"></script>
+
+	<script src="../res/js/spaceInvaders/model/object/bullet/bullet.js"></script>
+
+	<script src="../res/js/spaceInvaders/model/animations/spcinvanimation.js"></script>
+	<script src="../res/js/spaceInvaders/model/animations/imgAnimation.js"></script>
+	<script src="../res/js/spaceInvaders/model/animations/shipExplosionAnimation.js"></script>
+	<script src="../res/js/spaceInvaders/model/animations/SyncAnimation.js"></script>
+	<script src="../res/js/spaceInvaders/model/animations/basicEnemyAnimation.js"></script>
+	<!-- <script src="../res/js/spaceInvaders/model/animations/parabolaAnimation.js"></script> -->
+	<script src="../res/js/spaceInvaders/model/animations/bessierAnimation.js"></script>
+	<script src="../res/js/spaceInvaders/model/animations/shipHitAnimation.js"></script>
+
+	<script src="../res/js/spaceInvaders/model/level/level.js"></script>
+
+	<!-- Tools -->
+	<script src="../res/js/spaceInvaders/tools/bessier.js"></script>
+	<script src="../res/js/spaceInvaders/tools/randomGenerator.js"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../res/css/common/global_variables.css">
+	<link rel="stylesheet" href="../res/css/common/game_common.css">
+	<link rel="stylesheet" href="../res/css/game/gameStyle.css">
+	<link rel="stylesheet" href="../res/css/game/spaceInvaders/spaceInvaders.css">
+
+	<title>Space Invaders</title>
+</head>
+<body>
+	<div id="mainmenu">
+		<div id="enemyhorde">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+			<img src="../res/img/spaceInvaders/ships/ship_3.png" id="ship" class="ship enemy">
+		</div>
+		<img src="../res/img/spaceInvaders/ships/ship_6.png" id="player" class="ship">
+		<button id="btnstart" class="arcade-btn">Start</button>
+	</div>
+</body>
+</html>

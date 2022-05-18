@@ -38,9 +38,7 @@ class Bessier {
 		for (let i = 0; i < points.length; i++)
 			ellipse(points[i].x, points[i].y, 25);
 		pop();
-		console.log(results.length);
 		for (let p of results) {
-			console.log(p.x, p.y);
 			ellipse(p.x, p.y, 10);
 		}
 	}

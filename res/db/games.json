@@ -36,8 +36,8 @@
 		{
 			"name": "Space Invaders",
 			"description": "Survive the invasion from space by shooting down aliens.",
-			"url": "space_invaders.html",
-			"thumbnail": "space_invaders.png",
+			"url": "spaceInvaders.html",
+			"thumbnail": "spaceInvaders.png",
 			"settings": {
 				"width": 600,
 				"height": 600

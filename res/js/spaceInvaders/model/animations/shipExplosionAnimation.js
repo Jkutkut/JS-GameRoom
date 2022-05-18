@@ -15,7 +15,7 @@ class ShipExplosionAnimation extends ImgAnimation {
 		this.showFrame(
 			ShipExplosionAnimation.SPRITES,
 			ShipExplosionAnimation.IMG_WIDTH,
-			1.8
+			1.5
 		);
 	}
 
@@ -24,7 +24,6 @@ class ShipExplosionAnimation extends ImgAnimation {
 	}
 
 	destroy() {
-		// this.obj.destroy();
 		return super.destroy();
 	}
 }
