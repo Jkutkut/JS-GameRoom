@@ -70,17 +70,7 @@ class SpaceInvaders extends Game {
 			return;
 		}
 		super.tick();
-		if (keyIsDown(LEFT_ARROW) || keyIsDown(65))
-			this.moveShip(-1, 0);
-		if (keyIsDown(RIGHT_ARROW) || keyIsDown(68))
-			this.moveShip(1, 0);
-		if (keyIsDown(UP_ARROW) || keyIsDown(87))
-			this.moveShip(0, -1);
-		if (keyIsDown(DOWN_ARROW) || keyIsDown(83))
-			this.moveShip(0, 1);
-		if (keyIsDown(32))
-			this.fire();
-
+		this.keyHold();
 		this.ship.tick();
 		let bullet;
 		for (let i = 0; i < this.bullets.length; i++) {
@@ -109,6 +99,21 @@ class SpaceInvaders extends Game {
 		if (keyCode === DOWN_ARROW || keyCode === 83)
 			this.moveShip(0, 1);
 		this.updateScreen = true;
+	}
+
+	keyHold() {
+		if (!this.shipAlive)
+			return;
+		if (keyIsDown(LEFT_ARROW) || keyIsDown(65))
+			this.moveShip(-1, 0);
+		if (keyIsDown(RIGHT_ARROW) || keyIsDown(68))
+			this.moveShip(1, 0);
+		if (keyIsDown(UP_ARROW) || keyIsDown(87))
+			this.moveShip(0, -1);
+		if (keyIsDown(DOWN_ARROW) || keyIsDown(83))
+			this.moveShip(0, 1);
+		if (keyIsDown(32))
+			this.fire();
 	}
 
 	checkCollisions() {
