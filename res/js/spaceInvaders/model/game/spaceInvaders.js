@@ -12,9 +12,7 @@ class SpaceInvaders extends Game {
 		this.initShip();
 
 		this.level = 0;
-		this.initEnemies();
-		
-		this.updateScreen = true;
+		this.loadNextLevel();
 	}
 
 	show() {
@@ -47,25 +45,64 @@ class SpaceInvaders extends Game {
 		this.shipAlive = true;
 	}
 
-	initEnemies() {
+	loadNextLevel() {
 		this.enemies = [];
+		this.animations = [];
 
-		const ROW = 7;
-		for (let j = 0; j < 3; j++) {
-			this.enemies.push([]);
-			for (let i = 0; i < ROW; i++) {
-				this.enemies[j].push(new TutorialEnemy(
-					new p5.Vector(-100, 0),
-					SpaceInvaders.BASE_SIZE.copy(),
-					i
-				));
-				this.addAnimation(new EnemySpawnAnimation(
-					this.enemies[j][i],
-					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
-					j * ROW + i
-				));
-			}
+		let basicLevel = (enemyType) => {
+			const ROW = 7;
+				for (let j = 0; j < 3; j++) {
+					this.enemies.push([]);
+					for (let i = 0; i < ROW; i++) {
+						this.enemies[j].push(new enemyType(
+							new p5.Vector(-100, 0),
+							SpaceInvaders.BASE_SIZE.copy(),
+							i
+						));
+						this.addAnimation(new EnemySpawnAnimation(
+							this.enemies[j][i],
+							new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
+							j * ROW + i
+						));
+					}
+				}
+		};
+
+		let f, type;
+		switch (this.level) {
+			case 0:
+				f = basicLevel;
+				type = TutorialEnemy;
+				break;
+			case 1:
+				f = basicLevel;
+				type = IceEnemy;
+				break;
+			// case 2:
+
+			// 	break;
+			// case 3:
+			case 2:
+				f = basicLevel;
+				type = FireEnemy;
+				break;
+			// case 4:
+
+			// 	break;
+			// case 5:
+			case 3:
+				f = basicLevel;
+				type = BossEnemy;
+			default:
+				f = basicLevel;
+				type = FastFireEnemy;
+				break;
 		}
+
+		f(type);
+
+		this.level++;
+		this.updateScreen = true;
 	}
 
 	tick() {
@@ -80,6 +117,7 @@ class SpaceInvaders extends Game {
 		}
 		this.checkCollisions();
 		if (this.enemies.length == 0) {
+			this.loadNextLevel();
 			console.log("You win!");
 		}
 		if (this.updateScreen || this.animations.length > 0) {
