@@ -25,3 +25,31 @@ class TutorialEnemy extends Enemy {
 		this.src = TutorialEnemy.SRC.tutorial;
 	}
 }
+
+class IceEnemy extends Enemy {
+	constructor(pos, size) {
+		super(pos, size);
+		this.src = IceEnemy.SRC.ice;
+	}
+}
+
+class FastIceEnemy extends Enemy {
+	constructor(pos, size) {
+		super(pos, size);
+		this.src = FastIceEnemy.SRC.iceFast;
+	}
+}
+
+class FireEnemy extends Enemy {
+	constructor(pos, size) {
+		super(pos, size);
+		this.src = FireEnemy.SRC.fire;
+	}
+}
+
+class FastFireEnemy extends Enemy {
+	constructor(pos, size) {
+		super(pos, size);
+		this.src = FastFireEnemy.SRC.fireFast;
+	}
+}
