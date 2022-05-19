@@ -20,8 +20,10 @@ class SpaceInvaders extends Game {
 		background(SpaceInvaders.BG_COLOR);
 		image(SpaceInvaders.BG, this.halfSize.x, this.halfSize.y, this.size.x, this.size.y);
 		this.ship.show();
-		for (let enemy of this.enemies) {
-			enemy.show();
+		for (let j = 0; j < this.enemies.length; j++) {
+			for (let enemy of this.enemies[j]) {
+				enemy.show();
+			}
 		}
 		for (let bullet of this.bullets) {
 			bullet.show();
@@ -48,14 +50,15 @@ class SpaceInvaders extends Game {
 
 		const ROW = 7;
 		for (let j = 0; j < 3; j++) {
+			this.enemies.push([]);
 			for (let i = 0; i < ROW; i++) {
-				this.enemies.push(new BasicEnemy(
+				this.enemies[j].push(new BasicEnemy(
 					new p5.Vector(-100, 0),
 					SpaceInvaders.BASE_SIZE.copy(),
 					i
 				));
 				this.addAnimation(new EnemySpawnAnimation(
-					this.enemies[j * ROW + i],
+					this.enemies[j][i],
 					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
 					j * ROW + i
 				));
@@ -113,30 +116,35 @@ class SpaceInvaders extends Game {
 
 	checkCollisions() {
 		let bullet;
-		for (let i = 0, j; i < this.bullets.length; i++) {
+		for (let i = 0, j, k; i < this.bullets.length; i++) {
 			bullet = this.bullets[i];
 			if (bullet.outOfBounds(this.size)) {
 				this.destroyBullet(...this.bullets.splice(i--, 1));
 				continue;
 			}
+			bulletCollision:
 			for (j = 0; j < this.enemies.length; j++) {
-				if (bullet.collides(this.enemies[j])) {
-					this.hitShip(this.enemies[j]);
-					this.destroyBullet(...this.bullets.splice(i--, 1));
-					break;
+				for (k = this.enemies[j].length - 1; k >= 0; k--) {
+					if (bullet.collides(this.enemies[j][k])) {
+						this.hitShip(this.enemies[j][k]);
+						this.destroyBullet(...this.bullets.splice(i--, 1));
+						break bulletCollision;
+					}
 				}
 			}
 		}
 
-		for (let j = 0, enemy; j < this.enemies.length; j++) {
-			enemy = this.enemies[j];
-			if (enemy.destroyed) {
-				this.enemies.splice(j--, 1);
-				continue;
-			}
-			if (!this.ship.destroyed && enemy.collides(this.ship)) {
-				this.hitShip(this.enemies[j]);
-				this.hitShip(this.ship);
+		for (let j = 0, k, enemy; j < this.enemies.length; j++) {
+			for (k = this.enemies[j].length - 1; k >= 0; k--) {
+				enemy = this.enemies[j][k];
+				if (enemy.destroyed) {
+					this.enemies[j].splice(k, 1);
+					continue;
+				}
+				if (!this.ship.destroyed && enemy.collides(this.ship)) {
+					this.hitShip(enemy);
+					this.hitShip(this.ship);
+				}
 			}
 		}
 	}
