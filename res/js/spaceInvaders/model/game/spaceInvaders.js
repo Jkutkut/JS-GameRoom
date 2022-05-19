@@ -45,6 +45,7 @@ class SpaceInvaders extends Game {
 		let shipPos = new p5.Vector((this.size.x - Ship.SIZE.x) / 2, this.size.y - offsetV - Ship.SIZE.y);
 		this.ship = new Ship(shipPos, 0);
 		this.shipAlive = true;
+		this.addAnimation(new HoverAnimation(this.ship))
 	}
 
 	loadNextLevel() {
