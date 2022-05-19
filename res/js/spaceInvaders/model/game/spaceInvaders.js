@@ -211,6 +211,18 @@ class SpaceInvaders extends Game {
 			}
 		}
 
+		for (let i = 0; i < this.enemyBullets.length; i++) {
+			bullet = this.enemyBullets[i];
+			if (bullet.outOfBounds(this.size)) {
+				this.destroyBullet(...this.enemyBullets.splice(i--, 1));
+				continue;
+			}
+			if (bullet.collides(this.ship)) {
+				this.hitShip(this.ship);
+				this.destroyBullet(...this.enemyBullets.splice(i--, 1));
+			}
+		}
+
 		for (let j = 0, k, enemy; j < this.enemies.length; j++) {
 			for (k = this.enemies[j].length - 1; k >= 0; k--) {
 				enemy = this.enemies[j][k];
@@ -259,6 +271,7 @@ class SpaceInvaders extends Game {
 	}
 
 	enemyFire(enemy) {
+		console.log("enemy attempts fire");
 		if (enemy.canFire()) {
 			let bullet = enemy.fire();
 			this.enemyBullets.push(bullet);

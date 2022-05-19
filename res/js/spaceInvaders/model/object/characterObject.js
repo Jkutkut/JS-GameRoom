@@ -36,6 +36,7 @@ class CharacterObject extends PhysicsObject {
 
 	bulletDestroyed() {
 		this.bullets--;
+		console.log("bullet destroyed");
 	}
 
 	fire() {}
