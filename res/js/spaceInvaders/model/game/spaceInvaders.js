@@ -10,10 +10,11 @@ class SpaceInvaders extends Game {
 
 		this.initBullets();
 		this.initShip();
-		this.initEnemies();
-		this.updateScreen = true;
 
-		this.shipAlive = true;
+		this.level = 0;
+		this.initEnemies();
+		
+		this.updateScreen = true;
 	}
 
 	show() {
@@ -43,6 +44,7 @@ class SpaceInvaders extends Game {
 		let offsetV = this.size.y / 50;
 		let shipPos = new p5.Vector((this.size.x - Ship.SIZE.x) / 2, this.size.y - offsetV - Ship.SIZE.y);
 		this.ship = new Ship(shipPos, 0);
+		this.shipAlive = true;
 	}
 
 	initEnemies() {
@@ -77,7 +79,9 @@ class SpaceInvaders extends Game {
 			this.updateScreen = true;
 		}
 		this.checkCollisions();
-
+		if (this.enemies.length == 0) {
+			console.log("You win!");
+		}
 		if (this.updateScreen || this.animations.length > 0) {
 			this.show();
 			this.updateScreen = false;
