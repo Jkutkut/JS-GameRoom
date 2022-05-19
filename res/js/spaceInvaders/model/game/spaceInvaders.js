@@ -54,7 +54,7 @@ class SpaceInvaders extends Game {
 		for (let j = 0; j < 3; j++) {
 			this.enemies.push([]);
 			for (let i = 0; i < ROW; i++) {
-				this.enemies[j].push(new BasicEnemy(
+				this.enemies[j].push(new TutorialEnemy(
 					new p5.Vector(-100, 0),
 					SpaceInvaders.BASE_SIZE.copy(),
 					i
