@@ -24,12 +24,8 @@ class BessierAnimation extends SpcInvAnimation {
 
 class EnemySpawnAnimation extends BessierAnimation {
 	static OFFSET = 30;
-	constructor(obj, finalPos, indexOffset=0) {
-		super(obj, Bessier.bessier(
-			BessierAnimation.ANIMATIONS["spawn"].steps,
-			...BessierAnimation.ANIMATIONS["spawn"].animation,
-			new p5.Vector(finalPos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, finalPos.y)
-		));
+	constructor(obj, curveArray, indexOffset) {
+		super(obj, curveArray);
 
 		this.indexOffset = indexOffset * EnemySpawnAnimation.OFFSET;
 		this.inSync = false;
@@ -56,5 +52,33 @@ class EnemySpawnAnimation extends BessierAnimation {
 		return [
 			new BasicEnemyAnimation(this.obj)
 		];
+	}
+}
+
+class NormalSpawnAnimation extends EnemySpawnAnimation {
+	constructor(obj, finalPos, indexOffset) {
+		super(
+			obj,
+			Bessier.bessier(
+				BessierAnimation.ANIMATIONS["spawn"].steps,
+				...BessierAnimation.ANIMATIONS["spawn"].animation,
+				new p5.Vector(finalPos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, finalPos.y)
+			),
+			indexOffset
+		);
+	}
+}
+
+class FastSpawnAnimation extends EnemySpawnAnimation {
+	constructor(obj, finalPos, indexOffset) {
+		super(
+			obj,
+			Bessier.bessier(
+				BessierAnimation.ANIMATIONS["spawn"].steps * 0.72,
+				...BessierAnimation.ANIMATIONS["spawn"].animation,
+				new p5.Vector(finalPos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, finalPos.y)
+			),
+			indexOffset
+		);
 	}
 }

@@ -58,7 +58,7 @@ class SpaceInvaders extends Game {
 						SpaceInvaders.BASE_SIZE.copy(),
 						i
 					));
-					this.addAnimation(new EnemySpawnAnimation(
+					this.addAnimation(new NormalSpawnAnimation(
 						this.enemies[j][i],
 						new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
 						j * ROW + i
@@ -76,7 +76,7 @@ class SpaceInvaders extends Game {
 					SpaceInvaders.BASE_SIZE.copy(),
 					i
 				));
-				this.addAnimation(new EnemySpawnAnimation(
+				this.addAnimation(new FastSpawnAnimation(
 					this.enemies[2][i],
 					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * 2)),
 					2 * ROW + i
@@ -110,7 +110,7 @@ class SpaceInvaders extends Game {
 			// case 5: // Boss level
 			default:
 				f = basicLevel;
-				type = [FastFireEnemy];
+				type = [FastFireEnemy, this.level];
 				break;
 		}
 
