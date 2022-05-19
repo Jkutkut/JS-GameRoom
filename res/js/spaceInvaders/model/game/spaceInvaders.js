@@ -146,6 +146,8 @@ class SpaceInvaders extends Game {
 					this.hitShip(this.ship);
 				}
 			}
+			if (this.enemies[j].length === 0)
+				this.enemies.splice(j--, 1);
 		}
 	}
 
@@ -164,12 +166,10 @@ class SpaceInvaders extends Game {
 
 	hitShip(obj) {
 		this.addAnimation(obj.hit());
-		console.log(this.animations[this.animations.length - 1]);
 		if (obj == this.ship &&
 			this.animations[this.animations.length - 1] instanceof ShipExplosionAnimation) {
 			this.shipAlive = false;
 			setTimeout(gameOver, 2000);
-			console.log("Game Over");
 		}
 	}
 
