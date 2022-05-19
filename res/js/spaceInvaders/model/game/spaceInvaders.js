@@ -64,11 +64,6 @@ class SpaceInvaders extends Game {
 	}
 
 	tick() {
-		if (this.ship.destroyed && this.shipAlive) {
-			this.shipAlive = false;
-			setTimeout(gameOver, 2000);
-			return;
-		}
 		super.tick();
 		this.keyHold();
 		this.ship.tick();
@@ -161,6 +156,13 @@ class SpaceInvaders extends Game {
 
 	hitShip(obj) {
 		this.addAnimation(obj.hit());
+		console.log(this.animations[this.animations.length - 1]);
+		if (obj == this.ship &&
+			this.animations[this.animations.length - 1] instanceof ShipExplosionAnimation) {
+			this.shipAlive = false;
+			setTimeout(gameOver, 2000);
+			console.log("Game Over");
+		}
 	}
 
 	fire() {
