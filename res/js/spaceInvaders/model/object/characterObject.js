@@ -18,6 +18,9 @@ class CharacterObject extends PhysicsObject {
 		return new ShipHitAnimation(this, this.maxHealth - this.health);
 	}
 
+	get alive() {
+		return this.health > 0;
+	}
 
 	// Firing logic
 

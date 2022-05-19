@@ -55,6 +55,10 @@ function initGame() {
 
 function gameOver() {
 	document.getElementsByClassName("p5Canvas")[0].style.display = "none";
+	let stats = _game.stats;
+	for (const key in stats)
+		document.getElementById(key).innerHTML = `x${stats[key]}`;
+	_game = _emptyGame;
 	document.getElementById("gameover").style.display = "flex";
 }
 

@@ -13,6 +13,8 @@ class SpaceInvaders extends Game {
 
 		this.level = 0;
 		this.loadNextLevel();
+
+		this._stats = new StatsSpaceInvaders();
 	}
 
 	show() {
@@ -182,6 +184,8 @@ class SpaceInvaders extends Game {
 			bulletCollision:
 			for (j = 0; j < this.enemies.length; j++) {
 				for (k = this.enemies[j].length - 1; k >= 0; k--) {
+					if (!this.enemies[j][k].alive)
+						continue;
 					if (bullet.collides(this.enemies[j][k])) {
 						this.hitShip(this.enemies[j][k]);
 						this.destroyBullet(...this.bullets.splice(i--, 1));
@@ -228,6 +232,8 @@ class SpaceInvaders extends Game {
 			this.shipAlive = false;
 			setTimeout(gameOver, 2000);
 		}
+		else if (!obj.alive)
+			this._stats.enemyDestroyed(obj);
 	}
 
 	fire() {
@@ -236,5 +242,9 @@ class SpaceInvaders extends Game {
 			this.bullets.push(bullet);
 			this.updateScreen = true;
 		}
+	}
+
+	get stats() {
+		return this._stats.stats;
 	}
 }

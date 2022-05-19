@@ -22,10 +22,10 @@ class StatsSpaceInvaders {
 				this.enemies[i]++;
 	}
 
-	getStats() {
-		let stats = {};
+	get stats() {
+		let _stats = {};
 		for (let i = 0; i < StatsSpaceInvaders.RESULT_LABELS.length; i++)
-			stats[StatsSpaceInvaders.RESULT_LABELS[i]] = this.enemies[i];
-		return stats;
+			_stats[StatsSpaceInvaders.RESULT_LABELS[i]] = this.enemies[i];
+		return _stats;
 	}
 }
