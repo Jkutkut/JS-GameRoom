@@ -12,6 +12,8 @@ class SpaceInvaders extends Game {
 		this.initShip();
 		this.initEnemies();
 		this.updateScreen = true;
+
+		this.shipAlive = true;
 	}
 
 	show() {
@@ -62,6 +64,11 @@ class SpaceInvaders extends Game {
 	}
 
 	tick() {
+		if (this.ship.destroyed && this.shipAlive) {
+			this.shipAlive = false;
+			setTimeout(gameOver, 2000);
+			return;
+		}
 		super.tick();
 		if (keyIsDown(LEFT_ARROW) || keyIsDown(65))
 			this.moveShip(-1, 0);
@@ -90,6 +97,8 @@ class SpaceInvaders extends Game {
 	}
 
 	keypress(keyCode) {
+		if (!this.shipAlive)
+			return;
 		super.keypress(keyCode);
 		if (keyCode === LEFT_ARROW || keyCode === 65)
 			this.moveShip(-1, 0);
@@ -125,10 +134,9 @@ class SpaceInvaders extends Game {
 				this.enemies.splice(j--, 1);
 				continue;
 			}
-			if (enemy.collides(this.ship)) {
+			if (!this.ship.destroyed && enemy.collides(this.ship)) {
 				this.hitShip(this.enemies[j]);
 				this.hitShip(this.ship);
-				continue;
 			}
 		}
 	}
