@@ -16,13 +16,13 @@ function preload() {
 
 	Ship.SRC = loadImage("../res/img/spaceInvaders/ships/ship_6.png");
 
-	BasicEnemy.SRC.Beholder = loadImage("../res/img/spaceInvaders/enemies/Beholder.png");
-	BasicEnemy.SRC.Emissary = loadImage("../res/img/spaceInvaders/enemies/Emissary.png");
+	Enemy.SRC.Beholder = loadImage("../res/img/spaceInvaders/enemies/Beholder.png");
+	Enemy.SRC.Emissary = loadImage("../res/img/spaceInvaders/enemies/Emissary.png");
 	
 	Bullet.SRC.body = loadImage("../res/img/spaceInvaders/shipsElements/player_bullet.png");
 	
 	for (let i = 1; i <= 5; i++)
-		BasicEnemy.SRC[`basic${i}`] = loadImage(`../res/img/spaceInvaders/ships/ship_${i}.png`);
+		Enemy.SRC[`basic${i}`] = loadImage(`../res/img/spaceInvaders/ships/ship_${i}.png`);
 
 	ShipExplosionAnimation.SPRITES = loadImage("../res/img/spaceInvaders/shipsElements/ship_explosion.png");
 }
