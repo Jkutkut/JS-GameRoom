@@ -10,7 +10,7 @@ class Ship extends CharacterObject {
 	static HEALTH = 3;
 
 	constructor(pos, angle) {
-		super(pos, Ship.SIZE, angle, Ship.HEALTH);
+		super(pos, Ship.SIZE, angle, Ship.HEALTH, Ship.MAX_BULLETS);
 	}
 
 	show() {
@@ -29,7 +29,7 @@ class Ship extends CharacterObject {
 	}
 
 	fire() {
-		let bullet = new PlayerBullet(this.pos.copy());
+		let bullet = new PlayerBullet(this.pos.copy(), this);
 		bullet.pos.add(0, -this.size.y / 2);
 		this.cooldown = Ship.COOLDOWN;
 		this.bullets++;

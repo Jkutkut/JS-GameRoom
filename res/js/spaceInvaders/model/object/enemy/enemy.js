@@ -10,14 +10,26 @@ class Enemy extends CharacterObject {
 	};
 
 	static ENEMIES = [];
+
+	static COOLDOWN = 30;
+	static MAX_BULLETS = 1;
 	
 	constructor(pos, size, lives=1) {
-		super(pos, size, Math.PI, lives);
+		super(pos, size, Math.PI, lives, Enemy.MAX_BULLETS);
 		this.src = null;
 	}
 
 	show() {
 		this.showImg(this.src);
+	}
+
+	fire() {
+		let bullet = new EnemyBullet(this.pos.copy(), this);
+		bullet.pos.add(0, this.size.y / 2);
+		// bullet.pos.add(0, -this.size.y / 2);
+		this.cooldown = Enemy.COOLDOWN;
+		this.bullets++;
+		return bullet;
 	}
 }
 

@@ -2,10 +2,11 @@ class CharacterObject extends PhysicsObject {
 
 	static HEALTH = 3;
 
-	constructor(pos, size, angle, health) {
+	constructor(pos, size, angle, health, maxBullets) {
 		super(pos, size, angle);
 		this.health = health;
 		this.maxHealth = CharacterObject.HEALTH;
+		this.maxBullets = maxBullets;
 
 		this.cooldown = 0;
 		this.bullets = 0;
@@ -30,10 +31,12 @@ class CharacterObject extends PhysicsObject {
 	}
 
 	canFire() {
-		return this.cooldown == 0 && this.bullets < Ship.MAX_BULLETS;
+		return this.cooldown == 0 && this.bullets < this.maxBullets;
 	}
 
 	bulletDestroyed() {
 		this.bullets--;
 	}
+
+	fire() {}
 }

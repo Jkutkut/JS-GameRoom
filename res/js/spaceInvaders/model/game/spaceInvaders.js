@@ -26,9 +26,11 @@ class SpaceInvaders extends Game {
 				enemy.show();
 			}
 		}
-		for (let bullet of this.bullets) {
+		for (let bullet of this.bullets)
 			bullet.show();
-		}
+		for (let bullet of this.enemyBullets)
+			bullet.show();
+
 		super.show();
 	}
 
@@ -36,6 +38,7 @@ class SpaceInvaders extends Game {
 		Bullet.SIZE = new p5.Vector(8, 20);
 
 		this.bullets = [];
+		this.enemyBullets = [];
 	}
 
 	initShip() {
@@ -128,9 +131,21 @@ class SpaceInvaders extends Game {
 		super.tick();
 		this.keyHold();
 		this.ship.tick();
+
+		// enemy ia
+		for (let enemy of this.enemies[this.enemies.length - 1])
+			if (Math.abs(enemy.pos.x - this.ship.pos.x) < this.ship.size.x)
+				this.enemyFire(enemy);
+		// end enemy ia
+
 		let bullet;
 		for (let i = 0; i < this.bullets.length; i++) {
 			bullet = this.bullets[i];
+			bullet.move();
+			this.updateScreen = true;
+		}
+		for (let i = 0; i < this.enemyBullets.length; i++) {
+			bullet = this.enemyBullets[i];
 			bullet.move();
 			this.updateScreen = true;
 		}
@@ -215,8 +230,6 @@ class SpaceInvaders extends Game {
 
 	destroyBullet(bullet) {
 		bullet.destroy();
-		if (bullet instanceof PlayerBullet)
-			this.ship.bulletDestroyed();
 	}
 
 	moveShip(x, y) {
@@ -241,6 +254,14 @@ class SpaceInvaders extends Game {
 		if (this.ship.canFire()) {
 			let bullet = this.ship.fire();
 			this.bullets.push(bullet);
+			this.updateScreen = true;
+		}
+	}
+
+	enemyFire(enemy) {
+		if (enemy.canFire()) {
+			let bullet = enemy.fire();
+			this.enemyBullets.push(bullet);
 			this.updateScreen = true;
 		}
 	}

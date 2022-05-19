@@ -7,9 +7,11 @@ class Bullet extends PhysicsObject {
 
 	static V = 5;
 
-	constructor(pos, angle) {
+	constructor(pos, angle, obj) {
 		super(pos, Bullet.SIZE, angle);
 		this.v = -Bullet.V;
+
+		this.obj = obj;
 	}
 
 	show() {
@@ -19,17 +21,22 @@ class Bullet extends PhysicsObject {
 	move() {
 		this.pos.add(0, this.v);
 	}
+
+	destroy() {
+		this.obj.bulletDestroyed();
+		super.destroy();
+	}
 }
 
 class PlayerBullet extends Bullet {
-	constructor(pos) {
-		super(pos, Bullet.SIZE, 0);
+	constructor(pos, obj) {
+		super(pos, 0, obj);
 	}
 }
 
 class EnemyBullet extends Bullet {
-	constructor(pos) {
-		super(pos, Bullet.SIZE, Math.PI);
+	constructor(pos, obj) {
+		super(pos, Math.PI, obj);
 		this.v *= -1;
 	}
 }
