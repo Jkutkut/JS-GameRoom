@@ -8,6 +8,8 @@ class Enemy extends CharacterObject {
 		fire: null,
 		fireFast: null,
 	};
+
+	static ENEMIES = [];
 	
 	constructor(pos, size, lives=1) {
 		super(pos, size, Math.PI, lives);
@@ -53,3 +55,7 @@ class FastFireEnemy extends Enemy {
 		this.src = FastFireEnemy.SRC.fireFast;
 	}
 }
+
+// TODO BOSSES
+
+Enemy.ENEMIES = [TutorialEnemy, IceEnemy, FastIceEnemy, FireEnemy, FastFireEnemy];
