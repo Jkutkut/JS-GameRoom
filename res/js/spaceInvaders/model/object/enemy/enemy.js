@@ -17,7 +17,7 @@ class Enemy extends CharacterObject {
 	constructor(pos, lives=1, size=SpaceInvaders.BASE_SIZE.copy()) {
 		super(pos, size, Math.PI, lives, Enemy.MAX_BULLETS);
 		this.src = null;
-		this.cooldown = Enemy.COOLDOWN * 6;
+		this.cooldown = Enemy.COOLDOWN * 2;
 	}
 
 	show() {

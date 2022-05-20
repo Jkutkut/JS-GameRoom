@@ -148,10 +148,15 @@ class SpaceInvaders extends Game {
 		this.ship.tick();
 
 		// enemy ia
-		for (let enemy of this.enemies[this.enemies.length - 1]) {
-			enemy.tick();
-			if (Math.abs(enemy.pos.x + enemy.halfSize.x - this.ship.pos.x - this.ship.halfSize.x) < this.ship.halfSize.x)
-				this.enemyFire(enemy);
+		let inRange = (enemy) => {
+			return Math.abs(enemy.pos.x + enemy.halfSize.x - this.ship.pos.x - this.ship.halfSize.x) < this.ship.halfSize.x;
+		}
+		for (let j = 0; j < this.enemies.length; j++) {
+			for (let enemy of this.enemies[j]) {
+				enemy.tick();
+				if ((enemy.onPath || j == this.enemies.length - 1) && inRange(enemy))
+					this.enemyFire(enemy);
+			}
 		}
 
 		if (BasicEnemyAnimation.onInitialPos() && Math.random() < 0.2) {
@@ -286,7 +291,6 @@ class SpaceInvaders extends Game {
 	}
 
 	hitShip(obj) {
-		return; // todo debug
 		let animation = obj.hit();
 		if (animation == null)
 			return;
