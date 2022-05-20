@@ -124,7 +124,11 @@ class SpaceInvaders extends Game {
 				f = fastLevel;
 				type = [FireEnemy, FastFireEnemy];
 				break;
-			// case 5: // Boss level
+			case 5: // Boss level
+				this.bgLevel = 3;
+				f = fastLevel;
+				type = [BeholderEnemy, EmissaryEnemy];
+				break;
 			default:
 				this.bgLevel = 3;
 				f = basicLevel;
