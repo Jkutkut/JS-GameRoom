@@ -137,8 +137,12 @@ body > div {
 /* Game over */
 
 #gameover {
+	--btn-width: calc(var(--size) * 0.4);
+	--btn-height: calc(var(--size) * 0.1);
+
 	flex-direction: column;
 	align-items: center;
+	justify-content: flex-start;
 }
 
 div {
@@ -149,8 +153,8 @@ div {
 	display: flex;
 	flex-direction: column;
 
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 0rem;
+	margin-bottom: 0.4rem;
 }
 
 .results > div {
@@ -167,7 +171,7 @@ div {
 }
 
 .enemyresult > * {
-	margin: 1rem;
+	margin: 0.8rem;
 }
 
 .boss {

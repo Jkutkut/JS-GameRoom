@@ -40,6 +40,10 @@ window.onload = () => {
 	});
 
 	let enemiesImg = document.getElementsByClassName("enemy");
+
+	document.getElementById("btnrestart").addEventListener("click", () => {
+		location.reload();
+	});
 }
 
 function setup() {
