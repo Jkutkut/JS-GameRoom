@@ -22,10 +22,17 @@ class Ship extends CharacterObject {
 	}
 
 	canMove(x, y, screenSize) {
-		let newPos = this.pos.copy();
-		newPos.add(x * Ship.V, y * Ship.V);
-		return newPos.x >= this.halfSize.x && newPos.x + this.halfSize.x <= screenSize.x &&
-			newPos.y >= this.halfSize.y && newPos.y + this.halfSize.y <= screenSize.y;
+		let newX = this.pos.x + x * Ship.V;
+		let newY = this.pos.y + y * Ship.V;
+		if (x > 0 && newX + this.halfSize.x > screenSize.x)
+			return false;
+		if (x < 0 && newX - this.halfSize.x < 0)
+			return false;
+		if (y > 0 && newY + this.halfSize.y > screenSize.y)
+			return false;
+		if (y < 0 && newY - this.halfSize.y < 0)
+			return false;
+		return true;
 	}
 
 	fire() {
