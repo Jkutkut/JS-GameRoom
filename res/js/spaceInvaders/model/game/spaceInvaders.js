@@ -254,9 +254,11 @@ class SpaceInvaders extends Game {
 	}
 
 	hitShip(obj) {
-		this.addAnimation(obj.hit());
-		if (obj == this.ship &&
-			this.animations[this.animations.length - 1] instanceof ShipExplosionAnimation) {
+		let animation = obj.hit();
+		if (animation == null)
+			return;
+		this.addAnimation(animation);
+		if (obj == this.ship && animation instanceof ShipExplosionAnimation) {
 			this.shipAlive = false;
 			setTimeout(gameOver, 2000);
 		}
