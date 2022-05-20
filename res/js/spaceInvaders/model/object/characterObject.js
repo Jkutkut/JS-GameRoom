@@ -8,6 +8,8 @@ class CharacterObject extends PhysicsObject {
 
 		this.cooldown = 0;
 		this.bullets = 0;
+
+		this.onPath = false;
 	}
 
 	hit() {

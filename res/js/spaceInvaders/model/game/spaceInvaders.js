@@ -155,15 +155,16 @@ class SpaceInvaders extends Game {
 		}
 
 		if (BasicEnemyAnimation.onInitialPos() && Math.random() < 0.2) {
-			console.log("Attack!");
 			let enemyX = Math.floor(Math.random() * this.enemies[this.enemies.length - 1].length);
 			let enemyY = this.enemies.length - 1;
 			let oldEnemy = this.enemies[enemyY][enemyX];
 
-			if (oldEnemy.outOfBounds(this.size))
+			if (oldEnemy.onPath || oldEnemy.outOfBounds(this.size))
 				return;
 
+			console.log("Attack!");
 			let enemy = new oldEnemy.constructor(oldEnemy.pos);
+			enemy.cooldown = oldEnemy.cooldown;
 			oldEnemy.destroy();
 			this.enemies[enemyY][enemyX] = enemy;
 			this.addAnimation(new AttackAnimation(enemy, this.ship));
@@ -285,6 +286,7 @@ class SpaceInvaders extends Game {
 	}
 
 	hitShip(obj) {
+		return; // todo debug
 		let animation = obj.hit();
 		if (animation == null)
 			return;

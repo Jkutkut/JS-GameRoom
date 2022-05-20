@@ -9,6 +9,8 @@ class BessierAnimation extends SpcInvAnimation {
 		this._curveArray = curveArray;
 		this.initPos = obj.pos.copy();
 		this.index = 0;
+
+		this.obj.onPath = true;
 	}
 
 	tick() {
@@ -19,6 +21,11 @@ class BessierAnimation extends SpcInvAnimation {
 		this.index++;
 		if (this.index == this._curveArray.length)
 			this.done = true;
+	}
+
+	destroy() {
+		this.obj.onPath = false;
+		return super.destroy();
 	}
 }
 
@@ -48,6 +55,7 @@ class EnemySpawnAnimation extends BessierAnimation {
 	}
 
 	destroy() {
+		super.destroy();
 		this.obj.moveBy(-BasicEnemyAnimation.HORIZONTAL_MOVEMENT);
 		return [
 			new BasicEnemyAnimation(this.obj)
