@@ -70,14 +70,14 @@ class FastFireEnemy extends Enemy {
 
 class BeholderEnemy extends Enemy {
 	constructor(pos) {
-		super(pos, 5, SpaceInvaders.BASE_SIZE.copy().mult(1.2));
+		super(pos, 4, SpaceInvaders.BASE_SIZE.copy().mult(1.2));
 		this.src = BeholderEnemy.SRC.Beholder;
 	}
 }
 
 class EmissaryEnemy extends Enemy {
 	constructor(pos) {
-		super(pos, 5, SpaceInvaders.BASE_SIZE.copy().mult(1.2));
+		super(pos, 3, SpaceInvaders.BASE_SIZE.copy().mult(1.2));
 		this.src = EmissaryEnemy.SRC.Emissary;
 	}
 }
