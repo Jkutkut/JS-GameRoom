@@ -93,10 +93,16 @@ class FastSpawnAnimation extends EnemySpawnAnimation {
 
 class AttackAnimation extends EnemySpawnAnimation {
 	constructor(obj, victim, indexOffset) {
+		let v;
+		if (obj instanceof FastIceEnemy || obj instanceof FastFireEnemy || obj instanceof EmissaryEnemy)
+			v = BessierAnimation.ANIMATIONS["attack"].stepsFast;
+		else
+			v = BessierAnimation.ANIMATIONS["attack"].steps;
+		console.log(v);
 		super(
 			obj,
 			Bessier.bessier(
-				BessierAnimation.ANIMATIONS["attack"].steps,
+				v,
 				obj.pos,
 				victim.pos,
 				victim.pos,
