@@ -11,12 +11,13 @@ class Enemy extends CharacterObject {
 
 	static ENEMIES = [];
 
-	static COOLDOWN = 100;
+	static COOLDOWN = 200;
 	static MAX_BULLETS = 1;
 	
 	constructor(pos, lives=1, size=SpaceInvaders.BASE_SIZE.copy()) {
 		super(pos, size, Math.PI, lives, Enemy.MAX_BULLETS);
 		this.src = null;
+		this.cooldown = Enemy.COOLDOWN * 6;
 	}
 
 	show() {

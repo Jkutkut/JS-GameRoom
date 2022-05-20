@@ -159,11 +159,16 @@ class SpaceInvaders extends Game {
 			console.log("Attack!");
 			let enemyX = Math.floor(Math.random() * this.enemies[this.enemies.length - 1].length);
 			let enemyY = this.enemies.length - 1;
-
 			let oldEnemy = this.enemies[enemyY][enemyX];
-			// let enemy = new oldEnemy.constructor(
-			// let path = new AttackAnimation(enemy, this.ship);
-			// this.debugBessier = path._curveArray;
+
+			if (oldEnemy.outOfBounds(this.size))
+				return;
+
+			let enemy = new oldEnemy.constructor(oldEnemy.pos);
+			oldEnemy.destroy();
+			this.enemies[enemyY][enemyX] = enemy;
+			this.addAnimation(new AttackAnimation(enemy, this.ship));
+			this.debugBessier = this.animations[this.animations.length - 1]._curveArray;
 		}
 		// end enemy ia
 
