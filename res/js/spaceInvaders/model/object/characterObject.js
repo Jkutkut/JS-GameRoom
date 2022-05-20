@@ -1,11 +1,9 @@
 class CharacterObject extends PhysicsObject {
 
-	static HEALTH = 3;
-
 	constructor(pos, size, angle, health, maxBullets) {
 		super(pos, size, angle);
 		this.health = health;
-		this.maxHealth = CharacterObject.HEALTH;
+		this.maxHealth = health;
 		this.maxBullets = maxBullets;
 
 		this.cooldown = 0;
