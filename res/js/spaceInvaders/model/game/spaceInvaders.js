@@ -135,7 +135,7 @@ class SpaceInvaders extends Game {
 		// enemy ia
 		for (let enemy of this.enemies[this.enemies.length - 1]) {
 			enemy.tick();
-			if (Math.abs(enemy.pos.x - this.ship.pos.x) < this.ship.size.x)
+			if (Math.abs(enemy.pos.x + enemy.halfSize.x - this.ship.pos.x - this.ship.halfSize.x) < this.ship.halfSize.x)
 				this.enemyFire(enemy);
 		}
 		// end enemy ia
