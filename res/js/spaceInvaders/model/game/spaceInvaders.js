@@ -69,7 +69,6 @@ class SpaceInvaders extends Game {
 				for (let i = 0; i < ROW; i++) {
 					this.enemies[j].push(new enemyType(
 						new p5.Vector(-100, 0),
-						SpaceInvaders.BASE_SIZE.copy(),
 						i
 					));
 					this.addAnimation(new NormalSpawnAnimation(
@@ -87,7 +86,6 @@ class SpaceInvaders extends Game {
 			for (let i = 0; i < ROW; i++) {
 				this.enemies[2].push(new fastEnemyType(
 					new p5.Vector(-100, 0),
-					SpaceInvaders.BASE_SIZE.copy(),
 					i
 				));
 				this.addAnimation(new FastSpawnAnimation(
@@ -155,13 +153,13 @@ class SpaceInvaders extends Game {
 
 		if (BasicEnemyAnimation.onInitialPos() && Math.random() < 0.2) {
 			console.log("Attack!");
-			let enemy = this.enemies[
-				this.enemies.length - 1
-			][
-				Math.floor(Math.random() * this.enemies[this.enemies.length - 1].length)
-			];
-			let path = new AttackAnimation(enemy, this.ship);
-			this.debugBessier = path._curveArray;
+			let enemyX = Math.floor(Math.random() * this.enemies[this.enemies.length - 1].length);
+			let enemyY = this.enemies.length - 1;
+
+			let oldEnemy = this.enemies[enemyY][enemyX];
+			// let enemy = new oldEnemy.constructor(
+			// let path = new AttackAnimation(enemy, this.ship);
+			// this.debugBessier = path._curveArray;
 		}
 		// end enemy ia
 

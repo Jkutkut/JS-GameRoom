@@ -14,7 +14,7 @@ class Enemy extends CharacterObject {
 	static COOLDOWN = 100;
 	static MAX_BULLETS = 1;
 	
-	constructor(pos, size, lives=1) {
+	constructor(pos, lives=1, size=SpaceInvaders.BASE_SIZE.copy()) {
 		super(pos, size, Math.PI, lives, Enemy.MAX_BULLETS);
 		this.src = null;
 	}
@@ -33,36 +33,36 @@ class Enemy extends CharacterObject {
 }
 
 class TutorialEnemy extends Enemy {
-	constructor(pos, size) {
-		super(pos, size);
+	constructor(pos) {
+		super(pos);
 		this.src = TutorialEnemy.SRC.tutorial;
 	}
 }
 
 class IceEnemy extends Enemy {
-	constructor(pos, size) {
-		super(pos, size);
+	constructor(pos) {
+		super(pos);
 		this.src = IceEnemy.SRC.ice;
 	}
 }
 
 class FastIceEnemy extends Enemy {
-	constructor(pos, size) {
-		super(pos, size);
+	constructor(pos) {
+		super(pos);
 		this.src = FastIceEnemy.SRC.iceFast;
 	}
 }
 
 class FireEnemy extends Enemy {
-	constructor(pos, size) {
-		super(pos, size);
+	constructor(pos) {
+		super(pos);
 		this.src = FireEnemy.SRC.fire;
 	}
 }
 
 class FastFireEnemy extends Enemy {
-	constructor(pos, size) {
-		super(pos, size);
+	constructor(pos) {
+		super(pos);
 		this.src = FastFireEnemy.SRC.fireFast;
 	}
 }
