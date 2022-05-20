@@ -15,7 +15,6 @@ class SpaceInvaders extends Game {
 		this.loadNextLevel();
 
 		this._stats = new StatsSpaceInvaders();
-		this.debugBessier = [];
 	}
 
 	show() {
@@ -33,13 +32,6 @@ class SpaceInvaders extends Game {
 			bullet.show();
 
 		super.show();
-
-		push();
-		fill(255, 0, 0);
-		for (let i = 0; i < this.debugBessier.length; i++) {
-			ellipse(this.debugBessier[i].x, this.debugBessier[i].y, 5, 5);
-		}
-		pop();
 	}
 
 	initBullets() {
@@ -173,7 +165,6 @@ class SpaceInvaders extends Game {
 			oldEnemy.destroy();
 			this.enemies[enemyY][enemyX] = enemy;
 			this.addAnimation(new AttackAnimation(enemy, this.ship));
-			this.debugBessier = this.animations[this.animations.length - 1]._curveArray;
 		}
 		// end enemy ia
 
