@@ -12,17 +12,24 @@ function preload() {
 
 	SpaceInvaders.BASE_SIZE = new p5.Vector(50, 50);
 
-	SpaceInvaders.BG = loadImage("../res/img/spaceInvaders/background/background.png");
+	SpaceInvaders.BG = [
+		loadImage("../res/img/spaceInvaders/background/background_tutorial.png"),
+		loadImage("../res/img/spaceInvaders/background/background_ice.png"),
+		loadImage("../res/img/spaceInvaders/background/background_fire.png"),
+		loadImage("../res/img/spaceInvaders/background/background_boss.png")
+	];
 
-	Ship.SRC = loadImage("../res/img/spaceInvaders/ships/ship_6.png");
+	Ship.SRC = loadImage("../res/img/spaceInvaders/ships/ship.png");
 
-	BasicEnemy.SRC.Beholder = loadImage("../res/img/spaceInvaders/enemies/Beholder.png");
-	BasicEnemy.SRC.Emissary = loadImage("../res/img/spaceInvaders/enemies/Emissary.png");
+	Enemy.SRC.Beholder = loadImage("../res/img/spaceInvaders/enemies/Beholder.png");
+	Enemy.SRC.Emissary = loadImage("../res/img/spaceInvaders/enemies/Emissary.png");
+	Enemy.SRC.tutorial = loadImage("../res/img/spaceInvaders/enemies/ship_tutorial.png");
+	Enemy.SRC.ice = loadImage("../res/img/spaceInvaders/enemies/ship_ice.png");
+	Enemy.SRC.iceFast = loadImage("../res/img/spaceInvaders/enemies/ship_ice_fast.png");
+	Enemy.SRC.fire = loadImage("../res/img/spaceInvaders/enemies/ship_fire.png");
+	Enemy.SRC.fireFast = loadImage("../res/img/spaceInvaders/enemies/ship_fire_fast.png");
 	
 	Bullet.SRC.body = loadImage("../res/img/spaceInvaders/shipsElements/player_bullet.png");
-	
-	for (let i = 1; i <= 5; i++)
-		BasicEnemy.SRC[`basic${i}`] = loadImage(`../res/img/spaceInvaders/ships/ship_${i}.png`);
 
 	ShipExplosionAnimation.SPRITES = loadImage("../res/img/spaceInvaders/shipsElements/ship_explosion.png");
 }
@@ -34,8 +41,9 @@ window.onload = () => {
 
 	let enemiesImg = document.getElementsByClassName("enemy");
 
-	for (let i = 0; i < enemiesImg.length; i++)
-		enemiesImg[i].style["animation-delay"] = `${Math.random()}s`;
+	document.getElementById("btnrestart").addEventListener("click", () => {
+		location.reload();
+	});
 }
 
 function setup() {
@@ -52,6 +60,15 @@ function initGame() {
 	document.getElementsByClassName("p5Canvas")[0].style.display = "block";
 	document.getElementById("mainmenu").style.display = "none";
 	_game = new SpaceInvaders(new p5.Vector(width, height));
+}
+
+function gameOver() {
+	document.getElementsByClassName("p5Canvas")[0].style.display = "none";
+	let stats = _game.stats;
+	for (const key in stats)
+		document.getElementById(key).innerHTML = `x${stats[key]}`;
+	_game = _emptyGame;
+	document.getElementById("gameover").style.display = "flex";
 }
 
 keyPressed = () => {

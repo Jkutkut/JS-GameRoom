@@ -2,8 +2,6 @@ class ShipHitAnimation extends ImgAnimation {
 	static FRAME_COOLDOWN = 4;
 
 	constructor(obj, hits=3) {
-		if (!(obj instanceof Ship || obj instanceof BasicEnemy))
-			throw new Error("Error: ShipExplosionAnimation needs a Ship object");
 		super(obj, ShipExplosionAnimation.N_SPRITES, ShipHitAnimation.FRAME_COOLDOWN);
 
 		this.hits = hits;

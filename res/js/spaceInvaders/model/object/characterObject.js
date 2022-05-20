@@ -1,23 +1,29 @@
 class CharacterObject extends PhysicsObject {
 
-	static HEALTH = 3;
-
-	constructor(pos, size, angle, health) {
+	constructor(pos, size, angle, health, maxBullets) {
 		super(pos, size, angle);
 		this.health = health;
-		this.maxHealth = CharacterObject.HEALTH;
+		this.maxHealth = health;
+		this.maxBullets = maxBullets;
 
 		this.cooldown = 0;
 		this.bullets = 0;
+
+		this.onPath = false;
 	}
 
 	hit() {
 		this.health--;
+		if (this.health < 0)
+			return null;
 		if (this.health == 0)
 			return new ShipExplosionAnimation(this);
 		return new ShipHitAnimation(this, this.maxHealth - this.health);
 	}
 
+	get alive() {
+		return this.health > 0;
+	}
 
 	// Firing logic
 
@@ -27,10 +33,12 @@ class CharacterObject extends PhysicsObject {
 	}
 
 	canFire() {
-		return this.cooldown == 0 && this.bullets < Ship.MAX_BULLETS;
+		return this.cooldown == 0 && this.bullets < this.maxBullets;
 	}
 
 	bulletDestroyed() {
 		this.bullets--;
 	}
+
+	fire() {}
 }

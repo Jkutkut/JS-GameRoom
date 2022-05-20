@@ -5,8 +5,6 @@ class BasicEnemyAnimation extends SyncAnimation {
 	static OFFSET = 0;
 
 	constructor(obj) {
-		if (!(obj instanceof BasicEnemy))
-			throw new Error("Error: BasicEnemyAnimation needs a BasicEnemy object");
 		super(obj);
 		this.objPos = obj.pos.copy();
 	}
@@ -14,13 +12,17 @@ class BasicEnemyAnimation extends SyncAnimation {
 	tick() {
 		if (this.done)
 			return;
-		let pos = BasicEnemyAnimation.HORIZONTAL_MOVEMENT * Math.sin(BasicEnemyAnimation.OFFSET);
+		let pos = BasicEnemyAnimation.HORIZONTAL_MOVEMENT * Math.cos(BasicEnemyAnimation.OFFSET);
 
 		this.obj.tp(this.objPos.x + pos);
 	}
 
 	static masterTick() {
 		BasicEnemyAnimation.OFFSET += BasicEnemyAnimation.HORIZONTAL_SPEED;
+	}
+
+	static onInitialPos() {
+		return Math.abs(Math.cos(BasicEnemyAnimation.OFFSET)) < 0.05;
 	}
 }
 

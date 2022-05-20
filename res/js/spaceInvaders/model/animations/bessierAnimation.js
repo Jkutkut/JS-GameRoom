@@ -9,6 +9,8 @@ class BessierAnimation extends SpcInvAnimation {
 		this._curveArray = curveArray;
 		this.initPos = obj.pos.copy();
 		this.index = 0;
+
+		this.obj.onPath = true;
 	}
 
 	tick() {
@@ -20,18 +22,24 @@ class BessierAnimation extends SpcInvAnimation {
 		if (this.index == this._curveArray.length)
 			this.done = true;
 	}
+
+	destroy() {
+		this.obj.onPath = false;
+		return super.destroy();
+	}
 }
 
 class EnemySpawnAnimation extends BessierAnimation {
 	static OFFSET = 30;
-	constructor(obj, finalPos, indexOffset=0) {
-		super(obj, Bessier.bessier(
-			BessierAnimation.ANIMATIONS["spawn"].steps,
-			...BessierAnimation.ANIMATIONS["spawn"].animation,
-			finalPos
-		));
+	constructor(obj, curveArray, indexOffset) {
+		super(obj, curveArray);
 
 		this.indexOffset = indexOffset * EnemySpawnAnimation.OFFSET;
+		this.inSync = false;
+	}
+
+	ended() {
+		return this.done && this.inSync;
 	}
 
 	tick() {
@@ -40,11 +48,63 @@ class EnemySpawnAnimation extends BessierAnimation {
 			return;
 		}
 		super.tick();
+		if (this.done &&
+			Math.cos(BasicEnemyAnimation.OFFSET) - Math.cos(BasicEnemyAnimation.OFFSET + 0.01)  >= 0 &&
+			Math.cos(BasicEnemyAnimation.OFFSET) > 0.5)
+				this.inSync = true;
 	}
 
 	destroy() {
+		super.destroy();
+		this.obj.moveBy(-BasicEnemyAnimation.HORIZONTAL_MOVEMENT);
 		return [
 			new BasicEnemyAnimation(this.obj)
 		];
+	}
+}
+
+class NormalSpawnAnimation extends EnemySpawnAnimation {
+	constructor(obj, finalPos, indexOffset) {
+		super(
+			obj,
+			Bessier.bessier(
+				BessierAnimation.ANIMATIONS["spawn"].steps,
+				...BessierAnimation.ANIMATIONS["spawn"].animation,
+				new p5.Vector(finalPos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, finalPos.y)
+			),
+			indexOffset
+		);
+	}
+}
+
+class FastSpawnAnimation extends EnemySpawnAnimation {
+	constructor(obj, finalPos, indexOffset) {
+		super(
+			obj,
+			Bessier.bessier(
+				BessierAnimation.ANIMATIONS["spawn"].steps * 0.72,
+				...BessierAnimation.ANIMATIONS["spawn"].animation,
+				new p5.Vector(finalPos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, finalPos.y)
+			),
+			indexOffset
+		);
+	}
+}
+
+class AttackAnimation extends EnemySpawnAnimation {
+	constructor(obj, victim, indexOffset) {
+		super(
+			obj,
+			Bessier.bessier(
+				BessierAnimation.ANIMATIONS["attack"].steps,
+				obj.pos,
+				victim.pos,
+				victim.pos,
+				victim.pos,
+				victim.pos,
+				new p5.Vector(obj.pos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, obj.pos.y)
+			)
+		);
+		this.indexOffset = indexOffset;
 	}
 }

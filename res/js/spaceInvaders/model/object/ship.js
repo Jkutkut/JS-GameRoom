@@ -10,7 +10,7 @@ class Ship extends CharacterObject {
 	static HEALTH = 3;
 
 	constructor(pos, angle) {
-		super(pos, Ship.SIZE, angle, Ship.HEALTH);
+		super(pos, Ship.SIZE, angle, Ship.HEALTH, Ship.MAX_BULLETS);
 	}
 
 	show() {
@@ -22,14 +22,21 @@ class Ship extends CharacterObject {
 	}
 
 	canMove(x, y, screenSize) {
-		let newPos = this.pos.copy();
-		newPos.add(x * Ship.V, y * Ship.V);
-		return newPos.x >= this.halfSize.x && newPos.x + this.halfSize.x <= screenSize.x &&
-			newPos.y >= this.halfSize.y && newPos.y + this.halfSize.y <= screenSize.y;
+		let newX = this.pos.x + x * Ship.V;
+		let newY = this.pos.y + y * Ship.V;
+		if (x > 0 && newX + this.halfSize.x > screenSize.x)
+			return false;
+		if (x < 0 && newX - this.halfSize.x < 0)
+			return false;
+		if (y > 0 && newY + this.halfSize.y > screenSize.y)
+			return false;
+		if (y < 0 && newY - this.halfSize.y < 0)
+			return false;
+		return true;
 	}
 
 	fire() {
-		let bullet = new PlayerBullet(this.pos.copy());
+		let bullet = new PlayerBullet(this.pos.copy(), this);
 		bullet.pos.add(0, -this.size.y / 2);
 		this.cooldown = Ship.COOLDOWN;
 		this.bullets++;

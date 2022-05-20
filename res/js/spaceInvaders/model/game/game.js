@@ -26,26 +26,19 @@ class Game {
 	}
 
 	tick() {
-		let syncedAnimations = new Set();
-		let toAdd = [];
+		let toAdd;
 		for (let i = 0, j; i < this.animations.length; i++) {
 			this.animations[i].tick();
 			if (this.animations[i].ended() || 
 				(this.animations[i].obj.destroyed && !(this.animations[i] instanceof ShipExplosionAnimation))) {
-				let toAdd = this.animations[i].destroy();
+				toAdd = this.animations[i].destroy();
 				this.animations.splice(i--, 1);
 				for (j = 0; j < toAdd.length; j++)
 					this.addAnimation(toAdd[j]);
 				continue;
 			}
-			for (j = 0; j < SyncAnimation.TYPES.length; j++) {
-				if (this.animations[i] instanceof SyncAnimation.TYPES[j]) {
-					syncedAnimations.add(SyncAnimation.TYPES[j]);
-					break;
-				}
-			}
 		}
-		for (let animation of syncedAnimations)
+		for (let animation of SyncAnimation.TYPES)
 			animation.masterTick();
 	}
 
