@@ -133,9 +133,11 @@ class SpaceInvaders extends Game {
 		this.ship.tick();
 
 		// enemy ia
-		for (let enemy of this.enemies[this.enemies.length - 1])
+		for (let enemy of this.enemies[this.enemies.length - 1]) {
+			enemy.tick();
 			if (Math.abs(enemy.pos.x - this.ship.pos.x) < this.ship.size.x)
 				this.enemyFire(enemy);
+		}
 		// end enemy ia
 
 		let bullet;
@@ -271,7 +273,6 @@ class SpaceInvaders extends Game {
 	}
 
 	enemyFire(enemy) {
-		console.log("enemy attempts fire");
 		if (enemy.canFire()) {
 			let bullet = enemy.fire();
 			this.enemyBullets.push(bullet);
