@@ -12,7 +12,12 @@ function preload() {
 
 	SpaceInvaders.BASE_SIZE = new p5.Vector(50, 50);
 
-	SpaceInvaders.BG = loadImage("../res/img/spaceInvaders/background/background.png");
+	SpaceInvaders.BG = [
+		loadImage("../res/img/spaceInvaders/background/background_tutorial.png"),
+		loadImage("../res/img/spaceInvaders/background/background_ice.png"),
+		loadImage("../res/img/spaceInvaders/background/background_fire.png"),
+		loadImage("../res/img/spaceInvaders/background/background_boss.png")
+	];
 
 	Ship.SRC = loadImage("../res/img/spaceInvaders/ships/ship.png");
 

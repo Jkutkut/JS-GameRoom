@@ -20,7 +20,7 @@ class SpaceInvaders extends Game {
 
 	show() {
 		background(SpaceInvaders.BG_COLOR);
-		image(SpaceInvaders.BG, this.halfSize.x, this.halfSize.y, this.size.x, this.size.y);
+		image(SpaceInvaders.BG[this.bgLevel], this.halfSize.x, this.halfSize.y, this.size.x, this.size.y);
 		this.ship.show();
 		for (let j = 0; j < this.enemies.length; j++) {
 			for (let enemy of this.enemies[j]) {
@@ -35,17 +35,6 @@ class SpaceInvaders extends Game {
 		super.show();
 
 		push();
-		// let i = 0, j = 0;
-		// let p = this.ship.pos.copy()
-		// this.debugBessier = Bessier.bessier(
-		// 	200,
-		// 	new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
-		// 	p,
-		// 	p,
-		// 	p,
-		// 	p,
-		// 	new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j))
-		// );
 		fill(255, 0, 0);
 		for (let i = 0; i < this.debugBessier.length; i++) {
 			ellipse(this.debugBessier[i].x, this.debugBessier[i].y, 5, 5);
@@ -113,27 +102,33 @@ class SpaceInvaders extends Game {
 		let f, type;
 		switch (this.level) {
 			case 0:
+				this.bgLevel = 0;
 				f = basicLevel;
 				type = [TutorialEnemy];
 				break;
 			case 1:
+				this.bgLevel = 1;
 				f = basicLevel;
 				type = [IceEnemy];
 				break;
 			case 2:
+				this.bgLevel = 1;
 				f = fastLevel;
 				type = [IceEnemy, FastIceEnemy];
 				break;
 			case 3:
+				this.bgLevel = 2;
 				f = basicLevel;
 				type = [FireEnemy];
 				break;
 			case 4:
+				this.bgLevel = 2;
 				f = fastLevel;
 				type = [FireEnemy, FastFireEnemy];
 				break;
 			// case 5: // Boss level
 			default:
+				this.bgLevel = 3;
 				f = basicLevel;
 				type = [FastFireEnemy, this.level];
 				break;
