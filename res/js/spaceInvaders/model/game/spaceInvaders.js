@@ -15,6 +15,7 @@ class SpaceInvaders extends Game {
 		this.loadNextLevel();
 
 		this._stats = new StatsSpaceInvaders();
+		this.debugBessier = [];
 	}
 
 	show() {
@@ -32,6 +33,24 @@ class SpaceInvaders extends Game {
 			bullet.show();
 
 		super.show();
+
+		push();
+		// let i = 0, j = 0;
+		// let p = this.ship.pos.copy()
+		// this.debugBessier = Bessier.bessier(
+		// 	200,
+		// 	new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
+		// 	p,
+		// 	p,
+		// 	p,
+		// 	p,
+		// 	new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j))
+		// );
+		fill(255, 0, 0);
+		for (let i = 0; i < this.debugBessier.length; i++) {
+			ellipse(this.debugBessier[i].x, this.debugBessier[i].y, 5, 5);
+		}
+		pop();
 	}
 
 	initBullets() {
@@ -137,6 +156,17 @@ class SpaceInvaders extends Game {
 			enemy.tick();
 			if (Math.abs(enemy.pos.x + enemy.halfSize.x - this.ship.pos.x - this.ship.halfSize.x) < this.ship.halfSize.x)
 				this.enemyFire(enemy);
+		}
+
+		if (BasicEnemyAnimation.onInitialPos() && Math.random() < 0.2) {
+			console.log("Attack!");
+			let enemy = this.enemies[
+				this.enemies.length - 1
+			][
+				Math.floor(Math.random() * this.enemies[this.enemies.length - 1].length)
+			];
+			let path = new AttackAnimation(enemy, this.ship);
+			this.debugBessier = path._curveArray;
 		}
 		// end enemy ia
 

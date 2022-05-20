@@ -82,3 +82,21 @@ class FastSpawnAnimation extends EnemySpawnAnimation {
 		);
 	}
 }
+
+class AttackAnimation extends EnemySpawnAnimation {
+	constructor(obj, victim, indexOffset) {
+		super(
+			obj,
+			Bessier.bessier(
+				BessierAnimation.ANIMATIONS["attack"].steps,
+				obj.pos,
+				victim.pos,
+				victim.pos,
+				victim.pos,
+				victim.pos,
+				new p5.Vector(obj.pos.x + BasicEnemyAnimation.HORIZONTAL_MOVEMENT, obj.pos.y)
+			)
+		);
+		this.indexOffset = indexOffset;
+	}
+}

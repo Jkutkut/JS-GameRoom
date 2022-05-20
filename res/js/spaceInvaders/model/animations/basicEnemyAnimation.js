@@ -20,6 +20,10 @@ class BasicEnemyAnimation extends SyncAnimation {
 	static masterTick() {
 		BasicEnemyAnimation.OFFSET += BasicEnemyAnimation.HORIZONTAL_SPEED;
 	}
+
+	static onInitialPos() {
+		return Math.abs(Math.cos(BasicEnemyAnimation.OFFSET)) < 0.05;
+	}
 }
 
 SyncAnimation.TYPES.push(BasicEnemyAnimation);
