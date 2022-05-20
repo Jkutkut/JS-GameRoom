@@ -61,6 +61,7 @@ class SpaceInvaders extends Game {
 
 	loadNextLevel() {
 		const ROW = 7;
+		const INIT_DELAY = 4;
 		this.enemies = [];
 
 		let basicLevel = (enemyType, height=3) => {
@@ -68,13 +69,12 @@ class SpaceInvaders extends Game {
 				this.enemies.push([]);
 				for (let i = 0; i < ROW; i++) {
 					this.enemies[j].push(new enemyType(
-						new p5.Vector(-100, 0),
-						i
+						new p5.Vector(-100, 0)
 					));
 					this.addAnimation(new NormalSpawnAnimation(
 						this.enemies[j][i],
 						new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * j)),
-						j * ROW + i
+						j * ROW + i + INIT_DELAY
 					));
 				}
 			}
@@ -85,13 +85,12 @@ class SpaceInvaders extends Game {
 			this.enemies.push([]);
 			for (let i = 0; i < ROW; i++) {
 				this.enemies[2].push(new fastEnemyType(
-					new p5.Vector(-100, 0),
-					i
+					new p5.Vector(-100, 0)
 				));
 				this.addAnimation(new FastSpawnAnimation(
 					this.enemies[2][i],
 					new p5.Vector(this.size.x / 4 * (0.8 + 0.4 * i), this.size.y / 4 * (0.4 + 0.4 * 2)),
-					2 * ROW + i
+					2 * ROW + i + INIT_DELAY
 				));
 			}
 		}
