@@ -1,0 +1,17 @@
+{
+	"repository": "JS-GameRoom",
+	"animations": {
+		"spawn": {
+			"steps": 200,
+			"animation": [
+				{"x": 0, "y": 100},
+				{"x": 300, "y": 600},
+				{"x": 600, "y": 200}
+			]
+		},
+		"attack": {
+			"steps": 200,
+			"animation": []
+		}
+	}
+}

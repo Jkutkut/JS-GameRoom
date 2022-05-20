@@ -1,0 +1,179 @@
+:root {
+	--ship-size: 50px;
+	--boss-ship-size: 70px;
+	--ship-margin: 10px;
+	--ship-full-size: calc(var(--ship-size) + var(--ship-margin) * 2);
+}
+
+.p5Canvas, #gameover {
+	display: none;
+}
+
+body {
+	font-family: var(--font-family);
+}
+
+body > div {
+	width: var(--size);
+	height: var(--size);
+	background-color: #222;
+
+	display: flex;
+	justify-content: center;
+
+	position: relative;
+
+	background-image: url("../../../../res/img/spaceInvaders/background/background_tutorial.png");
+}
+
+#mainmenu {
+	--btn-width: calc(var(--size) * 0.4);
+	--btn-height: calc(var(--size) * 0.1);
+}
+
+/* Ships */
+.ship {
+	--hover-time: 2s;
+	--rotation: 2deg;
+	--nominal-rotation: 0deg;
+	--amplitude: 5px;
+	--half-amplitude: calc(var(--amplitude) / 2);
+
+
+	width: var(--ship-size);
+	height: var(--ship-size);
+	margin: var(--ship-margin);
+	animation: shiphover var(--hover-time) linear infinite;
+}
+
+.ship:hover {
+	--hover-time: 1.2s;
+	--rotation: 5deg;
+	--amplitude: 20px;
+	--half-amplitude: calc(var(--amplitude) / 2);
+	transition: 6s;
+}
+
+.enemy {
+	--nominal-rotation: 180deg;
+	--amplitude: -5px;
+	transform: rotateX(var(--nominal-rotation));
+}
+
+#enemyhorde {
+	width: calc(var(--ship-full-size) * 6);
+	position: absolute;
+	top: calc(var(--size) * 0.05);
+
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+#player {
+	position: absolute;
+	top: calc(var(--size) * 0.6);
+
+}
+
+@keyframes shiphover {
+	0% {
+		transform:
+			translateX(0px)
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+	12.5% {
+		transform:
+			translateX(var(--half-amplitude))
+			rotate(calc(var(--nominal-rotation) + var(--rotation) / 2));
+	}
+	25% {
+		transform:
+			translateX(var(--amplitude))
+			rotate(var(--nominal-rotation));
+	}
+
+	37.5% {
+		transform:
+			translateX(var(--half-amplitude))
+			rotate(calc(var(--nominal-rotation) - var(--rotation) / 2));
+	}
+	50% {
+		transform:
+			translateX(0px)
+			rotate(calc(var(--nominal-rotation) - var(--rotation)));
+	}
+	62.5% {
+		transform:
+			translateX(calc(var(--half-amplitude) * -1))
+			rotate(calc(var(--nominal-rotation) - var(--rotation) / 2));
+	}
+
+	75% {
+		transform:
+			translateX(calc(var(--amplitude) * -1))
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+	87.5% {
+		transform:
+			translateX(calc(var(--half-amplitude) * -1))
+			rotate(calc(var(--nominal-rotation) + var(--rotation) / 2));
+	}
+	100% {
+		transform:
+			translateX(0px)
+			rotate(calc(var(--nominal-rotation) + var(--rotation)));
+	}
+}
+
+
+/* BTN start */
+#btnstart {
+	position: absolute;
+	bottom: calc(var(--size) * 0.1);
+}
+
+
+/* Game over */
+
+#gameover {
+	--btn-width: calc(var(--size) * 0.4);
+	--btn-height: calc(var(--size) * 0.1);
+
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+div {
+	color: var(--color-primary);
+}
+
+.results {
+	display: flex;
+	flex-direction: column;
+
+	margin-top: 0rem;
+	margin-bottom: 0.4rem;
+}
+
+.results > div {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+
+.enemyresult {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: row;
+}
+
+.enemyresult > * {
+	margin: 0.8rem;
+}
+
+.boss {
+	--ship-size: var(--boss-ship-size);
+}
