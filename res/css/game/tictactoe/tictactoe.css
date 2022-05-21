@@ -43,13 +43,35 @@ body > div {
 }
 
 .cell {
-	
-
 	background: #222;
-/* 
-	width: calc(var(--size) / 3 - var(--bars) * var(--margin));
-	height: calc(var(--size) / 3 - var(--bars) * var(--margin)); */
 	width: calc(var(--size) / 3 - var(--margin) * 2);
 	height: calc(var(--size) / 3 - var(--margin) * 2);
 	margin: var(--margin);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	--scale-line: 1;
+}
+
+.cell:hover {
+	--scale-line: 0;
+}
+
+.line {
+	background: #f00;
+	width: calc(var(--size) / 3.5);
+	height: calc(var(--size) / 40);
+
+	transform: scale(var(--scale-line));
+	transition: 1s;
+}
+
+.cross:nth-child(1) {
+	transform: rotate(45deg) skew(-45deg);
+}
+
+.cross:nth-child(2) {
+	transform: rotate(-45deg);
 }
