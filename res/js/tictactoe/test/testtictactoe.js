@@ -15,7 +15,7 @@ class TestTictactoe {
 		"test_inits",
 		"test_runs",
 		"test_win_row",
-		"test_win_col",
+		"test_win_col"
 	];
 
 	static test() {
@@ -66,13 +66,20 @@ class TestTictactoe {
 					`Cross should win on row ${i} against row ${(i + 2) % 3}`
 				);
 			let winner = game.checkBoard();
+			let s = 0;
 			for (let j = 0; j < 3; j++) {
-				if (winner[i][1] != i)
+				if (winner[j][0] != i)
 					return new TestResult(
 						true,
-						`Cross's cells should be on row ${i} but are on row ${winner[i][1]}`
+						`Cross's cells should be on row ${i} but are on row ${winner[j][0]}`
 					);
+				s += winner[j][1];
 			}
+			if (s != 0 + 1 + 2)
+				return new TestResult(
+					true,
+					`Cross's cells duplicated: ${s}`
+				);
 
 			console.log(`  test_win_row cross_${i} [OK]`);
 		}
@@ -93,13 +100,21 @@ class TestTictactoe {
 					`Circle should win on row ${i} against row ${(i + 2) % 3}`
 				);
 			let winner = game.checkBoard();
+			let s = 0;
 			for (let j = 0; j < 3; j++) {
-				if (winner[i][1] != i)
+				if (winner[j][0] != i)
 					return new TestResult(
 						true,
-						`Circle's cells should be on row ${i} but are on row ${winner[i][1]}`
+						`Circle's cells should be on row ${i} but are on row ${winner[j][0]}`
 					);
+				s += winner[j][1];
 			}
+			if (s != 0 + 1 + 2)
+				return new TestResult(
+					true,
+					`Circle's cells duplicated: ${s}`
+				);
+
 			console.log(`  test_win_row circle_${i} [OK]`);
 		}
 		return new TestResult(false);
@@ -122,13 +137,20 @@ class TestTictactoe {
 					`Cross should win on col ${i} against col ${(i + 2) % 3}`
 				);
 			let winner = game.checkBoard();
+			let s = 0;
 			for (let j = 0; j < 3; j++) {
-				if (winner[i][0] != i)
+				if (winner[j][1] != i)
 					return new TestResult(
 						true,
-						`Cross's cells should be on col ${i} but are on col ${winner[i][0]}`
+						`Cross's cells should be on col ${i} but are on col ${winner[j][1]}`
 					);
+				s += winner[j][0];
 			}
+			if (s != 0 + 1 + 2)
+				return new TestResult(
+					true,
+					`Cross's cells duplicated: ${s}`
+				);
 
 			console.log(`  test_win_col cross_${i} [OK]`);
 		}
@@ -149,13 +171,20 @@ class TestTictactoe {
 					`Circle should win on col ${i} against col ${(i + 2) % 3}`
 				);
 			let winner = game.checkBoard();
+			let s = 0;
 			for (let j = 0; j < 3; j++) {
-				if (winner[i][0] != i)
+				if (winner[j][1] != i)
 					return new TestResult(
 						true,
-						`Circle's cells should be on col ${i} but are on col ${winner[i][0]}`
+						`Circle's cells should be on col ${i} but are on col ${winner[j][1]}`
 					);
+				s += winner[j][0];
 			}
+			if (s != 0 + 1 + 2)
+				return new TestResult(
+					true,
+					`Circle's cells duplicated: ${s}`
+				);
 			console.log(`  test_win_col circle_${i} [OK]`);
 		}
 		return new TestResult(false);

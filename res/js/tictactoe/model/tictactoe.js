@@ -61,16 +61,18 @@ class Tictactoe {
 				row += this.board[i][j];
 				col += this.board[j][i];
 			}
-			if (row == Tictactoe.CIRCLE * 3 || col == Tictactoe.CIRCLE * 3) {
-				winner = Tictactoe.CIRCLE;
+			if (row == Tictactoe.CROSS * 3 || row == Tictactoe.CIRCLE * 3)
 				for (j = 0; j < 3; j++)
 					solCells.push([i, j]);
+			else if (col == Tictactoe.CROSS * 3 || col == Tictactoe.CIRCLE * 3)
+				for (j = 0; j < 3; j++)
+					solCells.push([j, i]);
+			if (row == Tictactoe.CIRCLE * 3 || col == Tictactoe.CIRCLE * 3) {
+				winner = Tictactoe.CIRCLE;
 				break;
 			}
 			else if (row == Tictactoe.CROSS * 3 || col == Tictactoe.CROSS * 3) {
 				winner = Tictactoe.CROSS;
-				for (j = 0; j < 3; j++)
-					solCells.push([j, i]);
 				break;
 			}
 		}
