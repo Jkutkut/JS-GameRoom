@@ -2,6 +2,7 @@ class TictactoeUI_AI extends TictactoeUI {
 	constructor(board, aiType) {
 		super(board);
 		this.ai = Tictactoe.CIRCLE;
+		this.human = Tictactoe.CROSS;
 		this.aiLogic = new aiType(this);
 
 		this.turn = this.ai;
