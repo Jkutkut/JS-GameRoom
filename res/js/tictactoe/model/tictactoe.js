@@ -4,24 +4,14 @@ class Tictactoe {
 	static CROSS = -1;
 	static CIRCLE = 1;
 
-	constructor(board) {
-		this.initBoard(board);
+	constructor() {
+		this.initBoard();
 
 		this.turn = Tictactoe.CROSS;
 		this._running = true;
-		this.updateUI();
-
-		this.click(2, 0);
-		this.click(0, 0);
-		this.click(0, 1);
-		this.click(1, 1);
-		this.click(0, 2);
-		this.click(2, 2);
-		this.click(2, 1); // Does not execute
 	}
 
-	initBoard(board) {
-		this._uiboard = board;
+	initBoard() {
 		this._board = [];
 		for (let i = 0; i < 3; i++) {
 			this._board[i] = [];
@@ -31,32 +21,10 @@ class Tictactoe {
 		}
 	}
 
-	updateUI() {
-		let f;
-		if (!this.running)
-			f = Tictactoe.disableCell;
-		else if (this.turn == Tictactoe.CROSS)
-			f = Tictactoe.enableCross;
-		else
-			f = Tictactoe.enableCircle;
-
-		for (let i = 0; i < 3; i++) {
-			for (let j = 0; j < 3; j++) {
-				if (this.board[i][j] == Tictactoe.UNDEFINED) {
-					f(this.UIboard[i][j]);
-				}
-			}
-		}
-	}
-
 	// Getters
 
 	get running() {
 		return this._running;
-	}
-
-	get UIboard() {
-		return this._uiboard;
 	}
 
 	get board() {
@@ -72,14 +40,10 @@ class Tictactoe {
 			return;
 		
 		this.board[x][y] = this.turn;
-		if (this.turn == Tictactoe.CROSS) {
-			Tictactoe.select(Tictactoe.getCross(this.UIboard[x][y]));
+		if (this.turn == Tictactoe.CROSS)
 			this.turn = Tictactoe.CIRCLE;
-		}
-		else {
-			Tictactoe.select(Tictactoe.getCircle(this.UIboard[x][y]));
+		else
 			this.turn = Tictactoe.CROSS;
-		}
 		this.checkBoard();
 		this.updateUI();
 	}
@@ -100,26 +64,38 @@ class Tictactoe {
 			}
 			if (row == Tictactoe.CIRCLE * 3 || col == Tictactoe.CIRCLE * 3) {
 				winner = Tictactoe.CIRCLE;
-				solCells = this.board[i];
+				for (j = 0; j < 3; j++)
+					solCells.push([i, j]);
 				break;
 			}
 			else if (row == Tictactoe.CROSS * 3 || col == Tictactoe.CROSS * 3) {
 				winner = Tictactoe.CROSS;
 				for (j = 0; j < 3; j++)
-					solCells.push(this.UIboard[j][i]);
+					solCells.push([j, i]);
 				break;
 			}
 		}
-		if (winner == Tictactoe.UNDEFINED) {
-			// Diagonals
-			if (this.board[0][0] + this.board[1][1] + this.board[2][2] == 3) {
+		if (winner == Tictactoe.UNDEFINED) { // Diagonal1
+			let d1 = 0;
+			for (let i = 0; i < 3; i++) {
+				d1 += this.board[i][i];
+				solCells.push([i, i]);
+			}
+			if (d1 == Tictactoe.CROSS * 3)
 				winner = Tictactoe.CROSS;
-				solCells = [this.UIboard[0][0], this.UIboard[1][1], this.UIboard[2][2]];
-			}
-			else if (this.board[0][0] + this.board[1][1] + this.board[2][2] == -3) {
+			else if (d1 == Tictactoe.CIRCLE * 3)
 				winner = Tictactoe.CIRCLE;
-				solCells = [this.UIboard[0][0], this.UIboard[1][1], this.UIboard[2][2]];
+		}
+		if (winner == Tictactoe.UNDEFINED) { // Diagonal2
+			let d2 = this.board[0][2] + this.board[1][1] + this.board[2][0];
+			for (let i = 0; i < 3; i++) {
+				d2 += this.board[i][2 - i];
+				solCells.push([i, 2 - i]);
 			}
+			if (d2 == Tictactoe.CROSS * 3)
+				winner = Tictactoe.CROSS;
+			else if (d2 == Tictactoe.CIRCLE * 3)
+				winner = Tictactoe.CIRCLE;
 		}
 
 		if (winner != Tictactoe.UNDEFINED) {
@@ -127,59 +103,9 @@ class Tictactoe {
 				console.log("Cross wins");
 			else
 				console.log("Circle wins");
-			for (let cell of solCells)
-				Tictactoe.markAsSolution(cell);
 			this._running = false;
+			return solCells;
 		}
-
-	}
-
-	// UI logic
-
-	static getCross(cell) {
-		return cell.getElementsByClassName("cross")[0];
-	}
-	
-	static getCircle(cell) {
-		return cell.getElementsByClassName("circle")[0];
-	}
-
-	static markAsSolution(cell) {
-		cell.classList.add("solution");
-	}
-
-	static select(cellElement) {
-		cellElement.classList.add("selected");
-		cellElement.classList.remove("unselected");
-	}
-
-	static unselect(cellElement) {
-		cellElement.classList.remove("selected");
-		cellElement.classList.add("unselected");
-	}
-
-	static enable(cellElement) {
-		cellElement.classList.remove("selected");
-		cellElement.classList.remove("unselected");
-	}
-
-	static disable(cellElement) {
-		cellElement.classList.add("unselected");
-		cellElement.classList.remove("selected");
-	}
-
-	static enableCross(cell) {
-		Tictactoe.unselect(Tictactoe.getCircle(cell));
-		Tictactoe.enable(Tictactoe.getCross(cell));
-	}
-
-	static enableCircle(cell) {
-		Tictactoe.unselect(Tictactoe.getCross(cell));
-		Tictactoe.enable(Tictactoe.getCircle(cell));
-	}
-
-	static disableCell(cell) {
-		Tictactoe.disable(Tictactoe.getCross(cell));
-		Tictactoe.disable(Tictactoe.getCircle(cell));
+		return null;
 	}
 }

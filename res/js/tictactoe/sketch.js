@@ -15,5 +15,5 @@ window.onload = () => {
 			});
 		}
 	}
-	_game = new Tictactoe(board);
+	_game = new TictactoeUI(board);
 }
