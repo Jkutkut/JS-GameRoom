@@ -45,7 +45,6 @@ class Tictactoe {
 		else
 			this.turn = Tictactoe.CROSS;
 		this.checkBoard();
-		this.updateUI();
 	}
 
 	mouseClick(x, y) {

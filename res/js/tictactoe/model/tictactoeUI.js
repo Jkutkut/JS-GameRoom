@@ -55,6 +55,7 @@ class TictactoeUI extends Tictactoe {
 		else
 			TictactoeUI.select(TictactoeUI.getCircle(this.UIboard[x][y]));
 		super.click(x, y);
+		this.updateUI();
 	}
 
 	checkBoard() {
