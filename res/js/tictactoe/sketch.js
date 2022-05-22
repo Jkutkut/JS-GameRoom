@@ -10,7 +10,9 @@ window.onload = () => {
 		board[i] = [];
 		for (let j = 0; j < 3; j++) {
 			board[i][j] = cells[i * 3 + j];
-
+			board[i][j].addEventListener("click", (e) => {
+				_game.click(i, j);
+			});
 		}
 	}
 

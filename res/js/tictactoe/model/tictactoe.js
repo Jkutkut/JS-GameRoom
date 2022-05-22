@@ -48,9 +48,20 @@ class Tictactoe {
 		return this._board;
 	}
 
-	click(e) {
-		console.log(e);
-		console.log(e.target);
+	click(x, y) {
+		if (this.board[x][y] != Tictactoe.UNDEFINED)
+			return;
+		
+		this.board[x][y] = this.turn;
+		if (this.turn == Tictactoe.CROSS) {
+			Tictactoe.select(Tictactoe.getCross(this.UIboard[x][y]));
+			this.turn = Tictactoe.CIRCLE;
+		}
+		else {
+			Tictactoe.select(Tictactoe.getCircle(this.UIboard[x][y]));
+			this.turn = Tictactoe.CROSS;
+		}
+		this.updateUI();
 	}
 
 	// UI logic
