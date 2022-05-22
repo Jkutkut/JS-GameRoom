@@ -11,10 +11,9 @@ window.onload = () => {
 		for (let j = 0; j < 3; j++) {
 			board[i][j] = cells[i * 3 + j];
 			board[i][j].addEventListener("click", (e) => {
-				_game.click(i, j);
+				_game.mouseClick(i, j);
 			});
 		}
 	}
-
 	_game = new Tictactoe(board);
 }

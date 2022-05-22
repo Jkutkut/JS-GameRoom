@@ -40,6 +40,8 @@ class Tictactoe {
 		}
 	}
 
+	// Getters
+
 	get UIboard() {
 		return this._uiboard;
 	}
@@ -47,6 +49,8 @@ class Tictactoe {
 	get board() {
 		return this._board;
 	}
+
+	// Control
 
 	click(x, y) {
 		if (this.board[x][y] != Tictactoe.UNDEFINED)
@@ -62,6 +66,10 @@ class Tictactoe {
 			this.turn = Tictactoe.CROSS;
 		}
 		this.updateUI();
+	}
+
+	mouseClick(x, y) {
+		this.click(x, y);
 	}
 
 	// UI logic
