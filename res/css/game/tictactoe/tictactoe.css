@@ -47,12 +47,15 @@ body > div {
 	width: calc(var(--size) / 3 - var(--margin) * 2);
 	height: calc(var(--size) / 3 - var(--margin) * 2);
 	margin: var(--margin);
-
-	--scale-line: 1;
 }
 
-.cell:hover {
+.cell .line {
 	--scale-line: 0;
+}
+
+.cell:hover .line, .selected > .line {
+	--scale-line: 1;
+	left: calc(var(--margin) * 0.5);
 }
 
 .cell > div {
@@ -66,15 +69,14 @@ body > div {
 
 .line {
 	background: var(--color-primary);
-	width: calc(var(--size) / 3.5);
+	width: calc(var(--size) / 3.5 * var(--scale-line));
 	height: calc(var(--size) / 40);
 
-	transform: scale(var(--scale-line));
-	transition: 1s;
+	transition: 0.5s;
 
 	position: absolute;
 	top: calc(50% - var(--margin));
-	left: calc(var(--margin) * 0.5);
+	left: 50%;
 
 	border-radius: 0.3rem;
 }
