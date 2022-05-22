@@ -8,7 +8,20 @@ class Tictactoe {
 		this.initBoard(board);
 
 		this.turn = Tictactoe.CROSS;
+		this._running = true;
 		this.updateUI();
+
+		this.click(2, 0);
+		this.click(0, 0);
+		this.click(0, 1);
+		this.click(1, 1);
+		this.click(0, 2);
+		this.click(2, 2);
+
+		Tictactoe.markAsSolution(this.UIboard[0][0]);
+		Tictactoe.markAsSolution(this.UIboard[1][1]);
+		Tictactoe.markAsSolution(this.UIboard[2][2]);
+		Tictactoe.markAsSolution(this.UIboard[2][0]);
 	}
 
 	initBoard(board) {
@@ -42,6 +55,10 @@ class Tictactoe {
 
 	// Getters
 
+	get running() {
+		return this._running;
+	}
+
 	get UIboard() {
 		return this._uiboard;
 	}
@@ -53,6 +70,8 @@ class Tictactoe {
 	// Control
 
 	click(x, y) {
+		if (!this.running)
+			return;
 		if (this.board[x][y] != Tictactoe.UNDEFINED)
 			return;
 		
@@ -80,6 +99,10 @@ class Tictactoe {
 	
 	static getCircle(cell) {
 		return cell.getElementsByClassName("circle")[0];
+	}
+
+	static markAsSolution(cell) {
+		cell.classList.add("solution");
 	}
 
 	static select(cellElement) {

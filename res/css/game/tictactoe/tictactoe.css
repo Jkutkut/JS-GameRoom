@@ -63,6 +63,15 @@ body > div {
 	display: none;
 }
 
+.solution > .cross > div {
+	background: rgb(96, 173, 8);
+}
+
+
+.solution > .circle > div {
+	--color-primary: rgb(96, 173, 8);
+}
+
 
 /* Circle */
 .cell .circle > div {
