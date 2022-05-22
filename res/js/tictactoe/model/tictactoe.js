@@ -22,6 +22,8 @@ class Tictactoe {
 		Tictactoe.markAsSolution(this.UIboard[1][1]);
 		Tictactoe.markAsSolution(this.UIboard[2][2]);
 		Tictactoe.markAsSolution(this.UIboard[2][0]);
+		this._running = false;
+		this.updateUI();
 	}
 
 	initBoard(board) {
@@ -37,12 +39,12 @@ class Tictactoe {
 
 	updateUI() {
 		let f;
-		if (this.turn == Tictactoe.CROSS) {
+		if (!this.running)
+			f = Tictactoe.disableCell;
+		else if (this.turn == Tictactoe.CROSS)
 			f = Tictactoe.enableCross;
-		}
-		else {
+		else
 			f = Tictactoe.enableCircle;
-		}
 
 		for (let i = 0; i < 3; i++) {
 			for (let j = 0; j < 3; j++) {
@@ -120,6 +122,11 @@ class Tictactoe {
 		cellElement.classList.remove("unselected");
 	}
 
+	static disable(cellElement) {
+		cellElement.classList.add("unselected");
+		cellElement.classList.remove("selected");
+	}
+
 	static enableCross(cell) {
 		Tictactoe.unselect(Tictactoe.getCircle(cell));
 		Tictactoe.enable(Tictactoe.getCross(cell));
@@ -128,5 +135,10 @@ class Tictactoe {
 	static enableCircle(cell) {
 		Tictactoe.unselect(Tictactoe.getCross(cell));
 		Tictactoe.enable(Tictactoe.getCircle(cell));
+	}
+
+	static disableCell(cell) {
+		Tictactoe.disable(Tictactoe.getCross(cell));
+		Tictactoe.disable(Tictactoe.getCircle(cell));
 	}
 }
