@@ -98,10 +98,10 @@ class Tictactoe {
 		}
 
 		if (winner != Tictactoe.UNDEFINED) {
-			if (winner == Tictactoe.CROSS)
-				console.log("Cross wins");
-			else
-				console.log("Circle wins");
+			// if (winner == Tictactoe.CROSS)
+			// 	console.log("Cross wins");
+			// else
+			// 	console.log("Circle wins");
 			this._running = false;
 			return solCells;
 		}

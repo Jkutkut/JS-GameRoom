@@ -50,29 +50,56 @@ class TestTictactoe {
 
 
 	static test_win_row() {
-		return this.test_win_row01();
-	}
-
-	static test_win_row01() {
-		let game = new Tictactoe();
-		/*
-		x x x
-		. . .
-		o o .
-		*/
-		game.click(0, 0);
-		game.click(2, 0);
-		game.click(0, 1);
-		game.click(2, 1);
-		game.click(0, 2);
-		game.click(2, 2);
-		let runs = game.running;
-		if (runs)
-			return new TestResult(true, "Game should be over");
-		let winner = game.checkBoard();
+		// Cross tests
 		for (let i = 0; i < 3; i++) {
-			if (winner[i][1] != 0)
-				return new TestResult(true, "Winner should be on row 0 but is " + winner[i][1]);
+			let game = new Tictactoe();
+			for (let j = 0; j < 3; j++) {
+				game.click(i, j); // i should win
+				game.click((i + 2) % 3, j);
+			}
+			let runs = game.running;
+			if (runs)
+				return new TestResult(
+					true,
+					"Game should be over:" +
+					`Cross should win on row ${i} against row ${(i + 2) % 3}`
+				);
+			let winner = game.checkBoard();
+			for (let j = 0; j < 3; j++) {
+				if (winner[i][1] != i)
+					return new TestResult(
+						true,
+						`Cross's cells should be on row ${i} but are on row ${winner[i][1]}`
+					);
+			}
+
+			console.log(`  test_win_row cross_${i} [OK]`);
+		}
+
+		// Circle tests
+		for (let i = 0; i < 3; i++) {
+			let game = new Tictactoe();
+			game.click((i + 1) % 3, 0);
+			for (let j = 0; j < 3; j++) {
+				game.click(i, j); // This should win
+				game.click((i + 2) % 3, j);
+			}
+			let runs = game.running;
+			if (runs)
+				return new TestResult(
+					true,
+					"Game should be over:" +
+					`Circle should win on row ${i} against row ${(i + 2) % 3}`
+				);
+			let winner = game.checkBoard();
+			for (let j = 0; j < 3; j++) {
+				if (winner[i][1] != i)
+					return new TestResult(
+						true,
+						`Circle's cells should be on row ${i} but are on row ${winner[i][1]}`
+					);
+			}
+			console.log(`  test_win_row circle_${i} [OK]`);
 		}
 		return new TestResult(false);
 	}
