@@ -1,28 +1,47 @@
 class Tictactoe {
 
+	static UNDEFINED = -1;
 	static CROSS = 0;
 	static CIRCLE = 1;
 
 	constructor(board) {
-		this._board = board;
+		this.initBoard(board);
+
 		this.turn = Tictactoe.CROSS;
+		this.updateUI();
+	}
 
-		console.log(this.board);
-
-
-		for (let row of this.board) {
-			for (let cell of row) {
-				Tictactoe.select(Tictactoe.getCircle(cell));
+	initBoard(board) {
+		this._uiboard = board;
+		this._board = [];
+		for (let i = 0; i < 3; i++) {
+			this._board[i] = [];
+			for (let j = 0; j < 3; j++) {
+				this._board[i][j] = Tictactoe.UNDEFINED;
 			}
 		}
+	}
 
-		Tictactoe.enableCross(this.board[0][0]);
-		Tictactoe.enableCross(this.board[0][1]);
-		Tictactoe.enableCross(this.board[0][2]);
+	updateUI() {
+		let f;
+		if (this.turn == Tictactoe.CROSS) {
+			f = Tictactoe.enableCross;
+		}
+		else {
+			f = Tictactoe.enableCircle;
+		}
 
-		Tictactoe.enableCircle(this.board[1][0]);
-		Tictactoe.enableCircle(this.board[1][1]);
-		Tictactoe.enableCircle(this.board[1][2]);
+		for (let i = 0; i < 3; i++) {
+			for (let j = 0; j < 3; j++) {
+				if (this.board[i][j] == Tictactoe.UNDEFINED) {
+					f(this.UIboard[i][j]);
+				}
+			}
+		}
+	}
+
+	get UIboard() {
+		return this._uiboard;
 	}
 
 	get board() {
