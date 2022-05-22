@@ -33,6 +33,9 @@ body > div {
 	margin: 10px;
 }
 
+
+/* Tictactoe */
+
 .row {
 	--bars: 2;
 	--margin: 10px;
@@ -49,27 +52,62 @@ body > div {
 	margin: var(--margin);
 }
 
-.cell .line {
-	--scale-line: 0;
-}
-
-.cell:hover .line, .selected > .line {
-	--scale-line: 1;
-	left: calc(var(--margin) * 0.5);
-}
-
 .cell > div {
 	position: relative;
-}
 
-.cross {
 	width: 100%;
 	height: 100%;
 }
 
+.unselected {
+	display: none;
+}
+
+
+/* Circle */
+.cell .circle > div {
+	--show: 0;
+}
+
+.cell:hover .circle > div, .circle.selected > div {
+	--show: 1;
+	top: var(--margin);
+	left: var(--margin);
+}
+
+.circle > div {
+	border: calc(var(--size) / 40 * var(--show)) solid var(--color-primary);
+	border-radius: 50%;
+	
+	width: calc((var(--size) / 3.5 - var(--margin) * 4) * var(--show));
+	height: calc((var(--size) / 3.5 - var(--margin) * 4) * var(--show));
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transition: 0.5s;
+}
+
+
+/* Cross */
+
+.cell .line {
+	--show: 0;
+}
+
+.cell:hover .line, .selected > .line {
+	--show: 1;
+	left: calc(var(--margin) * 0.5);
+}
+
+.unselected:hover > .line {
+	--show: 0;
+}
+
 .line {
 	background: var(--color-primary);
-	width: calc(var(--size) / 3.5 * var(--scale-line));
+	width: calc(var(--size) / 3.5 * var(--show));
 	height: calc(var(--size) / 40);
 
 	transition: 0.5s;
