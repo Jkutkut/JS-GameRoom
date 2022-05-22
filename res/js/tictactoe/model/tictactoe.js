@@ -31,6 +31,23 @@ class Tictactoe {
 		return this._board;
 	}
 
+	toString() {
+		let s = "";
+		for (let i = 0; i < 3; i++) {
+			for (let j = 0; j < 3; j++) {
+				if (this.board[i][j] == Tictactoe.CROSS)
+					s += "X";
+				else if (this.board[i][j] == Tictactoe.CIRCLE)
+					s += "O";
+				else
+					s += " ";
+				s += " ";
+			}
+			s += "\n";
+		}
+		return s;
+	}
+
 	// Control
 
 	click(x, y) {
@@ -88,7 +105,8 @@ class Tictactoe {
 				winner = Tictactoe.CIRCLE;
 		}
 		if (winner == Tictactoe.UNDEFINED) { // Diagonal2
-			let d2 = this.board[0][2] + this.board[1][1] + this.board[2][0];
+			let d2 = 0;
+			solCells.length = 0;
 			for (let i = 0; i < 3; i++) {
 				d2 += this.board[i][2 - i];
 				solCells.push([i, 2 - i]);

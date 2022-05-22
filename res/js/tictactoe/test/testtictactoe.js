@@ -15,15 +15,16 @@ class TestTictactoe {
 		"test_inits",
 		"test_runs",
 		"test_win_row",
-		"test_win_col"
+		"test_win_col",
+		"test_win_diag"
 	];
 
 	static test() {
 		for (let i = 0; i < TestTictactoe.TESTS.length; i++) {
 			let result = TestTictactoe[TestTictactoe.TESTS[i]]();
 			if (result.failed) {
-				console.error(`${TestTictactoe.TESTS[i]} failed:`);
-				console.error(result.msg);
+				console.error(`${TestTictactoe.TESTS[i]} [KO]:`);
+				console.error("  " + result.msg);
 				console.error("");
 				return;
 			}
@@ -187,6 +188,59 @@ class TestTictactoe {
 				);
 			console.log(`  test_win_col circle_${i} [OK]`);
 		}
+		return new TestResult(false);
+	}
+
+	static test_win_diag() {
+		// Principal diagonal test
+		let game = new Tictactoe();
+		game.click(0, 0);
+		game.click(0, 1);
+		game.click(1, 1);
+		game.click(1, 2);
+		game.click(2, 2);
+		let runs = game.running;
+		if (runs)
+			return new TestResult(
+				true,
+				"Game should be over:" +
+				`Cross should win on principal diagonal`
+			);
+		let winner = game.checkBoard();
+		for (let j = 0; j < 3; j++) {
+			if (winner[j][0] != winner[j][1])
+				return new TestResult(
+					true,
+					`Cross's cells should be on principal diagonal but are on ${winner[j]}`
+				);
+		}
+		console.log(`  test_win_diag principal [OK]`);
+
+		// Secondary diagonal test
+		game = new Tictactoe();
+		game.click(2, 0);
+		game.click(1, 0);
+		game.click(1, 1);
+		game.click(0, 1);
+		game.click(0, 2);
+
+		runs = game.running;
+		if (runs)
+			return new TestResult(
+				true,
+				"Game should be over:" +
+				`Cross should win on secondary diagonal\n${game.toString()}`
+			);
+		winner = game.checkBoard();
+		for (let j = 0; j < 3; j++) {
+			if (winner[j][0] != j || winner[j][1] != 2 - j)
+				return new TestResult(
+					true,
+					`Cross's cells should be on secondary diagonal but are on row ${winner[j]}\n${game.toString()}`
+				);
+		}
+		console.log(`  test_win_diag secondary [OK]`);
+
 		return new TestResult(false);
 	}
 }
