@@ -1,27 +1,24 @@
 class TictactoeUI_AI extends TictactoeUI {
-
-	static HUMAN = 0;
-	static AI = 1;
-
 	constructor(board, aiType) {
 		super(board);
-		this.ai = new aiType();
+		this.ai = Tictactoe.CIRCLE;
+		this.aiLogic = new aiType(this);
 
-		this.turn = TictactoeUI_AI.AI;
+		this.turn = this.ai;
 	}
 
 	aiClick() {
-		if (this.turn == TictactoeUI_AI.HUMAN)
+		if (this.turn != this.ai)
 			return;
 
-		let move = this.ai.click(this.board);
+		let move = this.ai.move(this.board);
 		this.click(...move);
 	}
 
 	mouseClick(x, y) {
-		if (this.turn == TictactoeUI_AI.AI)
+		if (this.turn == this.ai)
 			return;
 
-			super.mouseClick(x, y);
+		super.mouseClick(x, y);
 	}
 }
