@@ -14,7 +14,8 @@ class TestTictactoe {
 	static TESTS = [
 		"test_inits",
 		"test_runs",
-		"test_win_row"
+		"test_win_row",
+		"test_win_col",
 	];
 
 	static test() {
@@ -100,6 +101,62 @@ class TestTictactoe {
 					);
 			}
 			console.log(`  test_win_row circle_${i} [OK]`);
+		}
+		return new TestResult(false);
+	}
+
+
+	static test_win_col() {
+		// Cross tests
+		for (let i = 0; i < 3; i++) {
+			let game = new Tictactoe();
+			for (let j = 0; j < 3; j++) {
+				game.click(j, i); // i should win
+				game.click(j, (i + 2) % 3);
+			}
+			let runs = game.running;
+			if (runs)
+				return new TestResult(
+					true,
+					"Game should be over:" +
+					`Cross should win on col ${i} against col ${(i + 2) % 3}`
+				);
+			let winner = game.checkBoard();
+			for (let j = 0; j < 3; j++) {
+				if (winner[i][0] != i)
+					return new TestResult(
+						true,
+						`Cross's cells should be on col ${i} but are on col ${winner[i][0]}`
+					);
+			}
+
+			console.log(`  test_win_col cross_${i} [OK]`);
+		}
+
+		// Circle tests
+		for (let i = 0; i < 3; i++) {
+			let game = new Tictactoe();
+			game.click(0, (i + 1) % 3);
+			for (let j = 0; j < 3; j++) {
+				game.click(j, i); // This should win
+				game.click(j, (i + 2) % 3);
+			}
+			let runs = game.running;
+			if (runs)
+				return new TestResult(
+					true,
+					"Game should be over:" +
+					`Circle should win on col ${i} against col ${(i + 2) % 3}`
+				);
+			let winner = game.checkBoard();
+			for (let j = 0; j < 3; j++) {
+				if (winner[i][0] != i)
+					return new TestResult(
+						true,
+						`Circle's cells should be on col ${i} but are on col ${winner[i][0]}`
+					);
+			}
+			console.log(`  test_win_col circle_${i} [OK]`);
 		}
 		return new TestResult(false);
 	}
