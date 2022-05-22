@@ -18,6 +18,8 @@ window.onload = () => {
 	document.getElementById("btn-2players").addEventListener("click", () => {
 		initGame(new TictactoeUI(board));
 	});
+
+	initGame(new TictactoeUI_AI(board, TictactoeAI));
 }
 
 

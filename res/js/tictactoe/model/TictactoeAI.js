@@ -14,33 +14,44 @@ class TictactoeAI {
 		this.game = game;
 	}
 
-	// bestMove() {
-	// 	let bestScore = -Infinity;
-	// 	let move;
-	// 	for (let i = 0, j; i < 3; i++) {
-	// 		for (j = 0; j < 3; j++) {
-	// 			if (this.game.board[i][j] == Tictactoe.UNDEFINED) {
-	// 				this.game.board[i][j] = this.game.ai;
-	// 				let score = this.minimax(this.game.board, 0, false);
-	// 			}
-	// 		}
-	// 	}
+	bestMove() {
+		let bestScore = -Infinity;
+		let move = null;
+		for (let i = 0, j, score; i < 3; i++) {
+			for (j = 0; j < 3; j++) {
+				if (this.game.board[i][j] == Tictactoe.UNDEFINED) {
+					this.game.board[i][j] = this.game.ai;
+					score = this.minmax(Tictactoe.CROSS == this.game.ai);
+					console.log(score);
+					this.game.board[i][j] = Tictactoe.UNDEFINED;
+					if (score > bestScore) {
+						console.log("updated best score: " + score);
+						bestScore = score;
+						move = [i, j];
+					}
+				}
+			}
+		}
+		console.log(this.game.toString());
+		return move;
+	}
 
-	minmax(depth, maximizingCross) {
+	minmax(maximizingCross) {
 		let result = this.checkWinner();
 		if (result !== null)
 			return result;
 
-		let f = (maximizingCross) ? Math.max : Math.min;
+		let f = (maximizingCross) ? Math.min : Math.max;
 		let signature = (maximizingCross) ? Tictactoe.CROSS : Tictactoe.CIRCLE;
 
 		let bestScore = -Infinity;
-		for (let i = 0; i < 3; i++) {
-			for (let j = 0; j < 3; j++) {
+		for (let i = 0, j; i < 3; i++) {
+			for (j = 0; j < 3; j++) {
 				if (this.game.board[i][j] != Tictactoe.UNDEFINED)
 					continue;
 				this.game.board[i][j] = signature;
-				let score = this.minmax(depth + 1, !maximizingCross); // Oposite, other player playing now
+				// console.log(this.game.toString());
+				let score = this.minmax(!maximizingCross); // Oposite, other player playing now
 				this.game.board[i][j] = Tictactoe.UNDEFINED;
 				bestScore = f(score, bestScore);
 			}
