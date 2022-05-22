@@ -109,3 +109,6 @@ class Tictactoe {
 		return null;
 	}
 }
+
+if (typeof module !== "undefined")
+	module.exports = Tictactoe;
