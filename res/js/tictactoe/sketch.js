@@ -1,8 +1,7 @@
 var _game;
 
 window.onload = () => {
-	document.getElementById("mainmenu").style.display = "none";
-	document.getElementById("gamemenu").style.display = "flex";
+	document.getElementById("gamemenu").style.display = "none";
 
 	let board = [];
 	let cells = document.getElementsByClassName("cell");
@@ -15,5 +14,15 @@ window.onload = () => {
 			});
 		}
 	}
-	_game = new TictactoeUI(board);
+
+	document.getElementById("btn-2players").addEventListener("click", () => {
+		initGame(new TictactoeUI(board));
+	});
+}
+
+
+function initGame(game) {
+	_game = game;
+	document.getElementById("mainmenu").style.display = "none";
+	document.getElementById("gamemenu").style.display = "flex";
 }

@@ -4,14 +4,6 @@ class TictactoeUI extends Tictactoe {
 		super();
 		this.initBoardUI(board);
 		this.updateUI();
-
-		this.click(2, 0);
-		this.click(0, 0);
-		this.click(0, 1);
-		this.click(1, 1);
-		this.click(0, 2);
-		this.click(2, 2);
-		this.click(2, 1); // Does not execute
 	}
 
 	initBoardUI(board) {
