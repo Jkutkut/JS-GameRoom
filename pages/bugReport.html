@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<!-- JS -->
+	<script src="../res/js/bugReport/bugReport.js"></script>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="../res/css/common/global_style.css">
+	<link rel="stylesheet" href="../res/css/common/global_variables.css">
+	<link rel="stylesheet" href="../res/css/common/header/header.css">
+	<link rel="stylesheet" href="../res/css/bugReport/bugReport.css">
+
+	<!-- Web icon -->
+	<link rel="icon" href="../res/img/logos/gameRoom.png">
+
+	<title>GameRoom</title>
+</head>
+<body>
+	<div id="header">
+		<a href="./mainMenu.html">
+			<img class="logo" src="../res/img/logos/gameRoomDetailed.png" alt="Inicio">
+			<a class="link" href="./mainMenu.html">Home</a>
+			<a class="link" href="./bugReport.html">Report Bug</a>
+			<a class="link" href="./aboutUs.html">About us</a>
+		</a>
+	</div>
+
+	<form name="datos" method="post" action="mailto:mail@github.com">
+		<fieldset>
+			<!-- El bug -->
+			<label>Game:</label>
+			<select name="game" id="game">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+			</select>
+			<label>Date:</label>
+			<input type="date" name="date">
+			<p>Type of bug</p>
+			<div>
+				<input type="checkbox" name=""> Crash
+				<input type="checkbox" name=""> UI bug
+				<input type="checkbox" name=""> Control bug
+				<input type="checkbox" name=""> Sound bug
+				<input type="checkbox" name=""> Not loading
+				<input type="checkbox" name=""> Other
+			</div>
+			<p>What happen?</p>
+			<textarea rows="3" cols="80" placeholder="Fill me"></textarea>
+		</fieldset>
+		
+		<fieldset>
+			<!-- Datos usuario que reporta -->
+			<label for="username">Name:</label>
+			<input type="text" name="username" id="username" placeholder="Your name">
+			<label for="email">Email:</label>
+			<input type="text" name="email" id="email" placeholder="Your email">
+			<label for="phone">Phone:</label>
+			<input type="number" name="phone" id="phone" placeholder="Your phone">
+			<p>Gender</p>
+			<div>
+				<input type="radio" name="sexo"> male
+				<input type="radio" name="sexo"> female
+				<input type="radio" name="sexo"> other
+				<input type="radio" name="sexo"> ??
+			</div>
+		</fieldset>
+		<input type="submit" value="Send" >
+	</form>
+</body>
+</html>
