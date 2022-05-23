@@ -15,14 +15,16 @@ class TictactoeUI_AI extends TictactoeUI {
 			return;
 
 		if (Math.random() < this.hability2win) {
+			console.log("Logic move");
 			let move = this.aiLogic.bestMove(this.board);
 			this.click(...move);
 		}
 		else {
+			console.log("Random move");
 			for (let i = 0; i < 3; i++) {
 				for (let j = 0; j < 3; j++) {
 					if (this.board[i][j] == Tictactoe.UNDEFINED) {
-						this.aiClick(i, j);
+						this.click(i, j);
 						return;
 					}
 				}
@@ -53,7 +55,7 @@ class TicTacToeImposibleAI extends TictactoeUI_AI {
 }
 
 class TictactoeMediumAI extends TictactoeUI_AI {
-	static HABILITY_TO_WIN = 0.75;
+	static HABILITY_TO_WIN = 0.50;
 
 	constructor(board) {
 		super(board, TictactoeMediumAI.HABILITY_TO_WIN);
@@ -61,7 +63,7 @@ class TictactoeMediumAI extends TictactoeUI_AI {
 }
 
 class TictactoeEasyAI extends TictactoeUI_AI {
-	static HABILITY_TO_WIN = 0.5;
+	static HABILITY_TO_WIN = 0.25;
 
 	constructor(board) {
 		super(board, TictactoeEasyAI.HABILITY_TO_WIN);

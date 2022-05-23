@@ -15,18 +15,28 @@ window.onload = () => {
 		}
 	}
 
-	document.getElementById("btn-2players").addEventListener("click", () => {
-		initGame(new TictactoeUI(board));
+
+
+	document.getElementById("btn-easy").addEventListener("click", () => {
+		initGame(TictactoeEasyAI, board);
+	});
+	
+	document.getElementById("btn-medium").addEventListener("click", () => {
+		initGame(TictactoeMediumAI, board);
+	});
+	
+	document.getElementById("btn-impossible").addEventListener("click", () => {
+		initGame(TicTacToeImposibleAI, board);
 	});
 
-	document.getElementById("btn-impossible").addEventListener("click", () => {
-		initGame(new TicTacToeImposibleAI(board));
+	document.getElementById("btn-2players").addEventListener("click", () => {
+		initGame(TictactoeUI, board);
 	});
 }
 
 
-function initGame(game) {
-	_game = game;
+function initGame(game, board) {
+	_game = new game(board);
 	document.getElementById("mainmenu").style.display = "none";
 	document.getElementById("gamemenu").style.display = "flex";
 }
