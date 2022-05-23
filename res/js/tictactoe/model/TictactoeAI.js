@@ -38,22 +38,23 @@ class TictactoeAI {
 
 	minmax(maximizingCross) {
 		let result = this.checkWinner();
-		if (result !== null)
+		// if (result != null)
+		// 	console.log("winner: " + result);
+		if (result != null)
 			return result;
 
-		let f = (maximizingCross) ? Math.min : Math.max;
+		let f = (maximizingCross) ? Math.max : Math.min;
 		let signature = (maximizingCross) ? Tictactoe.CROSS : Tictactoe.CIRCLE;
 
 		let bestScore = -Infinity;
-		for (let i = 0, j; i < 3; i++) {
-			for (j = 0; j < 3; j++) {
+		for (let i = 0; i < 3; i++) {
+			for (let j = 0; j < 3; j++) {
 				if (this.game.board[i][j] != Tictactoe.UNDEFINED)
 					continue;
 				this.game.board[i][j] = signature;
 				// console.log(this.game.toString());
-				let score = this.minmax(!maximizingCross); // Oposite, other player playing now
+				bestScore = f(bestScore, this.minmax(!maximizingCross)); // Oposite, other player playing now
 				this.game.board[i][j] = Tictactoe.UNDEFINED;
-				bestScore = f(score, bestScore);
 			}
 		}
 		return bestScore;
@@ -89,8 +90,7 @@ class TictactoeAI {
 			return this.game.board[0][0];
 
 		if (openSpots == 0)
-			return Tictactoe.UNDEFINED;1
-
+			return Tictactoe.UNDEFINED;
 		return null;
 	}
 }
