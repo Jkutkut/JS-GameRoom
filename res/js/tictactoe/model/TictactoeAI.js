@@ -22,7 +22,6 @@ class TictactoeAI {
 				if (this.game.board[i][j] == Tictactoe.UNDEFINED) {
 					this.game.board[i][j] = this.game.ai;
 					score = this.minmax(Tictactoe.CROSS == this.game.ai);
-					console.log(score);
 					this.game.board[i][j] = Tictactoe.UNDEFINED;
 					if (score > bestScore) {
 						console.log("updated best score: " + score);
@@ -57,10 +56,9 @@ class TictactoeAI {
 
 		for (let i = 0; i < 3; i++) {
 			for (let j = 0; j < 3; j++) {
-				if (this.game.board[i][j] != Tictactoe.UNDEFINED)
+				if (this.game.board[i][j] !== Tictactoe.UNDEFINED)
 					continue;
 				this.game.board[i][j] = signature;
-				// console.log(this.game.toString());
 				bestScore = f(bestScore, this.minmax(!maximizingCross)); // Oposite, other player playing now
 				this.game.board[i][j] = Tictactoe.UNDEFINED;
 			}
@@ -69,23 +67,27 @@ class TictactoeAI {
 	}
 
 	checkWinner() {
+		const FILLED = Math.abs(Tictactoe.CROSS * 3);
 		let openSpots = 0;
 
 		for (let i = 0, r, c; i < 3; i++) {
 			r = 0;
 			c = 0;
 			for (let j = 0; j < 3; j++) {
-				if (this.game.board[i][j] == Tictactoe.UNDEFINED ||
-					this.game.board[j][i] == Tictactoe.UNDEFINED)
+				if (this.game.board[i][j] == Tictactoe.UNDEFINED)
 					openSpots++;
-				else {
+				else
 					r += this.game.board[i][j];
+
+				if (this.game.board[j][i] == Tictactoe.UNDEFINED)
+					openSpots++;
+				else
 					c += this.game.board[j][i];
-				}
 			}
-			if (Math.abs(r) == Math.abs(Tictactoe.CROSS * 3) ||
-				Math.abs(c) == Math.abs(Tictactoe.CROSS * 3))
+			if (Math.abs(r) == FILLED)
 				return this.game.board[i][0];
+			if (Math.abs(c) == FILLED)
+				return this.game.board[0][i];
 		}
 
 		let d1 = 0, d2 = 0;
@@ -93,9 +95,9 @@ class TictactoeAI {
 			d1 += this.game.board[i][i];
 			d2 += this.game.board[i][2 - i];
 		}
-		if (Math.abs(d1) == Math.abs(Tictactoe.CROSS * 3) ||
-			Math.abs(d2) == Math.abs(Tictactoe.CROSS * 3))
-			return this.game.board[0][0];
+		if (Math.abs(d1) == FILLED ||
+			Math.abs(d2) == FILLED)
+			return this.game.board[1][1];
 
 		if (openSpots == 0)
 			return Tictactoe.UNDEFINED;
