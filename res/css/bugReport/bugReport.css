@@ -1,0 +1,72 @@
+
+select {
+	width: 8rem;
+}
+
+select, input[type="date"], input[type="number"] {
+	padding: 12px 5px 10px;
+	margin: 8px 0;
+	margin-right: 1rem;
+	box-sizing: border-box;
+	border: none;
+	position: relative;
+	border-bottom: 2px solid #ccc;
+	background-color: #f1f1f1;
+	border-radius: 7px;
+	text-align: center;
+	opacity: 0.7;
+}
+
+fieldset {
+	width: 1000px;
+	margin: 1rem;
+}
+
+textarea {
+	
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Arcade btn */
+.arcade-btn {
+	--btn-3d-height: 10px;
+	--btn-3d-hover-height: 7px;
+	--btn-3d-active-height: 3px;
+
+	font-family: var(--font-family);
+	font-size: var(--font-size-sub-title);
+
+	width: 300px;
+	height: 50px;
+
+	background-color: var(--color-quinary);
+	color: var(--color-primary);
+
+	border: none;
+	border-radius: 10px;
+	border-bottom-left-radius: 65px;
+	border-top-right-radius: 65px;
+
+	transform: rotateX(10deg);
+	box-shadow: 0 var(--btn-3d-height) 0 0 var(--color-quinary-light);
+
+	transition: 0.15s;
+
+	cursor: pointer;
+}
+
+.arcade-btn:hover {
+	transform: translateY(calc(var(--btn-3d-height) - var(--btn-3d-hover-height)));
+	box-shadow: 0 var(--btn-3d-hover-height) 0 0 var(--color-quinary-light);
+}
+
+.arcade-btn:active {
+	transform: translateY(calc(var(--btn-3d-height) - var(--btn-3d-active-height)));
+	box-shadow: 0 var(--btn-3d-active-height) 0 0 var(--color-quinary-light);
+}

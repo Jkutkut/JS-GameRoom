@@ -28,7 +28,9 @@
 	</div>
 
 	<form name="datos" method="post" action="mailto:mail@github.com">
+		<h1>Bug Report</h1>
 		<fieldset>
+			<h3>Bug Information</h3>
 			<!-- El bug -->
 			<label>Game:</label>
 			<select name="game" id="gameSelector">
@@ -36,7 +38,7 @@
 			</select>
 			<label>Date:</label>
 			<input type="date" name="date" id="datePicker">
-			<p>Type of bug</p>
+			<p>Type of bug:</p>
 			<div>
 				<input type="checkbox" name="Crash">Crash
 				<input type="checkbox" name="UI bug">UI bug
@@ -45,11 +47,12 @@
 				<input type="checkbox" name="Not loading">Not loading
 				<input type="checkbox" name="Other">Other
 			</div>
-			<p>What happen?</p>
+			<p>What happened?</p>
 			<textarea rows="3" cols="80" placeholder="Fill me"></textarea>
 		</fieldset>
 		
 		<fieldset>
+			<h3>User Information</h3>
 			<!-- Datos usuario que reporta -->
 			<label for="username">Name:</label>
 			<input type="text" name="username" id="username" placeholder="Your name">
@@ -65,7 +68,7 @@
 				<input type="radio" name="sexo"> ??
 			</div>
 		</fieldset>
-		<input type="submit" value="Send" >
+		<input type="submit" value="Send" class="arcade-btn">
 	</form>
 </body>
 </html>
