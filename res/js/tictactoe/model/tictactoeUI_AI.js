@@ -20,7 +20,7 @@ class TictactoeUI_AI extends TictactoeUI {
 
 	click(x, y) {
 		super.click(x, y);
-		if (this.turn == this.ai)
+		if (this.turn == this.ai && this.running)
 			this.aiClick();
 	}
 
