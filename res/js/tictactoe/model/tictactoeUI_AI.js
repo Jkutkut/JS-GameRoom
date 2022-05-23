@@ -1,9 +1,10 @@
 class TictactoeUI_AI extends TictactoeUI {
-	constructor(board, aiType) {
+	constructor(board, hability2win) {
 		super(board);
 		this.ai = Tictactoe.CROSS;
 		this.human = Tictactoe.CIRCLE;
-		this.aiLogic = new aiType(this);
+		this.aiLogic = new TictactoeAI(this);
+		this.hability2win = hability2win;
 
 		// this.turn = this.ai;
 		this.aiClick();
@@ -13,9 +14,20 @@ class TictactoeUI_AI extends TictactoeUI {
 		if (this.turn != this.ai)
 			return;
 
-		let move = this.aiLogic.bestMove(this.board);
-		console.log(move);
-		this.click(...move);
+		if (Math.random() < this.hability2win) {
+			let move = this.aiLogic.bestMove(this.board);
+			this.click(...move);
+		}
+		else {
+			for (let i = 0; i < 3; i++) {
+				for (let j = 0; j < 3; j++) {
+					if (this.board[i][j] == Tictactoe.UNDEFINED) {
+						this.aiClick(i, j);
+						return;
+					}
+				}
+			}
+		}
 	}
 
 	click(x, y) {
@@ -29,5 +41,29 @@ class TictactoeUI_AI extends TictactoeUI {
 			return;
 
 		super.mouseClick(x, y);
+	}
+}
+
+class TicTacToeImposibleAI extends TictactoeUI_AI {
+	static HABILITY_TO_WIN = 1;
+
+	constructor(board) {
+		super(board, TicTacToeImposibleAI.HABILITY_TO_WIN);
+	}
+}
+
+class TictactoeMediumAI extends TictactoeUI_AI {
+	static HABILITY_TO_WIN = 0.75;
+
+	constructor(board) {
+		super(board, TictactoeMediumAI.HABILITY_TO_WIN);
+	}
+}
+
+class TictactoeEasyAI extends TictactoeUI_AI {
+	static HABILITY_TO_WIN = 0.5;
+
+	constructor(board) {
+		super(board, TictactoeEasyAI.HABILITY_TO_WIN);
 	}
 }

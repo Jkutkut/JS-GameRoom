@@ -20,7 +20,7 @@ window.onload = () => {
 	});
 
 	document.getElementById("btn-impossible").addEventListener("click", () => {
-		initGame(new TictactoeUI_AI(board, TictactoeAI));
+		initGame(new TicTacToeImposibleAI(board));
 	});
 }
 
