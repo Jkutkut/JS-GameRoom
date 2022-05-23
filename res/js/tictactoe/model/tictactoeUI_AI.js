@@ -1,17 +1,16 @@
 class TictactoeUI_AI extends TictactoeUI {
-	constructor(board, hability2win) {
+	constructor(board, hability2win, ai, human) {
 		super(board);
-		this.ai = Tictactoe.CROSS;
-		this.human = Tictactoe.CIRCLE;
+		this.ai = ai;
+		this.human = human;
 		this.aiLogic = new TictactoeAI(this);
 		this.hability2win = hability2win;
 
-		// this.turn = this.ai;
 		this.aiClick();
 	}
 
 	aiClick() {
-		if (this.turn != this.ai)
+		if (this.turn != this.ai || !this.running)
 			return;
 
 		if (Math.random() < this.hability2win) {
@@ -21,12 +20,13 @@ class TictactoeUI_AI extends TictactoeUI {
 		}
 		else {
 			console.log("Random move");
-			for (let i = 0; i < 3; i++) {
-				for (let j = 0; j < 3; j++) {
-					if (this.board[i][j] == Tictactoe.UNDEFINED) {
-						this.click(i, j);
-						return;
-					}
+			let i, j;
+			while (true) { // Could be true because this runs only when this.running
+				i = Math.floor(Math.random() * 3);
+				j = Math.floor(Math.random() * 3);
+				if (this.board[i][j] == Tictactoe.UNDEFINED) {
+					this.click(i, j);
+					return;
 				}
 			}
 		}
@@ -50,7 +50,7 @@ class TicTacToeImposibleAI extends TictactoeUI_AI {
 	static HABILITY_TO_WIN = 1;
 
 	constructor(board) {
-		super(board, TicTacToeImposibleAI.HABILITY_TO_WIN);
+		super(board, TicTacToeImposibleAI.HABILITY_TO_WIN, Tictactoe.CROSS, Tictactoe.CIRCLE);
 	}
 }
 
@@ -58,7 +58,10 @@ class TictactoeMediumAI extends TictactoeUI_AI {
 	static HABILITY_TO_WIN = 0.50;
 
 	constructor(board) {
-		super(board, TictactoeMediumAI.HABILITY_TO_WIN);
+		if (Math.random() < 0.5)
+			super(board, TictactoeMediumAI.HABILITY_TO_WIN, Tictactoe.CROSS, Tictactoe.CIRCLE);
+		else
+			super(board, TictactoeMediumAI.HABILITY_TO_WIN, Tictactoe.CIRCLE, Tictactoe.CROSS);
 	}
 }
 
@@ -66,6 +69,9 @@ class TictactoeEasyAI extends TictactoeUI_AI {
 	static HABILITY_TO_WIN = 0.25;
 
 	constructor(board) {
-		super(board, TictactoeEasyAI.HABILITY_TO_WIN);
+		if (Math.random() < 0.5)
+			super(board, TictactoeEasyAI.HABILITY_TO_WIN, Tictactoe.CROSS, Tictactoe.CIRCLE);
+		else
+			super(board, TictactoeEasyAI.HABILITY_TO_WIN, Tictactoe.CIRCLE, Tictactoe.CROSS);
 	}
 }
