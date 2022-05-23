@@ -1,11 +1,11 @@
 class TictactoeUI_AI extends TictactoeUI {
 	constructor(board, aiType) {
 		super(board);
-		this.ai = Tictactoe.CIRCLE;
+		this.ai = Tictactoe.CROSS;
 		this.human = Tictactoe.CROSS;
 		this.aiLogic = new aiType(this);
 
-		this.turn = this.ai;
+		// this.turn = this.ai;
 		this.aiClick();
 	}
 
@@ -16,6 +16,12 @@ class TictactoeUI_AI extends TictactoeUI {
 		let move = this.aiLogic.bestMove(this.board);
 		console.log(move);
 		this.click(...move);
+	}
+
+	click(x, y) {
+		super.click(x, y);
+		if (this.turn == this.ai)
+			this.aiClick();
 	}
 
 	mouseClick(x, y) {

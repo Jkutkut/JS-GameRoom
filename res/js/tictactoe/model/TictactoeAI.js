@@ -43,10 +43,18 @@ class TictactoeAI {
 		if (result != null)
 			return result;
 
-		let f = (maximizingCross) ? Math.max : Math.min;
-		let signature = (maximizingCross) ? Tictactoe.CROSS : Tictactoe.CIRCLE;
+		let f, signature, bestScore;
+		if (maximizingCross) {
+			f = Math.max;
+			signature = Tictactoe.CROSS;
+			bestScore = -Infinity;
+		}
+		else {
+			f = Math.min;
+			signature = Tictactoe.CIRCLE;
+			bestScore = Infinity;
+		}
 
-		let bestScore = -Infinity;
 		for (let i = 0; i < 3; i++) {
 			for (let j = 0; j < 3; j++) {
 				if (this.game.board[i][j] != Tictactoe.UNDEFINED)
