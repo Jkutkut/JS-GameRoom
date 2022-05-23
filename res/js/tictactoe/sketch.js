@@ -19,7 +19,9 @@ window.onload = () => {
 		initGame(new TictactoeUI(board));
 	});
 
-	initGame(new TictactoeUI_AI(board, TictactoeAI));
+	document.getElementById("btn-impossible").addEventListener("click", () => {
+		initGame(new TictactoeUI_AI(board, TictactoeAI));
+	});
 }
 
 

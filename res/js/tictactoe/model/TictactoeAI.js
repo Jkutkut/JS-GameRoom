@@ -12,6 +12,12 @@ class TictactoeAI {
 
 	constructor(game) {
 		this.game = game;
+
+		console.log(this.game.ai, this.game.human)
+		if (this.game.ai > this.game.human)
+			this.f = (s, bs) => {return s > bs};
+		else
+			this.f = (s, bs) => {return s < bs};
 	}
 
 	bestMove() {
@@ -21,9 +27,10 @@ class TictactoeAI {
 			for (j = 0; j < 3; j++) {
 				if (this.game.board[i][j] == Tictactoe.UNDEFINED) {
 					this.game.board[i][j] = this.game.ai;
-					score = this.minmax(Tictactoe.CROSS == this.game.ai);
+					score = this.minmax(Tictactoe.CROSS !== this.game.ai);
+					console.log(this.game.toString(), score, bestScore);
 					this.game.board[i][j] = Tictactoe.UNDEFINED;
-					if (score > bestScore) {
+					if (this.f(score, bestScore)) {
 						console.log("updated best score: " + score);
 						bestScore = score;
 						move = [i, j];
@@ -37,8 +44,6 @@ class TictactoeAI {
 
 	minmax(maximizingCross) {
 		let result = this.checkWinner();
-		// if (result != null)
-		// 	console.log("winner: " + result);
 		if (result != null)
 			return result;
 
