@@ -37,18 +37,19 @@ function padTo2Digits(num) {
 }
 
 
-function reportError(div, msg) {
-	div.setCustomValidity(msg);
-	div.reportValidity();
-	return false;
-}
-
 const PHONE_REGEX = /^(\+\d{2,3})? ?\d{3} ?(\d{3} ?\d{3}|\d{2} ?\d{2} ?\d{2})$/;
 const MAIL_REGEX = /^[a-z][a-z1-9._-]*@[a-z]+\.[a-z]{1,3}$/;
 
 function validateForm() {
+	let reportError = (div, msg) => {
+		div.setCustomValidity(msg);
+		div.reportValidity();
+		return false;
+	}
+
 	let username = document.getElementById("username");
 
+	console.log("username:", username.value, ".");
 	if (username.value == "")
 		return reportError(
 			username,
@@ -79,16 +80,14 @@ function validateForm() {
 			phone,
 			"Please enter a valid phone number"
 		);
+
 	
-
-
-
 	return true;
 }
 
 function submitForm() {
 	if (!validateForm())
 		return;
-
+	console.log("Form valid.");
 	document.forms["bugReport"].submit();
 }
