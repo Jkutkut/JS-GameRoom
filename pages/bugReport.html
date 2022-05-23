@@ -31,28 +31,19 @@
 		<fieldset>
 			<!-- El bug -->
 			<label>Game:</label>
-			<select name="game" id="game">
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
+			<select name="game" id="gameSelector">
+				<!-- filled with js -->
 			</select>
 			<label>Date:</label>
-			<input type="date" name="date">
+			<input type="date" name="date" id="datePicker">
 			<p>Type of bug</p>
 			<div>
-				<input type="checkbox" name=""> Crash
-				<input type="checkbox" name=""> UI bug
-				<input type="checkbox" name=""> Control bug
-				<input type="checkbox" name=""> Sound bug
-				<input type="checkbox" name=""> Not loading
-				<input type="checkbox" name=""> Other
+				<input type="checkbox" name="Crash">Crash
+				<input type="checkbox" name="UI bug">UI bug
+				<input type="checkbox" name="Control bug">Control bug
+				<input type="checkbox" name="Sound bug">Sound bug
+				<input type="checkbox" name="Not loading">Not loading
+				<input type="checkbox" name="Other">Other
 			</div>
 			<p>What happen?</p>
 			<textarea rows="3" cols="80" placeholder="Fill me"></textarea>
