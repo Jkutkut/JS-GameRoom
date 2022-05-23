@@ -42,6 +42,16 @@
 				"width": 600,
 				"height": 600
 			}
+		},
+		{
+			"name": "TicTacToe",
+			"description": "Play Tic Tac Toe with your friends or against the AI!",
+			"url": "tictactoe.html",
+			"thumbnail": "tictactoe.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			}
 		}
 	]
 }
