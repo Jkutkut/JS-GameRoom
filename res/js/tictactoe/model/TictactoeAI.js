@@ -21,14 +21,13 @@ class TictactoeAI {
 	}
 
 	bestMove() {
-		let bestScore = -Infinity;
+		let bestScore = (this.game.ai > this.game.human) ? -Infinity : Infinity;
 		let move = null;
 		for (let i = 0, j, score; i < 3; i++) {
 			for (j = 0; j < 3; j++) {
 				if (this.game.board[i][j] == Tictactoe.UNDEFINED) {
 					this.game.board[i][j] = this.game.ai;
 					score = this.minmax(Tictactoe.CROSS !== this.game.ai);
-					console.log(this.game.toString(), score, bestScore);
 					this.game.board[i][j] = Tictactoe.UNDEFINED;
 					if (this.f(score, bestScore)) {
 						console.log("updated best score: " + score);
@@ -38,7 +37,6 @@ class TictactoeAI {
 				}
 			}
 		}
-		console.log(this.game.toString());
 		return move;
 	}
 
