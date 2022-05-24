@@ -40,12 +40,12 @@
 			<input type="date" name="date" id="datePicker">
 			<p>Type of bug:</p>
 			<div>
-				<input type="checkbox" name="Crash">Crash
-				<input type="checkbox" name="UI bug">UI bug
-				<input type="checkbox" name="Control bug">Control bug
-				<input type="checkbox" name="Sound bug">Sound bug
-				<input type="checkbox" name="Not loading">Not loading
-				<input type="checkbox" name="Other">Other
+				<input type="checkbox" name="typeofbug" value="Crash">Crash
+				<input type="checkbox" name="typeofbug" value="UI bug">UI bug
+				<input type="checkbox" name="typeofbug" value="Control bug">Control bug
+				<input type="checkbox" name="typeofbug" value="Sound bug">Sound bug
+				<input type="checkbox" name="typeofbug" value="Not loading">Not loading
+				<input type="checkbox" name="typeofbug" value="Other">Other
 			</div>
 			<p>What happened?</p>
 			<textarea rows="3" cols="80" placeholder="Fill me"></textarea>
@@ -55,17 +55,17 @@
 			<h3>User Information</h3>
 			<!-- Datos usuario que reporta -->
 			<label for="username">Name:</label>
-			<input type="text" name="username" id="username" placeholder="Your name" required>
+			<input type="text" name="username" id="username" placeholder="Your name">
 			<label for="email">Email:</label>
-			<input type="text" name="email" id="email" placeholder="Your email" required>
+			<input type="text" name="email" id="email" placeholder="Your email">
 			<label for="phone">Phone:</label>
-			<input type="number" name="phone" id="phone" placeholder="Your phone" required>
+			<input type="text" name="phone" id="phone" placeholder="Your phone">
 			<p>Gender</p>
 			<div>
-				<input type="radio" name="sexo"> male
-				<input type="radio" name="sexo"> female
-				<input type="radio" name="sexo"> other
-				<input type="radio" name="sexo"> ??
+				<input type="radio" name="gender" value="male">male
+				<input type="radio" name="gender" value="female">female
+				<input type="radio" name="gender" value="other">other
+				<input type="radio" name="gender" value="??">??
 			</div>
 		</fieldset>
 		<button id="btnSubmit" class="arcade-btn">Send</button>

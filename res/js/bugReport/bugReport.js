@@ -45,19 +45,45 @@ function validateForm() {
 		div.setCustomValidity(msg);
 		div.reportValidity();
 		return false;
-	}
+	};
+	let clearError = (div) => {
+		div.setCustomValidity("");
+		div.reportValidity();
+	};
+
+	// Bug information
+
+	let dateDiv = document.getElementById("datePicker");
+	let date = new Date(dateDiv.value);
+	if (date == "Invalid Date")
+		return reportError(dateDiv, "Invalid date.");
+	if (date > new Date())
+		return reportError(dateDiv, "Date must be in the past/present.");
+	clearError(dateDiv);
+
+	// Get selected typeofbug inputs
+	let typeofbug = document.querySelector(`input[name="typeofbug"]:checked`);
+	let typeofbugDiv = document.querySelector(`input[name="typeofbug"]`);
+	if (typeofbug == null)
+		return reportError(typeofbugDiv, "Please select a type of bug.");
+	clearError(typeofbugDiv);
+
+	let txtArea = document.getElementsByTagName("textArea")[0];
+	if (txtArea.value == "")
+		return reportError(txtArea, "Please enter a description of the bug.");
+	clearError(txtArea);
+
+	// User information
 
 	let username = document.getElementById("username");
-
-	console.log("username:", username.value, ".");
 	if (username.value == "")
 		return reportError(
 			username,
 			"Please enter your username"
 		);
+	clearError(username);
 
 	let email = document.getElementById("email");
-	console.log(email.value);
 	if (email.value == "")
 		return reportError(
 			email,
@@ -68,6 +94,7 @@ function validateForm() {
 			email,
 			"Please enter a valid email"
 		);
+	clearError(email);
 	
 	let phone = document.getElementById("phone");
 	if (phone.value == "")
@@ -80,14 +107,22 @@ function validateForm() {
 			phone,
 			"Please enter a valid phone number"
 		);
+	clearError(phone);
 
-	
+	let gender = document.querySelector(`input[name="gender"]:checked`);
+	let genderDiv = document.querySelector(`input[name="gender"]`);
+	if (gender == null)
+		return reportError(
+			genderDiv,
+			"Please, specify your gender"
+		);
+	clearError(genderDiv);
+
 	return true;
 }
 
 function submitForm() {
 	if (!validateForm())
 		return;
-	console.log("Form valid.");
-	document.forms["bugReport"].submit();
+	alert("Thank you for your feedback.");
 }
