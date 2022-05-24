@@ -5,6 +5,10 @@ window.onload = () => {
 
 	let btn = document.getElementById("btnSubmit");
 	btn.onclick = submitForm;
+
+	document.getElementById("bugReport").addEventListener("submit", (e) => {
+		e.preventDefault();
+	});
 }
 
 
@@ -125,4 +129,5 @@ function submitForm() {
 	if (!validateForm())
 		return;
 	alert("Thank you for your feedback.");
+	location.reload();
 }
