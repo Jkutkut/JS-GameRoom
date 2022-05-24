@@ -1,8 +1,8 @@
 class Tictactoe {
 
 	static UNDEFINED = 0;
-	static CROSS = -1;
-	static CIRCLE = 1;
+	static CROSS = 1;
+	static CIRCLE = -1;
 
 	constructor() {
 		this.initBoard();

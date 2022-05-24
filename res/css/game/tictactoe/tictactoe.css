@@ -1,7 +1,14 @@
 body > div {
-	background-color: rgb(80, 80, 80);
+	background-color: #222;
 	width: var(--size);
 	height: var(--size);
+}
+
+h1 {
+	color: var(--color-primary);
+
+	top: 3.5rem;
+	position: absolute;
 }
 
 #mainmenu {
