@@ -32,6 +32,11 @@ window.onload = () => {
 	document.getElementById("btn-2players").addEventListener("click", () => {
 		initGame(TictactoeUI, board);
 	});
+
+	document.addEventListener('contextmenu', function(ev) {
+		ev.preventDefault();
+		location.reload();
+	}, false);
 }
 
 
