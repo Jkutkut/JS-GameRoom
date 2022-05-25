@@ -36,6 +36,10 @@ h1 {
 	flex-direction: column;
 }
 
+#gamemenu {
+	background: rgb(80, 80, 80);
+}
+
 .arcade-btn {
 	margin: 10px;
 }
@@ -48,12 +52,14 @@ h1 {
 	--margin: 10px;
 	/* margin: var(--margin); */
 
+	background: rgb(80, 80, 80);
+
 	display: flex;
 	flex-direction: column;
 }
 
 .cell {
-	background: rgb(80, 80, 80);
+	background-color: #222;
 	width: calc(var(--size) / 3 - var(--margin) * 2 / 3);
 	height: calc(var(--size) / 3 - var(--margin) * 2 / 3);
 }
