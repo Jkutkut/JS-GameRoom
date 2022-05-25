@@ -53,10 +53,19 @@ h1 {
 }
 
 .cell {
-	background: #222;
-	width: calc(var(--size) / 3 - var(--margin) * 2);
-	height: calc(var(--size) / 3 - var(--margin) * 2);
-	margin: var(--margin);
+	background: rgb(80, 80, 80);
+	width: calc(var(--size) / 3 - var(--margin) * 2 / 3);
+	height: calc(var(--size) / 3 - var(--margin) * 2 / 3);
+}
+
+.row:nth-child(2) {
+	margin-right: var(--margin);
+	margin-left: var(--margin);
+}
+
+#gamemenu > .row > .cell:nth-child(2) {
+	margin-top: var(--margin);
+	margin-bottom: var(--margin);
 }
 
 .cell > div {
