@@ -3,10 +3,13 @@
     padding: 0;
 }
 
-html, body{
+body {
+    background-color: grey;
+}
+
+#container{
     height: 100;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    background-color: grey;
 }
 
 #container{
@@ -48,6 +51,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: black;
 }
 
 #container-teclado {
