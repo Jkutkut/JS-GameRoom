@@ -28,17 +28,6 @@
 			"runAsGame": true
 		},
 		{
-			"name": "Wordle",
-			"description": "Are you able to guess the word?",
-			"url": "wordle.html",
-			"thumbnail": "wordle.png",
-			"settings": {
-				"width": 600,
-				"height": 600
-			},
-			"runAsGame": false
-		},
-		{
 			"name": "Space Invaders",
 			"description": "Survive the invasion from space by shooting down aliens.",
 			"url": "spaceInvaders.html",
@@ -59,6 +48,17 @@
 				"height": 600
 			},
 			"runAsGame": true
+		},
+		{
+			"name": "Wordle",
+			"description": "Are you able to guess the word?",
+			"url": "wordle.html",
+			"thumbnail": "wordle.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			},
+			"runAsGame": false
 		}
 	]
 }
