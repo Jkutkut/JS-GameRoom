@@ -8,6 +8,7 @@
 			"description": "Play Pong with your friends or against the AI!",
 			"url": "pong_game.html",
 			"thumbnail": "pong.png",
+			"thumbnail": "spaceInvaders.png",
 			"settings": {
 				"width": 800,
 				"height": 600
@@ -18,6 +19,7 @@
 			"description": "How much can you eat without eating yourself?",
 			"url": "snake_game.html",
 			"thumbnail": "snake.png",
+			"thumbnail": "spaceInvaders.png",
 			"settings": {
 				"width": 600,
 				"height": 600

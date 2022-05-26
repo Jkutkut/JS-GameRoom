@@ -18,13 +18,11 @@ function loadGames(json) {
 	let gameSelector = document.getElementById("gameSelector");
 	let games = json.games;
 
-	let debugTh = games[3].thumbnail; // TODO DEBUG
 	for (let game of games) {
 		gameSelector.innerHTML += newGame(
 			game.name,
 			`gameMenu.html?game=${game.url}`,
-			// `../${json.thumbnailLocation}/${game.thumbnail}`,
-			`../${json.thumbnailLocation}${debugTh}`, // TODO DEBUG
+			`../${json.thumbnailLocation}/${game.thumbnail}`,
 			game.description
 		);
 	}
