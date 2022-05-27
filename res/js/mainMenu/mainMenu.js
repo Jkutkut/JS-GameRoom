@@ -5,6 +5,7 @@ window.onload = () => {
 }
 
 function newGame(name, location, thumbnail, description) {
+	console.log(name, location, thumbnail, description);
 	return `<div class="game">
 			<h3>${name}</h3>
 			<a href="${location}">
@@ -18,13 +19,13 @@ function loadGames(json) {
 	let gameSelector = document.getElementById("gameSelector");
 	let games = json.games;
 
-	let debugTh = games[3].thumbnail; // TODO DEBUG
 	for (let game of games) {
 		gameSelector.innerHTML += newGame(
 			game.name,
-			`gameMenu.html?game=${game.url}`,
-			// `../${json.thumbnailLocation}/${game.thumbnail}`,
-			`../${json.thumbnailLocation}${debugTh}`, // TODO DEBUG
+			(game.runAsGame) ?
+				`gameMenu.html?game=${game.url}` :
+				`../${json.gameLocation}${game.url}`,
+			`../${json.thumbnailLocation}/${game.thumbnail}`,
 			game.description
 		);
 	}

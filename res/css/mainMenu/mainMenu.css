@@ -12,7 +12,7 @@
 }
 
 .game {
-	--game-width: 400px;
+	--game-width: 380px;
 	--game-height: 500px;
 
 	display: flex;
@@ -32,6 +32,7 @@
 
 img {
 	width: var(--game-width);
+	height: var(--game-width);
 	border-radius: 0.5rem;
 
 	transition: 0.7s;

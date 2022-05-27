@@ -8,30 +8,24 @@
 			"description": "Play Pong with your friends or against the AI!",
 			"url": "pong_game.html",
 			"thumbnail": "pong.png",
+			"thumbnail": "spaceInvaders.png",
 			"settings": {
 				"width": 800,
 				"height": 600
-			}
+			},
+			"runAsGame": true
 		},
 		{
 			"name": "Snake",
 			"description": "How much can you eat without eating yourself?",
 			"url": "snake_game.html",
 			"thumbnail": "snake.png",
+			"thumbnail": "spaceInvaders.png",
 			"settings": {
 				"width": 600,
 				"height": 600
-			}
-		},
-		{
-			"name": "Wordle",
-			"description": "Are you able to guess the word?",
-			"url": "wordle.html",
-			"thumbnail": "wordle.png",
-			"settings": {
-				"width": 600,
-				"height": 600
-			}
+			},
+			"runAsGame": true
 		},
 		{
 			"name": "Space Invaders",
@@ -41,17 +35,30 @@
 			"settings": {
 				"width": 600,
 				"height": 600
-			}
+			},
+			"runAsGame": true
 		},
 		{
 			"name": "TicTacToe",
-			"description": "Play Tic Tac Toe with your friends or against the AI!",
+			"description": "Play with your friends or against the AI!",
 			"url": "tictactoe.html",
 			"thumbnail": "tictactoe.png",
 			"settings": {
 				"width": 600,
 				"height": 600
-			}
+			},
+			"runAsGame": true
+		},
+		{
+			"name": "Wordle",
+			"description": "Are you able to guess the word?",
+			"url": "wordle.html",
+			"thumbnail": "wordle.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			},
+			"runAsGame": false
 		}
 	]
 }
