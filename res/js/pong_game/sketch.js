@@ -3,15 +3,15 @@ window.onload = () => {
 
   document.getElementById("btn-start").onclick = () => {
     document.getElementById("gamemenu").style.display = "flex";
-    document.getElementById("game").style.display = "none";
     document.getElementById("startmenu").style.display = "none";
     background(0);
   }
 
   document.getElementById("btn-easy").onclick = () => {
-    document.getElementById("game").style.display = "flex";
     document.getElementById("gamemenu").style.display = "none";
     document.getElementById("startmenu").style.display = "none";
+    document.getElementsByClassName("p5Canvas")[0].style.display = "flex";
+
     background(0);
     setDifficulty("easy");
   }

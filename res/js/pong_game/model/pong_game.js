@@ -72,10 +72,10 @@ function draw() {
 
 function setDifficulty(difficulty) {
     if (difficulty == "easy") {
-        enemy.speed = 3;
+        EnemyIA.V = 3;
     } else if (difficulty == "medium") {
-        enemy.speed = 5;
+        EnemyIA.V = 5;
     } else if (difficulty == "hard") {
-        enemy.speed = 7;
+        EnemyIA.V = 7;
     }
 }
