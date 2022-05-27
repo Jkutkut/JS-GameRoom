@@ -10,8 +10,8 @@ class Ball {
     this.velocity = p5.Vector.random2D();
     this.velocity.mult(5);
 
-    this.velocity = new p5.Vector(1, 1);
-    this.velocity.mult(5);
+    // this.velocity = new p5.Vector(1, 1);
+    //this.velocity.mult(10);
     this.r = Ball.R;
   }
   update(player, enemy) {

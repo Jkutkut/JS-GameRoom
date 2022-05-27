@@ -7,24 +7,55 @@
     <!-- JS -->
     <script src="../res/js/p5/p5.min.js"></script>
     <script src="../res/js/p5/p5.sound.min.js"></script>
-    <script src="../res/js/pong_game/pong_game.js"></script>
+
 
     <!-- MODEL -->
+
+    <script src="../res/js/pong_game/sketch.js"></script>
+
     <script src="../res/js/pong_game/model/jugador.js"></script>
     <script src="../res/js/pong_game/model/ball.js"></script>
     <script src="../res/js/pong_game/model/enemyIA.js"></script>
+    <script src="../res/js/pong_game/model/pong_game.js"></script>
+
 
 
     <!-- CSS -->
+    <link rel="stylesheet" href="../res/css/common/global_variables.css">
     <link rel="stylesheet" href="../res/css/common/game_common.css">
     <link rel="stylesheet" href="../res/css/game/gameStyle.css">
+    <link rel="stylesheet" href="../res/css/game/pong/pong.css">
 
-
-
-    <title>PONG </title>
+    <title>PONG</title>
 </head>
 
 <body>
+    <!--<p id="hola" class="visible" onclick=change()>Hola</p>
+    <p id="adios" class="not-visible" onclick=change()>No puesto</p>-->
+    <!--- <button onclick=change()>
+        <a id="link" class="not-visible" href="pong_menu.html">AQUI</a>
+    </button>-->
+    <div id="startmenu">
+        <div>
+            <button class="arcade-btn" id="btn-start">Start</button>
+        </div>
+
+    </div>
+
+    <div id="gamemenu">
+        <div id="difficultySreen">
+            <button class="arcade-btn" id="btn-easy">Easy</button>
+            <button class="arcade-btn" id="btn-medium">Medium</button>
+            <button class="arcade-btn" id="btn-impossible">Impossible</button>
+            <button class="arcade-btn" id="btn-2players">2 Players</button>
+
+        </div>
+
+        <!--<div id="soundWrapper">
+            <button id="soundButton" class="arcade-btn" aria-label="Toggle Sound"></button>
+            <label for="soundButton">SOUND</label>
+        </div>-->
+    </div>
 
 </body>
 

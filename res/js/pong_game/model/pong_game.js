@@ -26,6 +26,7 @@ function setup() {
     enemy = new EnemyIA(WIDTH - Jugador.ANCHURA, (HEIGHT - Jugador.ALTURA) / 2);
     bola = new Ball(WIDTH / 2, HEIGHT / 2);
     score = { j: 0, e: 0 };
+
 }
 
 function draw() {
@@ -55,9 +56,11 @@ function draw() {
     bola.show();
     bola.update(player, enemy);
     bola.checkBoundaryCollision();
+
+
 }
 
-function keyPressed() {
+/*function keyPressed() {
     if (keyCode == LEFT_ARROW) {
         value == 255;
     }
@@ -65,4 +68,14 @@ function keyPressed() {
         value == 0;
     }
 
+}*/
+
+function setDifficulty(difficulty) {
+    if (difficulty == "easy") {
+        enemy.speed = 3;
+    } else if (difficulty == "medium") {
+        enemy.speed = 5;
+    } else if (difficulty == "hard") {
+        enemy.speed = 7;
+    }
 }
