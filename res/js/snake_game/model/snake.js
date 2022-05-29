@@ -8,19 +8,31 @@ class Snake {
 
 	static SIZE = 30;
 
+	static HEAD_COLOR = [32, 140, 36];
+	static COLOR = [32, 140, 36];
+
 	constructor(x , y) {
 		this._posicion =  new p5.Vector(x, y);
 		this.orienta = Snake.UP;
 		this.body = null;
-		this.crecer = 21;
+		this.crecer = 5;
 	}
   
 	show() {
-		fill('rgb(34,145,34)');
-		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE);
+		push();
+		fill(...Snake.HEAD_COLOR);
+		translate(this.posicion.x + Snake.SIZE / 2, this.posicion.y + Snake.SIZE / 2);
+		if (this.orienta == Snake.DOWN)
+			rotate(PI);
+		else if (this.orienta == Snake.LEFT)
+			rotate(-PI/2);
+		else if (this.orienta == Snake.RIGHT)
+			rotate(PI/2);
+		rectMode(CENTER);
+		rect(0, 0, Snake.SIZE, Snake.SIZE, 20, 20, 0 , 0);
+		pop();
 		if (this.body != null)
 			this.body.show(this._posicion.x, this.posicion.y);
-		
 	}
   
 	get posicion() {
@@ -83,15 +95,15 @@ class Snake {
 	}
   
 	changeDirection(keyCode) {
-		if (keyCode === UP_ARROW && this.orienta != Snake.DOWN ) {
+		if ((keyCode === UP_ARROW || keyCode == 87) && this.orienta != Snake.DOWN ) {
 			this.orienta = Snake.UP;
-		  } else if (keyCode === DOWN_ARROW && this.orienta != Snake.UP ) {
+		  } else if ((keyCode === DOWN_ARROW || keyCode == 83) && this.orienta != Snake.UP ) {
 			this.orienta = Snake.DOWN;
 		  }
-		  else if (keyCode === LEFT_ARROW && this.orienta != Snake.RIGHT ) {
+		  else if ((keyCode === LEFT_ARROW || keyCode == 65) && this.orienta != Snake.RIGHT ) {
 			this.orienta = Snake.LEFT;
 
-		  } else if (keyCode === RIGHT_ARROW && this.orienta != Snake.LEFT ) {
+		  } else if ((keyCode === RIGHT_ARROW || keyCode == 68) && this.orienta != Snake.LEFT ) {
 			this.orienta = Snake.RIGHT;
 		  }
 	}
@@ -108,7 +120,7 @@ class Snake {
 	collisionApple(){
 		if (apple.posicion.x == this.posicion.x + (REC_SIZE/2) && apple.posicion.y == this.posicion.y + (REC_SIZE/2)){
 			//borrar apple
-			this.crecer++;;
+			this.crecer++; 
 			console.log(this.crecer);
 			apple = new Apple();
 			
@@ -120,6 +132,14 @@ class Snake {
 
 		}
 	}
+
+	isIn(x, y) {
+		if (this.posicion.x == x && this.posicion.y == y)
+			return true;
+		if (this.body != null)
+			return this.body.isIn(x, y);
+		return false;
+	}
 	
 }
 
@@ -127,19 +147,19 @@ class SnakeBody {
 	constructor() {
 		this._posicion =  new p5.Vector(0, 0);
 		this.next = null;
+		this.color = [...Snake.COLOR];
 	}
   
 	show(head_x, head_y) {
-		fill('rgb(34,145,34)');
-		console.log(head_x, head_y);
 		if(head_x == this.posicion.x && head_y == this.posicion.y){
 			noLoop();
-			return;
-		} else {
+		}
+		push();
+		fill(...this.color);
 		rect(this.posicion.x, this.posicion.y, Snake.SIZE, Snake.SIZE);
+		pop();
 		if (this.next != null)
 			this.next.show(head_x, head_y);
-		}
 	}
 
 	moveTo(x, y) {
@@ -154,10 +174,20 @@ class SnakeBody {
 	}
 
 	grow() {
-		if (this.next == null)
+		if (this.next == null) {
 			this.next = new SnakeBody();
+			this.next.color = this.color.map(x => x += 2);
+		}
 		else
 			this.next.grow();
+	}
+
+	isIn(x, y) {
+		if (this.posicion.x == x && this.posicion.y == y)
+			return true;
+		if (this.next != null)
+			return this.next.isIn(x, y);
+		return false;
 	}
 
 }

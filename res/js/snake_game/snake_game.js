@@ -1,9 +1,10 @@
 var snake, apple;
 const CANVAS_SIZE = 600;
-const VELOCITY = 7;
+const VELOCITY = 60;
+const GAME_VELOCITY = 8;
 const REC_SIZE = 30;
 const COLOR1 = 255;
-const COLOR2 = 120;
+const COLOR2 = 190;
 
 
 function setup() {
@@ -16,26 +17,32 @@ function setup() {
 }
 	
 function draw() {	
+	// Game velocity
+	if (frameCount % GAME_VELOCITY != 0) // if no time to update
+		return;
+	
 	drawBackgroundPattern();
-	snake.show();
-	snake.move();
 	apple.show();
+	snake.show();
+
 	text("(" + snake.posicion.x + ", " + snake.posicion.y + ")", 20, 20)
 	text("(" + apple.posicion.x + ", " + apple.posicion.y + ")", 20, 40)
 
-	
+	snake.move();
 }
 
 function drawBackgroundPattern(){
+	push();
 	for (let x = 0; x < (CANVAS_SIZE / REC_SIZE) ; x++) {
-	  for (let y = 0; y < (CANVAS_SIZE / REC_SIZE); y++) {
-		  if ((y + x * ((CANVAS_SIZE / REC_SIZE)-1)) % 2 == 0)
-			  fill(COLOR1);
-		  else
-			  fill(COLOR2);
-		  rect(x * REC_SIZE, y * REC_SIZE, REC_SIZE, REC_SIZE);
-	  } 
-  }
+		for (let y = 0; y < (CANVAS_SIZE / REC_SIZE); y++) {
+			if ((y + x * ((CANVAS_SIZE / REC_SIZE)-1)) % 2 == 0)
+				fill(COLOR1);
+			else
+				fill(COLOR2);
+			rect(x * REC_SIZE, y * REC_SIZE, REC_SIZE, REC_SIZE);
+		} 
+	}
+	pop();
 }
 
 function keyPressed() {
