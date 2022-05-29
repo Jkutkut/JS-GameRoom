@@ -1,4 +1,4 @@
-   
+ 
    .p5Canvas {
 	 display: none;
    }
@@ -28,4 +28,31 @@
 	 height: 600px;
 	 background-color: #222;
    }
+
+   
+.arcade-btn {
+	--btn-width: calc(600px * 0.4);
+	--btn-height: calc(600px * 0.1);
+	margin: 10px;
+	padding: 10px;
+  }
+  
+  #btn-start, #btn-restart {
+	--btn-width: calc(600px * 0.4); 
+	--btn-height: calc(600px * 0.1);
+	margin-top: 450px;
+	padding: 15.7px;
+  }
+  
+  #btn-restart{
+	margin-left: 290px;
+  }
+  
+  h1 {
+	  color: var(--color-primary);
+	margin-left: 250px;
+	  top: 3.5rem;
+	  position: absolute;
+  }
+  
    
