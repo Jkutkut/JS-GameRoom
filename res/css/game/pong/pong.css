@@ -1,6 +1,5 @@
 body {
-  /*background-color: #222;*/
-  /*background-image: url("https://media.giphy.com/media/7SF5scGB2AFrgsXP63/giphy.gif");*/
+ /* background-image: url("res/img/game/pong/pong.png");*/
 }
 
 .p5Canvas {
@@ -44,6 +43,14 @@ body {
 	flex-direction: column;
 }*/
 
+#difficultySreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+}
+
 #gamemenu {
   display: block;
   align-items: center;
@@ -56,11 +63,27 @@ body {
 
 
 .arcade-btn {
+  --btn-width: calc(600px * 0.4);
+  --btn-height: calc(600px * 0.1);
   margin: 10px;
   padding: 10px;
 }
 
-#btn-start {
+#btn-start, #btn-restart {
+  --btn-width: calc(600px * 0.4);
+  --btn-height: calc(600px * 0.1);
   margin-top: 450px;
   padding: 15.7px;
 }
+
+#btn-restart{
+  margin-left: 290px;
+}
+
+h1 {
+	color: var(--color-primary);
+  margin-left: 250px;
+	top: 3.5rem;
+	position: absolute;
+}
+

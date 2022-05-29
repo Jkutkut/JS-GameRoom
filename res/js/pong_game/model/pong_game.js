@@ -1,4 +1,4 @@
-let player;
+let player = null;
 let enemy;
 let bola;
 let score;
@@ -20,16 +20,11 @@ function setup() {
     fill(255);
     imageMode(CENTER);
     textSize(50);
-
-
-    player = new Jugador(0, mouseY);
-    enemy = new EnemyIA(WIDTH - Jugador.ANCHURA, (HEIGHT - Jugador.ALTURA) / 2);
-    bola = new Ball(WIDTH / 2, HEIGHT / 2);
-    score = { j: 0, e: 0 };
-
 }
 
 function draw() {
+    if (player == null)
+        return;
     background(0);
     fill(255);
 
@@ -57,25 +52,32 @@ function draw() {
     bola.update(player, enemy);
     bola.checkBoundaryCollision();
 
+    if(score.j == 5 || score.e == 5){
+        gameOver();
+    }
+
 
 }
 
-/*function keyPressed() {
-    if (keyCode == LEFT_ARROW) {
-        value == 255;
-    }
-    if (keyCode == RIGHT_ARROW) {
-        value == 0;
-    }
-
-}*/
-
 function setDifficulty(difficulty) {
     if (difficulty == "easy") {
-        EnemyIA.V = 3;
+        EnemyIA.V = 2;
     } else if (difficulty == "medium") {
-        EnemyIA.V = 5;
-    } else if (difficulty == "hard") {
-        EnemyIA.V = 7;
+        EnemyIA.V = 10;
+        Ball.A = 0.0009;
+    } else if (difficulty == "impossible") {
+        EnemyIA.V = 100;
+        Ball.A = 0.002;
     }
+
+    player = new Jugador(0, mouseY);
+    enemy = new EnemyIA(WIDTH - Jugador.ANCHURA, (HEIGHT - Jugador.ALTURA) / 2);
+    bola = new Ball(WIDTH / 2, HEIGHT / 2);
+    score = { j: 0, e: 0 };
+}
+
+function gameOver(){
+        document.getElementById("gameover").style.display = "flex";
+        document.getElementById("gamemenu").style.display = "none";
+        document.getElementsByClassName("p5Canvas")[0].style.display = "none";
 }
