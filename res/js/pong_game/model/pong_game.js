@@ -7,7 +7,6 @@ const HEIGHT = 600;
 const WIDTH = 800;
 
 
-
 function preload() {
     Ball.BALL_SOUND = loadSound("../res/js/pong_game/sounds/blip2.mp3");
     //Sound over
@@ -61,23 +60,38 @@ function draw() {
 
 function setDifficulty(difficulty) {
     if (difficulty == "easy") {
+        startUp();
         EnemyIA.V = 2;
     } else if (difficulty == "medium") {
+        startUp();
         EnemyIA.V = 10;
         Ball.A = 0.0009;
     } else if (difficulty == "impossible") {
+        startUp();
         EnemyIA.V = 100;
         Ball.A = 0.002;
+    }else if(difficulty == "2players"){
+        twoPlayers();
+        Ball.A = 0.0003;
     }
+}
 
-    player = new Jugador(0, mouseY);
+function twoPlayers(){
+    player = new Jugador(0, (HEIGHT/2), "tecladoA");
+    enemy = new Jugador(WIDTH - Jugador.ANCHURA, (HEIGHT - Jugador.ALTURA) / 2, "tecladoB");
+    bola = new Ball(WIDTH / 2, HEIGHT / 2);
+    score = { j: 0, e: 0 };
+}
+
+function startUp(){
+    player = new Jugador(0, mouseY, "mouse");
     enemy = new EnemyIA(WIDTH - Jugador.ANCHURA, (HEIGHT - Jugador.ALTURA) / 2);
     bola = new Ball(WIDTH / 2, HEIGHT / 2);
     score = { j: 0, e: 0 };
 }
 
 function gameOver(){
-        document.getElementById("gameover").style.display = "flex";
-        document.getElementById("gamemenu").style.display = "none";
-        document.getElementsByClassName("p5Canvas")[0].style.display = "none";
+    document.getElementById("gameover").style.display = "flex";
+    document.getElementById("gamemenu").style.display = "none";
+    document.getElementsByClassName("p5Canvas")[0].style.display = "none";
 }

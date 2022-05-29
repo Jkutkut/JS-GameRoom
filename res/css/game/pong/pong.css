@@ -1,5 +1,5 @@
 body {
- /* background-image: url("res/img/game/pong/pong.png");*/
+  /* background-image: url("res/img/game/pong/pong.png");*/
 }
 
 .p5Canvas {
@@ -14,34 +14,6 @@ body {
   position: relative;
 }
 
-/*#gamemenu{
-  --btn-width: calc(var(--size) * 0.4);
-	--btn-height: calc(var(--size) * 0.1);
-
-	width: var(--size);
-	height: var(--size);
-
-
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-  justify-content: center;
-  margin-left: 100px;
-
-	position: relative;
-  background-color: #222;
-}
-
-#gamemenu > div {
-
-	position: absolute;
-	bottom: calc(var(--size) * 0.1);
-
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}*/
 
 #difficultySreen {
   display: flex;
@@ -69,21 +41,21 @@ body {
   padding: 10px;
 }
 
-#btn-start, #btn-restart {
+#btn-start,
+#btn-restart {
   --btn-width: calc(600px * 0.4);
   --btn-height: calc(600px * 0.1);
   margin-top: 450px;
   padding: 15.7px;
 }
 
-#btn-restart{
+#btn-restart {
   margin-left: 290px;
 }
 
 h1 {
-	color: var(--color-primary);
+  color: var(--color-primary);
   margin-left: 250px;
-	top: 3.5rem;
-	position: absolute;
+  top: 3.5rem;
+  position: absolute;
 }
-

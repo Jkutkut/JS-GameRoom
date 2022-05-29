@@ -38,6 +38,15 @@ window.onload = () => {
     setDifficulty("impossible");
   }
 
+  document.getElementById("btn-2players").onclick = () => {
+    document.getElementById("gamemenu").style.display = "none";
+    document.getElementById("startmenu").style.display = "none";
+    document.getElementsByClassName("p5Canvas")[0].style.display = "flex";
+
+    background(0);
+    setDifficulty("2players");
+  }
+
   document.getElementById("btn-restart").onclick = () => {
     document.getElementById("gamemenu").style.display = "none";
     document.getElementById("gameover").style.display = "none";

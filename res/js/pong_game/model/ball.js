@@ -70,10 +70,10 @@ class Ball {
       this.playSound();
       if (player.posicion.x == 0) {
         this.posicion.x = Jugador.ANCHURA + this.r;
-        console.log("jugador izquierda")
+        //console.log("jugador izquierda")
       } else {
         this.posicion.x = player.posicion.x - this.r;
-        console.log("jugador d")
+        //console.log("jugador d")
       }
       //this.posicion.add(this.velocity);
     }
