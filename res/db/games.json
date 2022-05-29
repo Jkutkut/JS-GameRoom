@@ -8,7 +8,6 @@
 			"description": "Play Pong with your friends or against the AI!",
 			"url": "pong_game.html",
 			"thumbnail": "pong.png",
-			"thumbnail": "spaceInvaders.png",
 			"settings": {
 				"width": 800,
 				"height": 600
