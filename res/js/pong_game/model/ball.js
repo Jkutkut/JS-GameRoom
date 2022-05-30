@@ -4,14 +4,19 @@ class Ball {
 
   static A = 0.0001;
 
+  static ANGLE = Math.PI / 3;
+
   static R = 20;
   constructor(x, y) {
     this.posicion = new p5.Vector(x, y);
-    this.velocity = p5.Vector.random2D();
+
+    let angle = Math.random() * 2 * Ball.ANGLE - Ball.ANGLE;
+    if (Math.random() > 0.5)
+      angle += Math.PI;
+
+    this.velocity = p5.Vector.fromAngle(angle);
     this.velocity.mult(5);
 
-    // this.velocity = new p5.Vector(1, 1);
-    //this.velocity.mult(10);
     this.r = Ball.R;
   }
   update(player, enemy) {
