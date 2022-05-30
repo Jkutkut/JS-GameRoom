@@ -1,4 +1,4 @@
-var snake, apple, velocity;
+var snake = null, apple, velocity;
 const CANVAS_SIZE = 600;
 const REC_SIZE = 30;
 const COLOR1 = 255;
@@ -27,7 +27,9 @@ function setDifficulty(difficulty) {
 	frameRate(velocity);
 }
 	
-function draw() {	
+function draw() {
+	if (snake == null)
+		return;
 	// Game velocity
 	if (frameCount % GAME_VELOCITY != 0) // if no time to update
 		return;
