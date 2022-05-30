@@ -1,5 +1,9 @@
 body {
-  /* background-image: url("res/js/pong_game/img/pong.gif");*/
+  background: url("../../../../res/img/pong/pong.gif");
+
+  background-size: cover;    
+  height: 600px;
+  width: 800px;
 }
 
 .p5Canvas {
@@ -30,7 +34,7 @@ body {
   justify-content: center;
   width: 800px;
   height: 600px;
-  background-color: #222;
+  /* background-color: #222; */
 }
 
 
