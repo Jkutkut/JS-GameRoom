@@ -15,6 +15,17 @@
 			"runAsGame": true
 		},
 		{
+			"name": "Snake",
+			"description": "How much can you eat without eating yourself?",
+			"url": "snake_game.html",
+			"thumbnail": "snake.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			},
+			"runAsGame": true
+		},
+		{
 			"name": "Space Invaders",
 			"description": "Survive the invasion from space by shooting down aliens.",
 			"url": "spaceInvaders.html",
@@ -46,18 +57,6 @@
 				"height": 600
 			},
 			"runAsGame": false
-		},
-		{
-			"name": "Snake",
-			"description": "How much can you eat without eating yourself?",
-			"url": "snake_game.html",
-			"thumbnail": "snake.png",
-			"thumbnail": "spaceInvaders.png",
-			"settings": {
-				"width": 600,
-				"height": 600
-			},
-			"runAsGame": true
 		}
 	]
 }
