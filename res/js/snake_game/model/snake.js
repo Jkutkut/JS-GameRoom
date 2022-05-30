@@ -44,6 +44,10 @@ class Snake {
 
 		if (!this.canMove()) {
 			console.log("Game Over");
+			textSize(40);
+			text("Game Over", width/2 - 90, height/2 - 60);
+			textSize(35);
+			text("Press R or right\n  click to restart", width/2 - 110, height/2 + 55);
 			noLoop();
 			return;
 		}

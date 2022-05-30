@@ -46,9 +46,9 @@ window.onload = () => {
 	  background(0);
 	  location.reload();
 	}
-  }
-  
-  
-  
-  
-  
+
+	document.addEventListener('contextmenu', function(ev) {
+		ev.preventDefault();
+		location.reload();
+	}, false);
+}
