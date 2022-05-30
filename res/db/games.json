@@ -19,7 +19,6 @@
 			"description": "How much can you eat without eating yourself?",
 			"url": "snake_game.html",
 			"thumbnail": "snake.png",
-			"thumbnail": "spaceInvaders.png",
 			"settings": {
 				"width": 600,
 				"height": 600

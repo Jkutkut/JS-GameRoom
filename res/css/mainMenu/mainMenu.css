@@ -13,7 +13,7 @@
 
 .game {
 	--game-width: 380px;
-	--game-height: 500px;
+	--game-height: 520px;
 
 	display: flex;
 	align-items: center;
@@ -44,4 +44,5 @@ img:hover {
 
 p {
 	text-align: center;
+	line-height: 1.2rem;
 }
