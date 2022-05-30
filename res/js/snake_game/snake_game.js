@@ -15,11 +15,11 @@ function setup() {
 
 function setDifficulty(difficulty) {
     if (difficulty == "easy") {
-		velocity = 60;
+        velocity = 40;
     } else if (difficulty == "medium") {
         velocity = 50;
     } else if (difficulty == "impossible") {
-        velocity = 40;
+		velocity = 60;
     }
 	
 	snake = new Snake(CANVAS_SIZE/2, CANVAS_SIZE/2);
