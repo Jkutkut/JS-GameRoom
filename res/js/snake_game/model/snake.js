@@ -125,7 +125,7 @@ class Snake {
 		if (apple.posicion.x == this.posicion.x + (REC_SIZE/2) && apple.posicion.y == this.posicion.y + (REC_SIZE/2)){
 			//borrar apple
 			this.crecer++; 
-			console.log(this.crecer);
+			// console.log(this.crecer);
 			apple = new Apple();
 			
 		}
