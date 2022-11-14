@@ -15,17 +15,6 @@
 			"runAsGame": true
 		},
 		{
-			"name": "Snake",
-			"description": "How much can you eat without eating yourself?",
-			"url": "snake_game.html",
-			"thumbnail": "snake.png",
-			"settings": {
-				"width": 600,
-				"height": 600
-			},
-			"runAsGame": true
-		},
-		{
 			"name": "Space Invaders",
 			"description": "Survive the invasion from space by shooting down aliens.",
 			"url": "spaceInvaders.html",
@@ -41,6 +30,28 @@
 			"description": "Play with your friends or against the AI!",
 			"url": "tictactoe.html",
 			"thumbnail": "tictactoe.png",
+			"settings": {
+				"width": 600,
+				"height": 600
+			},
+			"runAsGame": true
+		},
+		{
+			"name": "DAMADVENTURE",
+			"description": "A fantasy RPG placed on an open world filled by enemies",
+			"url": "https://github.com/alexaib2002/dam-rpg-js",
+			"thumbnail": "damadventure.png",
+			"settings": {
+				"width": 800,
+				"height": 600
+			},
+			"runAsGame": false
+		},
+		{
+			"name": "Snake",
+			"description": "How much can you eat without eating yourself?",
+			"url": "snake_game.html",
+			"thumbnail": "snake.png",
 			"settings": {
 				"width": 600,
 				"height": 600

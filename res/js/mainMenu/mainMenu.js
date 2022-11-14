@@ -19,12 +19,19 @@ function loadGames(json) {
 	let gameSelector = document.getElementById("gameSelector");
 	let games = json.games;
 
+	let link;
 	for (let game of games) {
+		if (game.runAsGame)
+			link = `gameMenu.html?game=${game.url}`;
+		else {
+			if (game.url.startsWith("http"))
+				link = game.url;
+			else
+				link = `../${json.gameLocation}${game.url}`;
+		}
 		gameSelector.innerHTML += newGame(
 			game.name,
-			(game.runAsGame) ?
-				`gameMenu.html?game=${game.url}` :
-				`../${json.gameLocation}${game.url}`,
+			link,
 			`../${json.thumbnailLocation}/${game.thumbnail}`,
 			game.description
 		);
