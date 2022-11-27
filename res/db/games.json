@@ -39,7 +39,7 @@
 		{
 			"name": "DAMADVENTURE",
 			"description": "A fantasy RPG placed on an open world filled by enemies",
-			"url": "https://github.com/alexaib2002/dam-rpg-js",
+			"url": "https://alexaib2002.github.io/dam-rpg-js/index.html",
 			"thumbnail": "damadventure.png",
 			"settings": {
 				"width": 800,
